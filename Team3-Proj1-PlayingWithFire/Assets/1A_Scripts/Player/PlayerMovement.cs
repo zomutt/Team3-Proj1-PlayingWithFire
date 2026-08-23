@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
-{
+{ 
+
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
 
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = targetVelocity;
     }
 
-    // PlayerInput calls these On___ methods automatically when the action fires, don't need to hook them up yourself
+    // PlayerInput calls these On___ methods automatically when the action fires, no need to hook them up yourself
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
