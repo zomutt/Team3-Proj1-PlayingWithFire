@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Start/quit/win/reset conditions, etc.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
