@@ -1,15 +1,7 @@
 fileFormatVersion: 2
-guid: df9c1db97837973439cee21b9fd443df
-NativeFormatImporter:
+guid: a9d6d8158f0abc746b84cc73ea6b5a7b
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 11920
-  packageName: Ornamental Flower Set
-  packageVersion: 1.00
-  assetPath: Assets/Ornamental Flower Set/Resources/Furniture01/FurniturePrefab/Furniture_flowerstand_02_lod_set.prefab
-  uploadId: 747017
