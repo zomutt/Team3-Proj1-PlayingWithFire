@@ -110,10 +110,7 @@ public class PlayerFire : MonoBehaviour
         isFiring = false;
 
         fireVFX_A.Stop();    // When you let go of the button, the fire stops spawning new particles.
-        //fireVFX_A.Clear();   // Clears the particles so they don't linger after the spell is done
-
         fireVFX_B.Stop();
-        //fireVFX_B.Clear();
     }
 
     private void Fizzle()

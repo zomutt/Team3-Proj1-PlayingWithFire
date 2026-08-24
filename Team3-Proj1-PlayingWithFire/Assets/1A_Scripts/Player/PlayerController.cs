@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         // Ensures there is only one instance of the player in a scene.
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        if (playerObjects.Length > 1)
+        if (Instance != null)
         {
             Debug.LogWarning("Multiple PlayerController instances found. Destroying duplicate.");
             Destroy(gameObject);
             return;
         }
+
+        Instance = this;
     }
 }
