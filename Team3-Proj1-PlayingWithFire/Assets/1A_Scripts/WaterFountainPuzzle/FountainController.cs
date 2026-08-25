@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FountainController : MonoBehaviour // place on fountain 
 {
     public WaterStatue[] statues; // add 4 fields and add each statue to it 
-    public ParticleSystem fountainVFX; // for one particle system
+    public GameObject fountainWaterHazard; // hazard for the water fountain
 
     public void checkStatues()
     {
@@ -14,6 +15,6 @@ public class FountainController : MonoBehaviour // place on fountain
                 return;
             }
         }
-        fountainVFX.Stop(); // disables the particle once all 4 statues face the right way
+        fountainWaterHazard.SetActive(false); // disables the hazard once all 4 statues face the right way
     }
 }
