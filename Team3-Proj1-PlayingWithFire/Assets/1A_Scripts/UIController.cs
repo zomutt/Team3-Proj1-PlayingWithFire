@@ -16,7 +16,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject confirmQuitPanel;
     [SerializeField] private GameObject settingsPanel;
 
-    [SerializeField] private GameObject[] keyImgs;    // Red, blue, green, then purple. The order is important, because the keys are in that order in the game.
+    [SerializeField] private GameObject keyCellRed;
+    [SerializeField] private GameObject keyRunPurple;
+    [SerializeField] private GameObject keyCrushBlue;
+    [SerializeField] private GameObject keyFountainGreen;
+
+    [SerializeField] private GameObject[] keyIcons;   // Array to hold the key icons for easy management
+
+    private bool isMenuOpen = false; // Track whether the menu is open or closed
+    private bool isQuitting = false; // Track whether the player is in the process of quitting
 
     private void Awake()
     {
@@ -31,6 +39,9 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        isQuitting = false; // Reset quitting state on start
+        isMenuOpen = false; // Reset menu state on start
+
         if (helpPanel != null)
         {
             helpPanel.SetActive(false);
@@ -66,6 +77,21 @@ public class UIController : MonoBehaviour
         {
             Debug.LogWarning("no settings panel assigned");
         }
+
+        if (keyIcons != null)
+        {
+            foreach (GameObject keyIcon in keyIcons)
+            {
+                if (keyIcon != null)
+                {
+                    keyIcon.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("no key icons assigned");
+        }
     }
 
     private void Update()
@@ -74,24 +100,30 @@ public class UIController : MonoBehaviour
         {
             OnClickTogglePause();
         }
+
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.S))
+        {
+            OnClickToggleSettings();
+        }
     }
 
-    public void UpdateKeys(int keyIndex)
+    public void UpdateKeys(string color)
     {
-        switch (keyIndex)
+        if (color == "Red" && keyCellRed != null)
         {
-            case 0:
-                keyImgs[0].SetActive(true);
-                break;
-            case 1:
-                keyImgs[1].SetActive(true);
-                break;
-            case 2:
-                keyImgs[2].SetActive(true);
-                break;
-            case 3:
-                keyImgs[3].SetActive(true); 
-                break;
+            keyCellRed.SetActive(true);
+        }
+        else if (color == "Purple" && keyRunPurple != null)
+        {
+            keyRunPurple.SetActive(true);
+        }
+        else if (color == "Blue" && keyCrushBlue != null)
+        {
+            keyCrushBlue.SetActive(true);
+        }
+        else if (color == "Green" && keyFountainGreen != null)
+        {
+            keyFountainGreen.SetActive(true);
         }
     }
     private void OnClickTogglePause()
@@ -114,6 +146,7 @@ public class UIController : MonoBehaviour
             {
                 Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
+            isMenuOpen = false;
         }
         else
         {
@@ -127,6 +160,7 @@ public class UIController : MonoBehaviour
             {
                 Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
+            isMenuOpen = true;
         }
     }
 

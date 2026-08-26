@@ -5,14 +5,17 @@ using UnityEngine;
 /// </summary>
 public class Keys : MonoBehaviour
 {
-    //[SerializeField] private GameObject gate;
     [SerializeField] private AudioClip pickupSound;
 
-    [SerializeField] private GameObject wallCell;
-    [SerializeField] private GameObject wallRun;
-    //[SerializeField] private GameObject wallAvoid;
-    [SerializeField] private GameObject wallCrush;
+    [SerializeField] private Transform wallCell;
+    [SerializeField] private Transform wallRun;
+    [SerializeField] private Transform wallCrush;
 
+
+    private void Start()
+    {
+        gameObject.SetActive(true); // Ensure the key is active at the start of the game
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -28,24 +31,31 @@ public class Keys : MonoBehaviour
 
             if (gameObject.CompareTag("KeyCell"))
             {
-                GameManager.Instance.ObtainKey(0); // Red
-                UIController.Instance.UpdateKeys(0);
+                UIController.Instance.UpdateKeys("Red");
+                wallCell.transform.position += Vector3.down * 5f;
+                Debug.Log("Red key collected");
             }
             else if (gameObject.CompareTag("KeyFountain"))
             {
-                GameManager.Instance.ObtainKey(1); // Green
-                UIController.Instance.UpdateKeys(1);
+                UIController.Instance.UpdateKeys("Green");
+                Debug.Log("Green key collected");
             }
             else if (gameObject.CompareTag("KeyCrush"))
             {
-                GameManager.Instance.ObtainKey(2); // Blue
-                UIController.Instance.UpdateKeys(2);
+                UIController.Instance.UpdateKeys("Blue");
+                wallCrush.transform.position += Vector3.down * 5f;
+                Debug.Log("Blue key collected");
             }
-            //else if (gameObject.CompareTag("KeyAvoid"))         // No need. It starts open.
-            //{
-            //    GameManager.Instance.ObtainKey(3); // 
-            //    UIController.Instance.UpdateKeys(3);
-            //}
+            else if (gameObject.CompareTag("KeyRun"))  // Purple       
+            {
+                UIController.Instance.UpdateKeys("Purple");
+                wallRun.transform.position += Vector3.down * 5f; 
+                Debug.Log("Purple key collected");
+            }
+            else
+            {
+                Debug.LogWarning("Key has no recognized tag for performing any action.");
+            }
         }
     }
 }
