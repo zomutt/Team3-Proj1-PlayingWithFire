@@ -26,7 +26,7 @@ public class Keys : MonoBehaviour
                 GameManager.Instance.ObtainKey(0); // Red
                 UIController.Instance.UpdateKeys(0);
             }
-            else if (gameObject.CompareTag("KeyFountain"))
+            else if (gameObject.CompareTag("KeyAvoid"))
             {
                 GameManager.Instance.ObtainKey(1); // Blue
                 UIController.Instance.UpdateKeys(1);
@@ -36,7 +36,7 @@ public class Keys : MonoBehaviour
                 GameManager.Instance.ObtainKey(2); // Green
                 UIController.Instance.UpdateKeys(2);
             }
-            else if (gameObject.CompareTag("KeyAvoid"))
+            else if (gameObject.CompareTag("KeyFountain"))
             {
                 GameManager.Instance.ObtainKey(3); // Purple
                 UIController.Instance.UpdateKeys(3);

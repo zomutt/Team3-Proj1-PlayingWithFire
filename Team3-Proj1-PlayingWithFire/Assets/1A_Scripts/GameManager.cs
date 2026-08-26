@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private Transform checkpoint; // Where the player respawns after touching water.
 
     [SerializeField] private GameObject runWaterWall; // Drops once all 4 keys are collected.
+    [SerializeField] private GameObject[] statuePOIs; // Turn on once the player has any 3 of the 4 keys.
 
     public bool hasRedKey;
     public bool hasGreenKey;
@@ -106,6 +107,23 @@ public class GameManager : MonoBehaviour
         if (hasAllKeys && runWaterWall != null)
         {
             runWaterWall.SetActive(false);
+        }
+
+        int keysHeld = 0;
+        if (hasRedKey) keysHeld++;
+        if (hasGreenKey) keysHeld++;
+        if (hasBlueKey) keysHeld++;
+        if (hasPurpleKey) keysHeld++;
+
+        if (keysHeld >= 3)
+        {
+            foreach (GameObject poi in statuePOIs)
+            {
+                if (poi != null)
+                {
+                    poi.SetActive(true);
+                }
+            }
         }
     }
 }
