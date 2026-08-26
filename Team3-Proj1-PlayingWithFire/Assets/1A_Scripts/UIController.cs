@@ -21,7 +21,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject keyCrushBlue;
     [SerializeField] private GameObject keyFountainGreen;
 
-    [SerializeField] private GameObject[] keyIcons;   // Array to hold the key icons for easy management
+    [SerializeField] private GameObject fadePanel;
+
+    [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
 
     private bool isMenuOpen = false; // Track whether the menu is open or closed
     private bool isQuitting = false; // Track whether the player is in the process of quitting
@@ -78,13 +80,13 @@ public class UIController : MonoBehaviour
             Debug.LogWarning("no settings panel assigned");
         }
 
-        if (keyIcons != null)
+        if (closeAllOnStart!= null)
         {
-            foreach (GameObject keyIcon in keyIcons)
+            foreach (GameObject obj in closeAllOnStart)
             {
-                if (keyIcon != null)
+                if (obj != null)
                 {
-                    keyIcon.SetActive(false);
+                    obj.SetActive(false);
                 }
             }
         }

@@ -1,30 +1,31 @@
 using UnityEngine;
 using System.Collections;
+
 public class WaterWall : MonoBehaviour
 {
-    [SerializeField] private float fadeDuration = 1.5f;   // How long the fade-out takes once melting starts
-    [SerializeField] private AudioClip waterSound; // Sound to play when the water wall is deactivated
-    private Renderer doorRenderer;
-    private void Start()
+    [SerializeField] private float lowerDistance = 10f;   // how far down it drops before it's gone
+    [SerializeField] private float lowerSpeed = 1f;
+    [SerializeField] private AudioClip waterSound; // sound to play when the water wall deactivates
+
+    public IEnumerator Fall()
     {
-        doorRenderer = GetComponent<Renderer>();
-    }
-    public IEnumerator FadeOut()
-    {
-        // Instead of the ice door just disappearing, it should fade instead.
+        Vector3 start = transform.position;
+        Vector3 end = start - new Vector3(0f, lowerDistance, 0f);
+        float duration = lowerDistance / lowerSpeed;
         float elapsed = 0f;
-        Color startColor = doorRenderer.material.color;
 
-        while (elapsed < fadeDuration)
+        while (elapsed < duration)
         {
+            transform.position = Vector3.Lerp(start, end, elapsed / duration);
             elapsed += Time.deltaTime;
-
-            float alpha = 1f - (elapsed / fadeDuration);
-            Color fadedColor = startColor;
-            fadedColor.a = alpha;
-            doorRenderer.material.color = fadedColor;
-
             yield return null;
+        }
+
+        transform.position = end;
+
+        if (waterSound != null)
+        {
+            AudioSource.PlayClipAtPoint(waterSound, transform.position);
         }
 
         gameObject.SetActive(false);
