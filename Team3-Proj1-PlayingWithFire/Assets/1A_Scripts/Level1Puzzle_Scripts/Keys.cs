@@ -32,7 +32,9 @@ public class Keys : MonoBehaviour
             if (gameObject.CompareTag("KeyCell"))
             {
                 UIController.Instance.UpdateKeys("Red");
-                wallCell.transform.position += Vector3.down * 5f;
+
+                var WaterWall = wallCell.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.FadeOut());
                 Debug.Log("Red key collected");
             }
             else if (gameObject.CompareTag("KeyFountain"))
@@ -43,13 +45,17 @@ public class Keys : MonoBehaviour
             else if (gameObject.CompareTag("KeyCrush"))
             {
                 UIController.Instance.UpdateKeys("Blue");
-                wallCrush.transform.position += Vector3.down * 5f;
+                
+                var WaterWall = wallCrush.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.FadeOut());
                 Debug.Log("Blue key collected");
             }
             else if (gameObject.CompareTag("KeyRun"))  // Purple       
             {
                 UIController.Instance.UpdateKeys("Purple");
-                wallRun.transform.position += Vector3.down * 5f; 
+                
+                var WaterWall = wallRun.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.FadeOut());
                 Debug.Log("Purple key collected");
             }
             else
