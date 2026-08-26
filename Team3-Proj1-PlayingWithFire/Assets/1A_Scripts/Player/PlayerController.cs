@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator RespawnRoutine()
     {
+        fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
+
         Color color = fadeImage.color;
 
         // fade to black
@@ -73,5 +75,7 @@ public class PlayerController : MonoBehaviour
         }
         color.a = 0f;
         fadeImage.color = color;
+
+        fadePanel.SetActive(false); 
     }
 }

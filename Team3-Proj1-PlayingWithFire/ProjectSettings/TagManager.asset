@@ -9,6 +9,7 @@ TagManager:
   - KeyFountain
   - KeyCrush
   - KeyRun
+  - Enemy
   layers:
   - Default
   - TransparentFX
