@@ -4,6 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/1A_Scenes/Menus/Main Menu.unity
+    guid: c1d2a2fe0d3163647be353652571fd64
+  - enabled: 1
+    path: Assets/1A_Scenes/Menus/How To Play Scene.unity
+    guid: e306f43e7504401479d1935d23caf45f
+  - enabled: 1
+    path: Assets/1A_Scenes/Menus/Credits.unity
+    guid: 76de4d5308fabeb469e559bf0153f90d
+  - enabled: 1
+    path: Assets/1A_Scenes/Levels/LevelOne.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
