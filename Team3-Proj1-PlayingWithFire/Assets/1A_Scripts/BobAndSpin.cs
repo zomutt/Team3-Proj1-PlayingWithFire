@@ -25,5 +25,7 @@ public class BobAndSpin : MonoBehaviour
         transform.position = new Vector3(startPosition.x, newY, startPosition.z);
 
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+        //
+        //
     }
 }

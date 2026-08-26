@@ -4,29 +4,29 @@ using System.Collections;
 /// <summary>
 /// This lives on LoosePillar.
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 
 public class CrushPuzzle : FireReceiver
 {
     private AudioSource audioSource;
+    private Animator animator;
     [SerializeField] AudioClip partySounds;     // Ambient.
     [SerializeField] AudioClip screams;         // Totally not a Wilhelm shriek.
     [SerializeField] AudioClip splash;          // Sploosh.
-    [SerializeField] private GameObject[] enemies;    // The fellas in the pool. 
+    [SerializeField] private GameObject[] enemies;    // The fellas in the pool.
+    [SerializeField] private GameObject poiRing;
 
     [SerializeField] float burnTime = 3f;  // How long the object must be on fire before it falls.
     [SerializeField] float screamDelay; // Delay before the scream sound plays after the object is hit by fire.
     private float burnProgress;
     private bool isBurning;
-    private bool canBurn;   // Can't kill a mob with fire and a pillar twice, now can you?
-    private Rigidbody rb;
+    private bool canBurn = true;   // Can't kill a mob with fire and a pillar twice, now can you?
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false; // Initially, the object should not be affected by gravity.
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -50,7 +50,6 @@ public class CrushPuzzle : FireReceiver
         if (burnProgress >= burnTime)
         {
             Burn();
-            rb.useGravity = true;
             isBurning = true;
         }
     }
@@ -58,6 +57,9 @@ public class CrushPuzzle : FireReceiver
     private void Burn()
     {
         canBurn = false;
+        audioSource.Stop();
+        animator.SetTrigger("Fall");
+        poiRing.SetActive(false);
 
         // Start the scream delay coroutine
         StartCoroutine(ScreamDelay());
