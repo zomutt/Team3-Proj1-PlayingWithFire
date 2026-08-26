@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
 
     private const string CreditsScene = "Credits";        // Const string for the name of the credits scene, so we don't have to hardcode it in multiple places -- it basically lives forever
     private const string Level1Scene = "Christie_BuildScene";
-    private const string MainMenuScene = "Main Menu";
+    private const string MainMenuScene = "MainMenu";
 
     private static string previousScene;         // Also persists between scenes, so we can go back to the previous scene when we open the credits or help menu, except is shared between other objects
 
@@ -149,7 +149,7 @@ public class UIController : MonoBehaviour
             keyFountainGreen.SetActive(true);
         }
     }
-    private void OnClickTogglePause()
+    public void OnClickTogglePause()
     {
         if (GameManager.Instance == null)
         {
@@ -223,6 +223,17 @@ public class UIController : MonoBehaviour
         {
             Debug.LogWarning("no GameManager in this scene, can't pause");
         }
+    }
+
+    public void OnClickToggleHelpSimple()
+    {
+        if (helpPanel == null)
+        {
+            Debug.LogWarning("where's the help panel lol");
+            return;
+        }
+
+        helpPanel.SetActive(!helpPanel.activeSelf);
     }
 
     public void OnClickOpenCredits()
