@@ -107,7 +107,8 @@ public class CrushPuzzle : FireReceiver
         yield return new WaitForSeconds(screamDelay);
         if (screams != null)
         {
-            audioSource.PlayOneShot(screams);
+            audioSource.Stop();    // Makes sure partySounds stop
+            audioSource.PlayOneShot(screams);  
         }
 
         foreach (GameObject enemy in enemies)

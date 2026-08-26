@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject confirmQuitPanel;
     [SerializeField] private GameObject settingsPanel;
 
+    [SerializeField] private GameObject[] keyImgs;    // Red, blue, green, then purple. The order is important, because the keys are in that order in the game.
+
     private void Awake()
     {
         if (Instance != null)
@@ -74,6 +76,24 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void UpdateKeys(int keyIndex)
+    {
+        switch (keyIndex)
+        {
+            case 0:
+                keyImgs[0].SetActive(true);
+                break;
+            case 1:
+                keyImgs[1].SetActive(true);
+                break;
+            case 2:
+                keyImgs[2].SetActive(true);
+                break;
+            case 3:
+                keyImgs[3].SetActive(true); 
+                break;
+        }
+    }
     private void OnClickTogglePause()
     {
         if (GameManager.Instance == null)

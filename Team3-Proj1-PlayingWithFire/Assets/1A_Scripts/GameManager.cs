@@ -11,6 +11,14 @@ public class GameManager : MonoBehaviour
 
     private Transform checkpoint; // Where the player respawns after touching water.
 
+    [SerializeField] private GameObject runWaterWall; // Drops once all 4 keys are collected.
+
+    public bool hasRedKey;
+    public bool hasGreenKey;
+    public bool hasBlueKey;
+    public bool hasPurpleKey;
+    public bool hasAllKeys;
+
     private void Awake()
     {
         if (Instance != null)
@@ -20,7 +28,16 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        checkpoint = GameObject.FindGameObjectWithTag("Respawn").transform;
+
+        GameObject respawnObject = GameObject.FindGameObjectWithTag("Respawn");
+        if (respawnObject != null)
+        {
+            checkpoint = respawnObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("nothing in this scene is tagged Respawn, checkpoint is null");
+        }
     }
 
     private void Start()
@@ -65,5 +82,30 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(MainMenuScene);
+    }
+
+    public void ObtainKey(int keyIndex)
+    {
+        switch (keyIndex)
+        {
+            case 0:
+                hasRedKey = true;
+                break;
+            case 1:
+                hasBlueKey = true;
+                break;
+            case 2:
+                hasGreenKey = true;
+                break;
+            case 3:
+                hasPurpleKey = true;
+                break;
+        }
+        hasAllKeys = hasRedKey && hasGreenKey && hasBlueKey && hasPurpleKey;
+
+        if (hasAllKeys && runWaterWall != null)
+        {
+            runWaterWall.SetActive(false);
+        }
     }
 }
