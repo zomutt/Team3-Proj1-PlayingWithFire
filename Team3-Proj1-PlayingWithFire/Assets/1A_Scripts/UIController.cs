@@ -18,6 +18,16 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject[] keyImgs;    // Red, blue, green, then purple. The order is important, because the keys are in that order in the game.
 
+    [Header("Hotkeys -- set these in the Inspector, whatever you want")]
+    [SerializeField] private KeyCode helpKey = KeyCode.None;
+    [SerializeField] private KeyCode creditsKey = KeyCode.None;
+    [SerializeField] private KeyCode settingsKey = KeyCode.None;
+    [SerializeField] private KeyCode quitKey = KeyCode.None;
+    [SerializeField] private KeyCode confirmQuitKey = KeyCode.None;
+    [SerializeField] private KeyCode cancelQuitKey = KeyCode.None;
+    [SerializeField] private KeyCode mainMenuKey = KeyCode.None;
+    [SerializeField] private KeyCode backToPauseKey = KeyCode.None;
+
     private void Awake()
     {
         if (Instance != null)
@@ -74,6 +84,46 @@ public class UIController : MonoBehaviour
         {
             OnClickTogglePause();
         }
+
+        if (helpKey != KeyCode.None && Input.GetKeyDown(helpKey))
+        {
+            OnClickOpenHelp();
+        }
+
+        if (creditsKey != KeyCode.None && Input.GetKeyDown(creditsKey))
+        {
+            OnClickOpenCredits();
+        }
+
+        if (settingsKey != KeyCode.None && Input.GetKeyDown(settingsKey))
+        {
+            OnClickToggleSettings();
+        }
+
+        if (quitKey != KeyCode.None && Input.GetKeyDown(quitKey))
+        {
+            OnClickQuitGame();
+        }
+
+        if (confirmQuitKey != KeyCode.None && Input.GetKeyDown(confirmQuitKey))
+        {
+            OnClickConfirmQuit();
+        }
+
+        if (cancelQuitKey != KeyCode.None && Input.GetKeyDown(cancelQuitKey))
+        {
+            OnClickCancelQuit();
+        }
+
+        if (mainMenuKey != KeyCode.None && Input.GetKeyDown(mainMenuKey))
+        {
+            OnClickMainMenu();
+        }
+
+        if (backToPauseKey != KeyCode.None && Input.GetKeyDown(backToPauseKey))
+        {
+            OnClickBackToPauseMenu();
+        }
     }
 
     public void UpdateKeys(int keyIndex)
@@ -105,6 +155,8 @@ public class UIController : MonoBehaviour
         if (GameManager.Instance.IsPaused)
         {
             GameManager.Instance.Play();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             if (pauseMenu != null)
             {
@@ -118,6 +170,8 @@ public class UIController : MonoBehaviour
         else
         {
             GameManager.Instance.Pause();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
             if (pauseMenu != null)
             {

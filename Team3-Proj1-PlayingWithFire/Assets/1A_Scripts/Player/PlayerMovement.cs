@@ -47,26 +47,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        ApplyLook();
+        ApplyPitch();
     }
 
-   
+
     private void FixedUpdate()
     {
         // A short raycast straight down tells us if we're standing on something, so jump only works on the ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
 
+        ApplyYaw();
         ApplyMovement();
     }
 
-    private void ApplyLook()
+    private void ApplyYaw()
     {
-        // Yaw rotates the body, pitch only rotates the camera so we don't tip the capsule over
-        transform.Rotate(Vector3.up * (lookInput.x * lookSensitivity));
+        // Rotating the Rigidbody's body through MoveRotation instead of transform.Rotate, and doing it in
+        // FixedUpdate instead of Update -- rotating a Rigidbody's transform directly outside of physics steps
+        // is what was causing the jitter, since the Rigidbody's interpolation doesn't know about it.
+        Quaternion yawRotation = Quaternion.Euler(0f, lookInput.x * lookSensitivity, 0f);
+        rb.MoveRotation(rb.rotation * yawRotation);
+    }
 
+    private void ApplyPitch()
+    {
+        // Pitch only rotates the camera (a child transform, no physics involved) so we don't tip the capsule over
         cameraPitch -= lookInput.y * lookSensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -pitchClamp, pitchClamp);
-        cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0f, 0f);   
+        cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0f, 0f);
     }
 
     private void ApplyMovement()
