@@ -296,7 +296,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289224855}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OnClickOpenHelp
+        m_MethodName: OnClickMMHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1499,6 +1499,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   helpPanel: {fileID: 2123441038}
   pauseMenu: {fileID: 0}
+  confirmQuitPanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  keyCellRed: {fileID: 0}
+  keyRunPurple: {fileID: 0}
+  keyCrushBlue: {fileID: 0}
+  keyFountainGreen: {fileID: 0}
+  fadePanel: {fileID: 0}
+  closeAllOnStart:
+  - {fileID: 2123441038}
+  mmHelpPanel: {fileID: 2123441038}
 --- !u!1 &1399838642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +1885,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289224855}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: OnClickCloseHelp
+        m_MethodName: OnClickMMHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

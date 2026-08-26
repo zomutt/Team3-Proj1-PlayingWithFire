@@ -6,7 +6,7 @@ public class UIController : MonoBehaviour
     public static UIController Instance { get; private set; }
 
     private const string CreditsScene = "Credits";        // Const string for the name of the credits scene, so we don't have to hardcode it in multiple places -- it basically lives forever
-    private const string Level1Scene = "LevelOne";
+    private const string Level1Scene = "Christie_BuildScene";
     private const string MainMenuScene = "Main Menu";
 
     private static string previousScene;         // Also persists between scenes, so we can go back to the previous scene when we open the credits or help menu, except is shared between other objects
@@ -24,19 +24,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject fadePanel;
 
     [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
+    [SerializeField] private GameObject mmHelpPanel; // Help panel for the main menu
 
     private bool isMenuOpen = false; // Track whether the menu is open or closed
     private bool isQuitting = false; // Track whether the player is in the process of quitting
-
-    [Header("Hotkeys -- set these in the Inspector, whatever you want")]
-    [SerializeField] private KeyCode helpKey = KeyCode.None;
-    [SerializeField] private KeyCode creditsKey = KeyCode.None;
-    [SerializeField] private KeyCode settingsKey = KeyCode.None;
-    [SerializeField] private KeyCode quitKey = KeyCode.None;
-    [SerializeField] private KeyCode confirmQuitKey = KeyCode.None;
-    [SerializeField] private KeyCode cancelQuitKey = KeyCode.None;
-    [SerializeField] private KeyCode mainMenuKey = KeyCode.None;
-    [SerializeField] private KeyCode backToPauseKey = KeyCode.None;
 
     private void Awake()
     {
@@ -90,7 +81,7 @@ public class UIController : MonoBehaviour
             Debug.LogWarning("no settings panel assigned");
         }
 
-        if (closeAllOnStart!= null)
+        if (closeAllOnStart != null)
         {
             foreach (GameObject obj in closeAllOnStart)
             {
@@ -240,7 +231,7 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(CreditsScene);
     }
 
-    public void OnClickReturnToPreviousScene() 
+    public void OnClickReturnToPreviousScene()
     {
         if (previousScene != null)
         {
@@ -318,6 +309,18 @@ public class UIController : MonoBehaviour
         else
         {
             Debug.LogWarning("no settings panel assigned");
+        }
+    }
+
+    public void OnClickMMHelp()    // Only for use on main menu
+    {
+        if (mmHelpPanel != null)
+        {
+            helpPanel.SetActive(!mmHelpPanel.activeSelf);
+        }
+        else
+        {
+            Debug.LogWarning("where's the help panel lol");
         }
     }
 }
