@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WaterWall : MonoBehaviour
 {
-    [SerializeField] private float lowerDistance = 3f;
+    [SerializeField] private float lowerDistance = 6f;
     [SerializeField] private float lowerSpeed = 1f;
 
     public void LowerAndDisable()

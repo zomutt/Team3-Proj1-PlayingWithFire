@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
-{ 
+{
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
@@ -24,12 +24,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 8f;
     [SerializeField] private float groundCheckDistance = 1.1f;
 
+    public float CameraPitch => cameraPitch; // ThirdPersonCamera reads this instead of us reading input twice
+
     private Rigidbody rb;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool isSprinting;
     private bool isGrounded;
     private float cameraPitch;
+    private float yawAccumulator; // Mouse delta piles up here in Update, then FixedUpdate applies and clears it exactly once
 
     private void Awake()
     {
@@ -47,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Mouse delta only arrives once per rendered frame -- bank it here so FixedUpdate
+        // (which can fire 0, 1, or several times per frame) applies the full amount exactly once.
+        yawAccumulator += lookInput.x * lookSensitivity;
         ApplyPitch();
     }
 
@@ -64,9 +70,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Rotating the Rigidbody's body through MoveRotation instead of transform.Rotate, and doing it in
         // FixedUpdate instead of Update -- rotating a Rigidbody's transform directly outside of physics steps
-        // is what was causing the jitter, since the Rigidbody's interpolation doesn't know about it.
-        Quaternion yawRotation = Quaternion.Euler(0f, lookInput.x * lookSensitivity, 0f);
+        // is what was causing the original jitter, since the Rigidbody's interpolation doesn't know about it.
+        Quaternion yawRotation = Quaternion.Euler(0f, yawAccumulator, 0f);
         rb.MoveRotation(rb.rotation * yawRotation);
+        yawAccumulator = 0f;
     }
 
     private void ApplyPitch()
