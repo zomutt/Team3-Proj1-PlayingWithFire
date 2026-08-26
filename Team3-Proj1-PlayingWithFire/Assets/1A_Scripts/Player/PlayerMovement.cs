@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// MOVEMENT SCRIPT. First person, needs a Rigidbody + Collider on the same object or it just won't go.
+/// MOVEMENT SCRIPT. Nyooooooom.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -50,8 +51,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // mouse only updates once a frame but FixedUpdate can run more (or less) than once a frame,
-        // so if you apply mouse movement straight in FixedUpdate it double (or triple, or w/e) dips
-        // and the camera goes insane. stacking it here and draining it once fixes that.
+        // so if you apply mouse movement straight in FixedUpdate it stuttrs BAD - this fixes that.
         turnBuildup += lookInput.x * lookSensitivity;
         Look();
     }

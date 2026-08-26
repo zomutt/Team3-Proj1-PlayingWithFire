@@ -1,17 +1,13 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class WaterWall : MonoBehaviour
 {
-    [SerializeField] private float lowerDistance = 6f;
+    [SerializeField] private float lowerDistance = 10f;   // how far down it drops before it's gone
     [SerializeField] private float lowerSpeed = 1f;
+    [SerializeField] private AudioClip waterSound; // sound to play when the water wall deactivates
 
-    public void LowerAndDisable()
-    {
-        StartCoroutine(LowerRoutine());
-    }
-
-    private IEnumerator LowerRoutine()
+    public IEnumerator Fall()
     {
         Vector3 start = transform.position;
         Vector3 end = start - new Vector3(0f, lowerDistance, 0f);
@@ -26,6 +22,12 @@ public class WaterWall : MonoBehaviour
         }
 
         transform.position = end;
+
+        if (waterSound != null)
+        {
+            AudioSource.PlayClipAtPoint(waterSound, transform.position);
+        }
+
         gameObject.SetActive(false);
     }
 }

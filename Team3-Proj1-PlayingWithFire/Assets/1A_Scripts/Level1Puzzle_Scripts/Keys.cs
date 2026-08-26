@@ -6,11 +6,19 @@ using UnityEngine;
 /// </summary>
 public class Keys : MonoBehaviour
 {
-    [SerializeField] private GameObject gate;
     [SerializeField] private AudioClip pickupSound;
     [SerializeField] private float gateLowerDistance = 6f;
     [SerializeField] private float gateLowerSpeed = 1f;
 
+    [SerializeField] private Transform wallCell;
+    [SerializeField] private Transform wallRun;
+    [SerializeField] private Transform wallCrush;
+
+
+    private void Start()
+    {
+        gameObject.SetActive(true); // Ensure the key is active at the start of the game
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -36,52 +44,39 @@ public class Keys : MonoBehaviour
 
             if (gameObject.CompareTag("KeyCell"))
             {
-                GameManager.Instance.ObtainKey(0); // Red
-                UIController.Instance.UpdateKeys(0);
+                UIController.Instance.UpdateKeys("Red");
+
+                var WaterWall = wallCell.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.Fall());
+                Debug.Log("Red key collected");
             }
             else if (gameObject.CompareTag("KeyAvoid"))
             {
-                GameManager.Instance.ObtainKey(1); // Blue
-                UIController.Instance.UpdateKeys(1);
+                UIController.Instance.UpdateKeys("Green");
+                Debug.Log("Green key collected");
             }
             else if (gameObject.CompareTag("KeyCrush"))
             {
-                GameManager.Instance.ObtainKey(2); // Green
-                UIController.Instance.UpdateKeys(2);
-            }
-            else if (gameObject.CompareTag("KeyFountain"))
-            {
-                GameManager.Instance.ObtainKey(3); // Purple
-                UIController.Instance.UpdateKeys(3);
-            }
+                UIController.Instance.UpdateKeys("Blue");
 
-            if (gate != null)
+                var WaterWall = wallCrush.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.Fall());
+                Debug.Log("Blue key collected");
+            }
+            else if (gameObject.CompareTag("KeyRun"))  // Purple
             {
-                StartCoroutine(LowerGateThenDisable());
+                UIController.Instance.UpdateKeys("Purple");
+
+                var WaterWall = wallRun.GetComponent<WaterWall>();
+                WaterWall.StartCoroutine(WaterWall.Fall());
+                Debug.Log("Purple key collected");
             }
             else
             {
-                gameObject.SetActive(false);
+                Debug.LogWarning("Key has no recognized tag for performing any action.");
             }
+
+            gameObject.SetActive(false);
         }
-    }
-
-    private IEnumerator LowerGateThenDisable()
-    {
-        Vector3 start = gate.transform.position;
-        Vector3 end = start - new Vector3(0f, gateLowerDistance, 0f);
-        float duration = gateLowerDistance / gateLowerSpeed;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            gate.transform.position = Vector3.Lerp(start, end, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        gate.transform.position = end;
-        gate.SetActive(false);
-        gameObject.SetActive(false);
     }
 }

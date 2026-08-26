@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private Transform respawnPoint;     // Only works for one respawn point, but we can add more later if we want to get fancy
 
     private Image fadeImage;
 
@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator RespawnRoutine()
     {
+        fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
+
         Color color = fadeImage.color;
 
         // fade to black
@@ -73,5 +75,7 @@ public class PlayerController : MonoBehaviour
         }
         color.a = 0f;
         fadeImage.color = color;
+
+        fadePanel.SetActive(false); // back off so it's not sitting there eating raycasts/draw calls
     }
 }

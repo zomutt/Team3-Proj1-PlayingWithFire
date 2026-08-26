@@ -16,7 +16,17 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject confirmQuitPanel;
     [SerializeField] private GameObject settingsPanel;
 
-    [SerializeField] private GameObject[] keyImgs;    // Red, blue, green, then purple. The order is important, because the keys are in that order in the game.
+    [SerializeField] private GameObject keyCellRed;
+    [SerializeField] private GameObject keyRunPurple;
+    [SerializeField] private GameObject keyCrushBlue;
+    [SerializeField] private GameObject keyFountainGreen;
+
+    [SerializeField] private GameObject fadePanel;
+
+    [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
+
+    private bool isMenuOpen = false; // Track whether the menu is open or closed
+    private bool isQuitting = false; // Track whether the player is in the process of quitting
 
     [Header("Hotkeys -- set these in the Inspector, whatever you want")]
     [SerializeField] private KeyCode helpKey = KeyCode.None;
@@ -41,6 +51,9 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        isQuitting = false; // Reset quitting state on start
+        isMenuOpen = false; // Reset menu state on start
+
         if (helpPanel != null)
         {
             helpPanel.SetActive(false);
@@ -76,6 +89,21 @@ public class UIController : MonoBehaviour
         {
             Debug.LogWarning("no settings panel assigned");
         }
+
+        if (closeAllOnStart!= null)
+        {
+            foreach (GameObject obj in closeAllOnStart)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("no key icons assigned");
+        }
     }
 
     private void Update()
@@ -85,63 +113,29 @@ public class UIController : MonoBehaviour
             OnClickTogglePause();
         }
 
-        if (helpKey != KeyCode.None && Input.GetKeyDown(helpKey))
-        {
-            OnClickOpenHelp();
-        }
-
-        if (creditsKey != KeyCode.None && Input.GetKeyDown(creditsKey))
-        {
-            OnClickOpenCredits();
-        }
-
-        if (settingsKey != KeyCode.None && Input.GetKeyDown(settingsKey))
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.S))
         {
             OnClickToggleSettings();
         }
-
-        if (quitKey != KeyCode.None && Input.GetKeyDown(quitKey))
-        {
-            OnClickQuitGame();
-        }
-
-        if (confirmQuitKey != KeyCode.None && Input.GetKeyDown(confirmQuitKey))
-        {
-            OnClickConfirmQuit();
-        }
-
-        if (cancelQuitKey != KeyCode.None && Input.GetKeyDown(cancelQuitKey))
-        {
-            OnClickCancelQuit();
-        }
-
-        if (mainMenuKey != KeyCode.None && Input.GetKeyDown(mainMenuKey))
-        {
-            OnClickMainMenu();
-        }
-
-        if (backToPauseKey != KeyCode.None && Input.GetKeyDown(backToPauseKey))
-        {
-            OnClickBackToPauseMenu();
-        }
     }
 
-    public void UpdateKeys(int keyIndex)
+    public void UpdateKeys(string color)
     {
-        switch (keyIndex)
+        if (color == "Red" && keyCellRed != null)
         {
-            case 0:
-                keyImgs[0].SetActive(true);
-                break;
-            case 1:
-                keyImgs[1].SetActive(true);
-                break;
-            case 2:
-                keyImgs[2].SetActive(true);
-                break;
-            case 3:
-                keyImgs[3].SetActive(true); 
-                break;
+            keyCellRed.SetActive(true);
+        }
+        else if (color == "Purple" && keyRunPurple != null)
+        {
+            keyRunPurple.SetActive(true);
+        }
+        else if (color == "Blue" && keyCrushBlue != null)
+        {
+            keyCrushBlue.SetActive(true);
+        }
+        else if (color == "Green" && keyFountainGreen != null)
+        {
+            keyFountainGreen.SetActive(true);
         }
     }
     private void OnClickTogglePause()
@@ -166,6 +160,7 @@ public class UIController : MonoBehaviour
             {
                 Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
+            isMenuOpen = false;
         }
         else
         {
@@ -181,6 +176,7 @@ public class UIController : MonoBehaviour
             {
                 Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
+            isMenuOpen = true;
         }
     }
 
