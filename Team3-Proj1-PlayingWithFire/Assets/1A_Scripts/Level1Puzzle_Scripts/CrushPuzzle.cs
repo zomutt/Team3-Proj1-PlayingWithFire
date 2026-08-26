@@ -9,6 +9,8 @@ using System.Collections;
 
 public class CrushPuzzle : FireReceiver
 {
+    public bool HasFallen { get; private set; }
+
     private AudioSource audioSource;
     private Animator animator;
     [SerializeField] AudioClip partySounds;     // Ambient.
@@ -16,6 +18,7 @@ public class CrushPuzzle : FireReceiver
     [SerializeField] AudioClip splash;          // Sploosh.
     [SerializeField] private GameObject[] enemies;    // The fellas in the pool.
     [SerializeField] private GameObject poiRing;
+    [SerializeField] private Collider killBox;
 
     [SerializeField] float burnTime = 3f;  // How long the object must be on fire before it falls.
     [SerializeField] float screamDelay; // Delay before the scream sound plays after the object is hit by fire.
@@ -57,9 +60,15 @@ public class CrushPuzzle : FireReceiver
     private void Burn()
     {
         canBurn = false;
+        HasFallen = true;
         audioSource.Stop();
         animator.SetTrigger("Fall");
         poiRing.SetActive(false);
+
+        if (killBox != null)
+        {
+            killBox.enabled = false;
+        }
 
         // Start the scream delay coroutine
         StartCoroutine(ScreamDelay());
@@ -67,6 +76,29 @@ public class CrushPuzzle : FireReceiver
         if (splash != null)
         {
             audioSource.PlayOneShot(splash);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!HasFallen)
+            {
+                GameManager.Instance.RespawnPlayer();
+            }
+
+            return;
+        }
+
+        // Kill enemies on contact too, not just on the scream delay -- whichever gets them first.
+        foreach (GameObject enemy in enemies)
+        {
+            if (other.gameObject == enemy)
+            {
+                Destroy(enemy);
+                break;
+            }
         }
     }
 

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     private const string MainMenuScene = "Main Menu";
 
-    [SerializeField] private Transform checkpoint; // Where the player respawns after touching water.
+    private Transform checkpoint; // Where the player respawns after touching water.
 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        checkpoint = GameObject.FindGameObjectWithTag("Respawn").transform;
     }
 
     private void Start()
@@ -47,7 +48,17 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        PlayerController.Instance.transform.position = checkpoint.position;
+        if (ScreenFader.Instance != null)
+        {
+            ScreenFader.Instance.FadeToBlackAndBack(() =>
+            {
+                PlayerController.Instance.transform.position = checkpoint.position;
+            });
+        }
+        else
+        {
+            PlayerController.Instance.transform.position = checkpoint.position;
+        }
     }
 
     public void WinLevel()
