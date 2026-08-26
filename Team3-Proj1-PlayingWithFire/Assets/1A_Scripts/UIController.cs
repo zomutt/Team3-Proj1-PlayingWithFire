@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: helpPanel is not assigned.");
+            Debug.LogWarning("where's the help panel lol");
         }
 
         if (pauseMenu != null)
@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: pauseMenu is not assigned.");
+            Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
         }
     }
 
@@ -49,15 +49,15 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            OnClickTogglePause();
         }
     }
 
-    private void TogglePause()
+    private void OnClickTogglePause()
     {
         if (GameManager.Instance == null)
         {
-            Debug.LogWarning("UIController: GameManager.Instance is null.");
+            Debug.LogWarning("no GameManager in this scene, can't pause");
             return;
         }
 
@@ -71,7 +71,7 @@ public class UIController : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("UIController: pauseMenu is not assigned.");
+                Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
         }
         else
@@ -84,18 +84,18 @@ public class UIController : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("UIController: pauseMenu is not assigned.");
+                Debug.LogWarning("no pause menu assigned, escape key's gonna do nothing visually");
             }
         }
     }
 
-    public void PlayGame()      // ONLY for start menu.
+    public void OnClickStartGame()      // ONLY for start menu.
     {
         previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(Level1Scene);
     }
 
-    public void OpenHelp()
+    public void OnClickOpenHelp()
     {
         if (GameManager.Instance != null)
         {
@@ -103,7 +103,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: GameManager.Instance is null.");
+            Debug.LogWarning("no GameManager in this scene, can't pause");
         }
 
         if (helpPanel != null)
@@ -112,11 +112,11 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: helpPanel is not assigned.");
+            Debug.LogWarning("where's the help panel lol");
         }
     }
 
-    public void CloseHelp()
+    public void OnClickCloseHelp()
     {
         if (GameManager.Instance != null)
         {
@@ -124,7 +124,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: GameManager.Instance is null.");
+            Debug.LogWarning("no GameManager in this scene, can't unpause");
         }
 
         if (helpPanel != null)
@@ -133,17 +133,17 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: helpPanel is not assigned.");
+            Debug.LogWarning("where's the help panel lol");
         }
     }
 
-    public void OpenCredits()
+    public void OnClickOpenCredits()
     {
         previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(CreditsScene);
     }
 
-    public void ReturnToPreviousScene()
+    public void OnClickReturnToPreviousScene()
     {
         if (previousScene != null)
         {
@@ -151,11 +151,11 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIController: previousScene was never set.");
+            Debug.LogWarning("nowhere to go back to, previousScene was never set");
         }
     }
 
-    public void QuitGame()      // Are you sure you want to quit?
+    public void OnClickQuitGame()      // Are you sure you want to quit?
     {
         Application.Quit();
     }
