@@ -117,6 +117,26 @@ public class UIController : MonoBehaviour
         {
             OnClickToggleSettings();
         }
+
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.H))
+        {
+            OnClickToggleHelp();
+        }
+
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.M))
+        {
+            OnClickQuitGame();
+        }
+
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.C))
+        {
+            OnClickMainMenu();
+        }
+
+        if (isMenuOpen && Input.GetKeyDown(KeyCode.R))
+        {
+            OnClickBackToPauseMenu();
+        }
     }
 
     public void UpdateKeys(string color)
@@ -186,45 +206,31 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(Level1Scene);
     }
 
-    public void OnClickOpenHelp()
+    public void OnClickToggleHelp()
     {
+        if (helpPanel == null)
+        {
+            Debug.LogWarning("where's the help panel lol");
+            return;
+        }
+
+        bool opening = !helpPanel.activeSelf;
+        helpPanel.SetActive(opening);
+
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.Pause();
+            if (opening)
+            {
+                GameManager.Instance.Pause();
+            }
+            else
+            {
+                GameManager.Instance.Play();
+            }
         }
         else
         {
             Debug.LogWarning("no GameManager in this scene, can't pause");
-        }
-
-        if (helpPanel != null)
-        {
-            helpPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("where's the help panel lol");
-        }
-    }
-
-    public void OnClickCloseHelp()
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.Play();
-        }
-        else
-        {
-            Debug.LogWarning("no GameManager in this scene, can't unpause");
-        }
-
-        if (helpPanel != null)
-        {
-            helpPanel.SetActive(false);
-        }
-        else
-        {
-            Debug.LogWarning("where's the help panel lol");
         }
     }
 

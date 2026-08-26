@@ -4,7 +4,7 @@ using System.Collections;
 public class WaterWall : MonoBehaviour
 {
     [SerializeField] private float lowerDistance = 10f;   // how far down it drops before it's gone
-    [SerializeField] private float lowerSpeed = 1f;
+    [SerializeField] private float lowerSpeed = 2f;
     [SerializeField] private AudioClip waterSound; // sound to play when the water wall deactivates
 
     public IEnumerator Fall()

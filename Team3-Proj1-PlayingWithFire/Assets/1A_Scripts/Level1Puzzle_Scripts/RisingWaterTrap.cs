@@ -56,8 +56,7 @@ public class RisingWaterTrap : MonoBehaviour
             yield return null;
         }
 
-        // Time's up and they're still in the zone. Rippppp.
-        GameManager.Instance.RespawnPlayer();
+        PlayerController.Instance.Respawn();
         water.position = waterStartPosition;
         triggered = false;
     }

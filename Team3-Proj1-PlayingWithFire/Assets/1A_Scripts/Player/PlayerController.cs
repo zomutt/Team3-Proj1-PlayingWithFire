@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     {
         fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
 
+        fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
+
         Color color = fadeImage.color;
 
         // fade to black
@@ -76,6 +78,6 @@ public class PlayerController : MonoBehaviour
         color.a = 0f;
         fadeImage.color = color;
 
-        fadePanel.SetActive(false); // back off so it's not sitting there eating raycasts/draw calls
+        fadePanel.SetActive(false); 
     }
 }
