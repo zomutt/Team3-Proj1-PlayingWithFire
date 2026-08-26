@@ -20,7 +20,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         Vector3 pivot = player.position + Vector3.up * pivotHeight;
-        Quaternion rotation = Quaternion.Euler(playerMovement.CameraPitch, player.eulerAngles.y, 0f);
+        Quaternion rotation = Quaternion.Euler(playerMovement.Pitch, player.eulerAngles.y, 0f);
         Vector3 desiredPosition = pivot - (rotation * Vector3.forward * distance);
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);

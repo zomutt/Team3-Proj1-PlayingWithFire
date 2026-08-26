@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// MOVEMENT SCRIPT: Handles movement and camera look via first person perspective.
-/// The camera may be changed if you want to use a different perspective, but the script will not work without a Rigidbody and a Collider (e.g. Capsule Collider) on the same GameObject.
+/// MOVEMENT SCRIPT. First person, needs a Rigidbody + Collider on the same object or it just won't go.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -24,67 +23,67 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 8f;
     [SerializeField] private float groundCheckDistance = 1.1f;
 
-    public float CameraPitch => cameraPitch; // ThirdPersonCamera reads this instead of us reading input twice
+    public float Pitch => pitch; // so ThirdPersonCamera can steal this instead of reading mouse input a second time
 
     private Rigidbody rb;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool isSprinting;
     private bool isGrounded;
-    private float cameraPitch;
-    private float yawAccumulator; // Mouse delta piles up here in Update, then FixedUpdate applies and clears it exactly once
+    private float pitch;
+    private float turnBuildup; // mouse movement stacks up here until FixedUpdate actually uses it
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
-        // Stops physics from spinning us out if we clip a wall/ledge -- rotation is handled manually below instead
+        // no tipping over, we handle rotation ourselves below
         rb.freezeRotation = true;
 
-        // Smooths out the movement of the rigidbody for better camera movement
-        rb.interpolation = RigidbodyInterpolation.Interpolate;  
+        // smooths the camera out so it's not choppy
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
 
-        // Locks the cursor to the center of the screen and makes it invisible, just as in an FPS game. I will later implement a reticle and RayCasting.
-        Cursor.lockState = CursorLockMode.Locked;  
+        // locks + hides the cursor like every fps ever
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        // Mouse delta only arrives once per rendered frame -- bank it here so FixedUpdate
-        // (which can fire 0, 1, or several times per frame) applies the full amount exactly once.
-        yawAccumulator += lookInput.x * lookSensitivity;
-        ApplyPitch();
+        // mouse only updates once a frame but FixedUpdate can run more (or less) than once a frame,
+        // so if you apply mouse movement straight in FixedUpdate it double (or triple, or w/e) dips
+        // and the camera goes insane. stacking it here and draining it once fixes that.
+        turnBuildup += lookInput.x * lookSensitivity;
+        Look();
     }
 
 
     private void FixedUpdate()
     {
-        // A short raycast straight down tells us if we're standing on something, so jump only works on the ground
+        // short raycast down = are we touching the ground, so jump doesn't work midair
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
 
-        ApplyYaw();
-        ApplyMovement();
+        Turn();
+        Move();
     }
 
-    private void ApplyYaw()
+    private void Turn()
     {
-        // Rotating the Rigidbody's body through MoveRotation instead of transform.Rotate, and doing it in
-        // FixedUpdate instead of Update -- rotating a Rigidbody's transform directly outside of physics steps
-        // is what was causing the original jitter, since the Rigidbody's interpolation doesn't know about it.
-        Quaternion yawRotation = Quaternion.Euler(0f, yawAccumulator, 0f);
-        rb.MoveRotation(rb.rotation * yawRotation);
-        yawAccumulator = 0f;
+        // MoveRotation instead of transform.Rotate bc rotating the rigidbody's transform directly
+        // was the OG jitter bug (interpolation doesn't know about it if you don't). learned that one the hard way
+        Quaternion turnAmount = Quaternion.Euler(0f, turnBuildup, 0f);
+        rb.MoveRotation(rb.rotation * turnAmount);
+        turnBuildup = 0f; // used it, dump it
     }
 
-    private void ApplyPitch()
+    private void Look()
     {
-        // Pitch only rotates the camera (a child transform, no physics involved) so we don't tip the capsule over
-        cameraPitch -= lookInput.y * lookSensitivity;
-        cameraPitch = Mathf.Clamp(cameraPitch, -pitchClamp, pitchClamp);
-        cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0f, 0f);
+        // pitch just spins the camera, not the whole body, so we don't faceplant the capsule
+        pitch -= lookInput.y * lookSensitivity;
+        pitch = Mathf.Clamp(pitch, -pitchClamp, pitchClamp);
+        cameraTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
     }
 
-    private void ApplyMovement()
+    private void Move()
     {
         Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
 
@@ -99,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = targetVelocity;
     }
 
-    // PlayerInput calls these On___ methods automatically when the action fires, no need to hook them up yourself
+    // PlayerInput calls these on its own when you press stuff, don't wire them up manually
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();

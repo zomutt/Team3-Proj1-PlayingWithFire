@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 
     private const string MainMenuScene = "Main Menu";
 
-    private Transform checkpoint; // Where the player respawns after touching water.
-
     [SerializeField] private GameObject runWaterWall; // Drops once all 4 keys are collected.
     [SerializeField] private GameObject[] statuePOIs; // Turn on once the player has any 3 of the 4 keys.
 
@@ -29,16 +27,6 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
-        GameObject respawnObject = GameObject.FindGameObjectWithTag("Respawn");
-        if (respawnObject != null)
-        {
-            checkpoint = respawnObject.transform;
-        }
-        else
-        {
-            Debug.LogWarning("nothing in this scene is tagged Respawn, checkpoint is null");
-        }
     }
 
     private void Start()
@@ -66,17 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        if (ScreenFader.Instance != null)
-        {
-            ScreenFader.Instance.FadeToBlackAndBack(() =>
-            {
-                PlayerController.Instance.transform.position = checkpoint.position;
-            });
-        }
-        else
-        {
-            PlayerController.Instance.transform.position = checkpoint.position;
-        }
+        PlayerController.Instance.Respawn();
     }
 
     public void WinLevel()
