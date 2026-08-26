@@ -5,14 +5,19 @@ using UnityEngine;
 /// </summary>
 public class Keys : MonoBehaviour
 {
-    [SerializeField] private GameObject gate;
+    //[SerializeField] private GameObject gate;
     [SerializeField] private AudioClip pickupSound;
+
+    [SerializeField] private GameObject wallCell;
+    [SerializeField] private GameObject wallRun;
+    //[SerializeField] private GameObject wallAvoid;
+    [SerializeField] private GameObject wallCrush;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            gate.SetActive(false);
+            //gate.SetActive(false);
 
             if (pickupSound != null)
             {
@@ -28,19 +33,19 @@ public class Keys : MonoBehaviour
             }
             else if (gameObject.CompareTag("KeyFountain"))
             {
-                GameManager.Instance.ObtainKey(1); // Blue
+                GameManager.Instance.ObtainKey(1); // Green
                 UIController.Instance.UpdateKeys(1);
             }
             else if (gameObject.CompareTag("KeyCrush"))
             {
-                GameManager.Instance.ObtainKey(2); // Green
+                GameManager.Instance.ObtainKey(2); // Blue
                 UIController.Instance.UpdateKeys(2);
             }
-            else if (gameObject.CompareTag("KeyAvoid"))
-            {
-                GameManager.Instance.ObtainKey(3); // Purple
-                UIController.Instance.UpdateKeys(3);
-            }
+            //else if (gameObject.CompareTag("KeyAvoid"))         // No need. It starts open.
+            //{
+            //    GameManager.Instance.ObtainKey(3); // 
+            //    UIController.Instance.UpdateKeys(3);
+            //}
         }
     }
 }
