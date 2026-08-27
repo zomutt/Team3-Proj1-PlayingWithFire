@@ -55,6 +55,8 @@ public class NextLevel : MonoBehaviour
             secondsLeft--;
         }
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(NextScene);
     }//
 }

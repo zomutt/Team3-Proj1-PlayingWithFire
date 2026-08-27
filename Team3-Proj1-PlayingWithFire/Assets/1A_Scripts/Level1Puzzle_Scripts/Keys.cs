@@ -1,83 +1,41 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
-/// <summary>
-/// Goes on each key individually. It's 3am, this is the simple version. :^)))
-/// </summary>
-public class Keys : MonoBehaviour
+namespace _1A_Scripts.Level1Puzzle_Scripts
 {
-    [SerializeField] private AudioClip pickupSound;
-
-    [SerializeField] private Transform wallCell;
-    [SerializeField] private Transform wallRun;
-    [SerializeField] private Transform wallCrush;
-
-    private bool collected;
-
-    private void Start()
+    public enum KeyColor
     {
-        gameObject.SetActive(true); // Ensure the key is active at the start of the game
+        Red,
+        Green,
+        Blue,
+        Purple
     }
-    private void OnTriggerEnter(Collider other)
+    public class Keys : MonoBehaviour
     {
-        if (!collected && other.CompareTag("Player"))
+        private enum KeyColor { Red, Green, Blue, Purple }
+        [SerializeField] private KeyColor keyColor;
+
+        private void OnTriggerEnter(Collider other)
         {
-            collected = true; // guards against a second overlapping collider firing this twice for one pickup
+            if (!other.CompareTag("Player")) return;
 
-            if (pickupSound != null)
+            switch (keyColor)
             {
-                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+                case KeyColor.Red:
+                    LevelOnePuzzleManager.Instance.CollectKeys("red");
+                    break;
+                case KeyColor.Green:
+                    LevelOnePuzzleManager.Instance.CollectKeys("green");
+                    break;
+                case KeyColor.Blue:
+                    LevelOnePuzzleManager.Instance.CollectKeys("blue");
+                    break;
+                case KeyColor.Purple:
+                    LevelOnePuzzleManager.Instance.CollectKeys("purple");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            // Hide + stop retriggering right away, but don't SetActive(false) the whole key yet --
-            // that would kill the gate-lowering coroutine below before it finishes.
-            Collider ownCollider = GetComponent<Collider>();
-            if (ownCollider != null)
-            {
-                ownCollider.enabled = false;
-            }
-
-            Renderer ownRenderer = GetComponent<Renderer>();
-            if (ownRenderer != null)
-            {
-                ownRenderer.enabled = false;
-            }
-
-            if (gameObject.CompareTag("KeyCell"))
-            {
-                UIController.Instance.UpdateKeys("Red");
-
-                var WaterWall = wallCell.GetComponent<WaterWall>();
-                WaterWall.StartCoroutine(WaterWall.Fall());
-                Debug.Log("Red key collected");
-            }
-            else if (gameObject.CompareTag("KeyFountain"))
-            {
-                UIController.Instance.UpdateKeys("Green");
-                StatueManager.Instance.UnlockStatues(); // only the green key unlocks the statue puzzle
-                Debug.Log("Green key collected");
-            }
-            else if (gameObject.CompareTag("KeyCrush"))
-            {
-                UIController.Instance.UpdateKeys("Blue");
-
-                var WaterWall = wallCrush.GetComponent<WaterWall>();
-                WaterWall.StartCoroutine(WaterWall.Fall());
-                Debug.Log("Blue key collected");
-            }
-            else if (gameObject.CompareTag("KeyRun"))  // Purple
-            {
-                UIController.Instance.UpdateKeys("Purple");
-
-                var WaterWall = wallRun.GetComponent<WaterWall>();
-                WaterWall.StartCoroutine(WaterWall.Fall());
-                Debug.Log("Purple key collected");
-            }
-            else
-            {
-                Debug.LogWarning("Key has no recognized tag for doing anything");
-            }
-
             gameObject.SetActive(false);
         }
     }
