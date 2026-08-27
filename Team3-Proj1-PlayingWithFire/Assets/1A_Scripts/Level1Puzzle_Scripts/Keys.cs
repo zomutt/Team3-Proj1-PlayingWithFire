@@ -12,6 +12,7 @@ public class Keys : MonoBehaviour
     [SerializeField] private Transform wallRun;
     [SerializeField] private Transform wallCrush;
 
+    private bool collected;
 
     private void Start()
     {
@@ -19,8 +20,10 @@ public class Keys : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!collected && other.CompareTag("Player"))
         {
+            collected = true; // guards against a second overlapping collider firing this twice for one pickup
+
             if (pickupSound != null)
             {
                 AudioSource.PlayClipAtPoint(pickupSound, transform.position);
@@ -51,6 +54,7 @@ public class Keys : MonoBehaviour
             else if (gameObject.CompareTag("KeyFountain"))
             {
                 UIController.Instance.UpdateKeys("Green");
+                StatueManager.Instance.UnlockStatues(); // only the green key unlocks the statue puzzle
                 Debug.Log("Green key collected");
             }
             else if (gameObject.CompareTag("KeyCrush"))
@@ -74,7 +78,6 @@ public class Keys : MonoBehaviour
                 Debug.LogWarning("Key has no recognized tag for doing anything");
             }
 
-            StatueManager.Instance.KeyCollected();
             gameObject.SetActive(false);
         }
     }

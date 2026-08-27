@@ -21,6 +21,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject keyCrushBlue;
     [SerializeField] private GameObject keyFountainGreen;
 
+    [SerializeField] private GameObject invPanel;
+
     [SerializeField] private GameObject fadePanel;
 
     [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
@@ -43,7 +45,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         isQuitting = false; // Reset quitting state on start
-        isMenuOpen = false; // Reset menu state on start
+        isMenuOpen = false; // Reset menu state on start.
 
         if (helpPanel != null)
         {
@@ -79,6 +81,11 @@ public class UIController : MonoBehaviour
         else
         {
             Debug.LogWarning("no settings panel assigned");
+        }
+
+        if (invPanel != null)
+        {
+            invPanel.SetActive(true);
         }
 
         if (closeAllOnStart != null)

@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider))]
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
@@ -33,9 +34,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float pitch;
     private float turnBuildup; // mouse movement stacks up here until FixedUpdate actually uses it
+    private bool canMove;
 
     private void Awake()
     {
+        Instance = this;
+
         rb = GetComponent<Rigidbody>();
 
         // no tipping over, we handle rotation ourselves below
@@ -46,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
         // locks + hides the cursor like every fps ever
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Start()
+    {
+        canMove = true;
     }
 
     private void Update()
@@ -83,8 +92,27 @@ public class PlayerMovement : MonoBehaviour
         cameraTransform.localEulerAngles = new Vector3(pitch, 0f, 0f);
     }
 
+    public void Teleport(Vector3 position)
+    {
+        rb.linearVelocity = Vector3.zero; // otherwise leftover momentum carries you right back off the spot
+        rb.position = position;
+        transform.position = position;
+    }
+
+    public void ToggleMove()
+    {
+        if (canMove)
+        {
+            canMove = false;
+        }
+        else
+            canMove = true;
+    }
+
     private void Move()
     {
+        if (!canMove)
+            return;
         Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
 
         float currentSpeed = moveSpeed;

@@ -8,9 +8,9 @@ using UnityEngine;
 public class StatuePuzzle : FireReceiver
 {
     [SerializeField] private GameObject poiRing;
-    [SerializeField] private float rotateHoldTime = 1.5f;   // How long to hold fire to trigger one 45 degree turn.
-    [SerializeField] private float rotateDuration = 0.5f;   // How long the 45 degree turn itself takes to play out.
-    [SerializeField] private float targetFacingAngle;
+    [SerializeField] private float rotateHoldTime = 0.15f;  // How long to hold fire to trigger one 45 degree turn.
+    [SerializeField] private float rotateDuration = 0.15f;  // How long the 45 degree turn itself takes to play out.
+    [SerializeField] private float targetFacingAngle = 180f; // how far from the starting rotation counts as "facing away"
 
     private float fireProgress;
     private bool rotating;
@@ -18,19 +18,6 @@ public class StatuePuzzle : FireReceiver
     private float currentAngle;
 
     private void Start()
-    {
-        HidePOI();
-    }
-
-    public void ShowPOI()
-    {
-        if (poiRing != null)
-        {
-            poiRing.SetActive(true);
-        }
-    }
-
-    public void HidePOI()
     {
         if (poiRing != null)
         {
@@ -40,7 +27,9 @@ public class StatuePuzzle : FireReceiver
 
     public override void ReceiveFire()
     {
-        Debug.Log("StatuePuzzle received fire");
+        if (StatueManager.Instance.CanInteract == false)
+            return;
+
         if (rotating || solved)
         {
             return;
@@ -77,8 +66,13 @@ public class StatuePuzzle : FireReceiver
         if (Mathf.Approximately(currentAngle, targetFacingAngle))
         {
             solved = true;
-            HidePOI();
-            StatueManager.Instance.StatueSolved(); 
+
+            if (poiRing != null)
+            {
+                poiRing.SetActive(true);
+            }
+
+            StatueManager.Instance.StatueSolved();
         }
     }
 }

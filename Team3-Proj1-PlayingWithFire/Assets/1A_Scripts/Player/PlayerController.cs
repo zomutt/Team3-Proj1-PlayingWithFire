@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
 
-        fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
+        PlayerMovement.Instance.ToggleMove();
 
         Color color = fadeImage.color;
 
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         fadeImage.color = color;
 
         // screen's fully black now, safe to teleport
-        transform.position = respawnPoint.position;
+        PlayerMovement.Instance.Teleport(respawnPoint.position);
 
         // fade back in
         elapsed = 0f;
@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         color.a = 0f;
         fadeImage.color = color;
 
-        fadePanel.SetActive(false); 
+        fadePanel.SetActive(false);
+
+        PlayerMovement.Instance.ToggleMove();
     }
 }

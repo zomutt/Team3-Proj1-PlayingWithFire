@@ -9,7 +9,7 @@ public class NextLevel : MonoBehaviour
 
     [SerializeField] private GameObject countdownPopup;
     [SerializeField] private TMP_Text countdownText;
-    [SerializeField] private float countdownTime = 3f;
+    [SerializeField] private float countdownTime = 5f;
 
     private Coroutine countdownRoutine;
 
@@ -42,17 +42,17 @@ public class NextLevel : MonoBehaviour
             countdownPopup.SetActive(true);
         }
 
-        float timeLeft = countdownTime;
+        int secondsLeft = Mathf.CeilToInt(countdownTime);
 
-        while (timeLeft > 0f)
+        while (secondsLeft > 0)
         {
             if (countdownText != null)
             {
-                countdownText.text = Mathf.CeilToInt(timeLeft).ToString();
+                countdownText.text = secondsLeft.ToString();
             }
 
-            yield return null;
-            timeLeft -= Time.deltaTime;
+            yield return new WaitForSeconds(1f);
+            secondsLeft--;
         }
 
         SceneManager.LoadScene(NextScene);

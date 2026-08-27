@@ -9,14 +9,15 @@ public class StatueManager : MonoBehaviour
 {
     public static StatueManager Instance { get; private set; }
 
-    [SerializeField] private StatuePuzzle[] statues;
+    [SerializeField] private GameObject mainPOI;
     [SerializeField] private GameObject keyBubble;
     [SerializeField] private Transform fountainWater;
     [SerializeField] private float waterLowerDistance = 3f;
     [SerializeField] private float waterLowerSpeed = 1f;
 
-    private int keysCollected;
     private int statuesSolved;
+    private bool canInteract;
+    public bool CanInteract => canInteract;
 
     private void Awake()
     {
@@ -29,21 +30,25 @@ public class StatueManager : MonoBehaviour
         Instance = this;
     }
 
-    // Called by Keys.cs once per key pickup, any color.
-    public void KeyCollected()
+    private void Start()
     {
-        keysCollected++;
-
-        if (keysCollected == 3)
+        if (mainPOI != null)
         {
-            foreach (StatuePuzzle statue in statues)
-            {
-                if (statue != null)
-                {
-                    statue.ShowPOI();
-                }
-            }
+            mainPOI.SetActive(false);
         }
+
+        canInteract = false;
+    }
+
+    // Called by Keys.cs ONLY when the green key is picked up. Duct tape fix -- was a 3-key counter, kept double-firing early.
+    public void UnlockStatues()
+    {
+        if (mainPOI != null)
+        {
+            mainPOI.SetActive(true);
+        }
+
+        canInteract = true;
     }
 
     // Called by a StatuePuzzle once it's actually facing away from the fountain.
