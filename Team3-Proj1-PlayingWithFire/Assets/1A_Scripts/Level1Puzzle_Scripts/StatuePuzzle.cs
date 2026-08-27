@@ -10,7 +10,7 @@ public class StatuePuzzle : FireReceiver
     [SerializeField] private GameObject poiRing;
     [SerializeField] private float rotateHoldTime = 1.5f;   // How long to hold fire to trigger one 45 degree turn.
     [SerializeField] private float rotateDuration = 0.5f;   // How long the 45 degree turn itself takes to play out.
-    [SerializeField] private float targetFacingAngle = 90f; // how far from the starting rotation counts as "facing away"
+    [SerializeField] private float targetFacingAngle;
 
     private float fireProgress;
     private bool rotating;
