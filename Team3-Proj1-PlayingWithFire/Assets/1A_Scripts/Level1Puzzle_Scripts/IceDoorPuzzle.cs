@@ -5,7 +5,7 @@ using UnityEngine;
 /// Puzzle 1 -- the ice door. Hold fire on it long enough and it melts open.
 /// ***MATERIAL ON ICE DOOR MUST BE TRANSPARENT, NOT OPAQUE, OR THE FADE OUT WILL NOT WORK.***
 /// </summary>
-public class Lvl1Puzzle1 : FireReceiver
+public class IceDoorPuzzle : FireReceiver
 {
     [SerializeField] private float meltTime = 3f;   // How many seconds of sustained fire it takes to melt
     [SerializeField] private float fadeDuration = 1.5f;   // How long the fade-out takes once melting starts
