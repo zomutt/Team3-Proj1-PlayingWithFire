@@ -2,35 +2,46 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Goes on each of the 4 fountain statues. Fire rotates it 45 degrees at a time, needs two hits (90 total)
-/// to face away from the fountain. Once all 4 statues are done, the fountain water fades and the purple key unlocks.
+/// Goes on each of the 4 fountain statues. Only job here: rotate 45 degrees per fire hit and tell
+/// StatueManager when it's actually facing away. StatueManager decides what happens because of that.
 /// </summary>
 public class StatuePuzzle : FireReceiver
 {
     [SerializeField] private GameObject poiRing;
-    [SerializeField] private GameObject purpleKey;
-    [SerializeField] private Renderer fountainWater;
-    [SerializeField] private float rotateHoldTime = 1.5f; // How long to hold fire to trigger one 45 degree turn.
-    [SerializeField] private float rotateDuration = 0.5f;  // How long the 45 degree turn itself takes to play out.
-    [SerializeField] private float waterFadeDuration = 2f;
-
-    private static int statuesSolved;
+    [SerializeField] private float rotateHoldTime = 1.5f;   // How long to hold fire to trigger one 45 degree turn.
+    [SerializeField] private float rotateDuration = 0.5f;   // How long the 45 degree turn itself takes to play out.
+    [SerializeField] private float targetFacingAngle = 90f; // how far from the starting rotation counts as "facing away"
 
     private float fireProgress;
     private bool rotating;
-    private int turnsCompleted;
+    private bool solved;
+    private float currentAngle;
 
     private void Start()
     {
+        HidePOI();
+    }
+
+    public void ShowPOI()
+    {
         if (poiRing != null)
         {
-            poiRing.SetActive(false); // GameManager turns this on once the player has 3 of the 4 keys.
+            poiRing.SetActive(true);
+        }
+    }
+
+    public void HidePOI()
+    {
+        if (poiRing != null)
+        {
+            poiRing.SetActive(false);
         }
     }
 
     public override void ReceiveFire()
     {
-        if (rotating || turnsCompleted >= 2)
+        Debug.Log("StatuePuzzle received fire");
+        if (rotating || solved)
         {
             return;
         }
@@ -60,46 +71,14 @@ public class StatuePuzzle : FireReceiver
         }
 
         transform.rotation = end;
-        turnsCompleted++;
+        currentAngle = (currentAngle + 45f) % 360f; 
         rotating = false;
 
-        if (turnsCompleted >= 2)
+        if (Mathf.Approximately(currentAngle, targetFacingAngle))
         {
-            if (poiRing != null)
-            {
-                poiRing.SetActive(false);
-            }
-
-            statuesSolved++;
-
-            if (statuesSolved >= 4)
-            {
-                if (purpleKey != null)
-                {
-                    purpleKey.SetActive(true);
-                }
-
-                if (fountainWater != null)
-                {
-                    StartCoroutine(FadeWater());
-                }
-            }
-        }
-    }
-
-    private IEnumerator FadeWater()
-    {
-        Color startColor = fountainWater.material.color;
-        float elapsed = 0f;
-
-        while (elapsed < waterFadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = 1f - (elapsed / waterFadeDuration);
-            Color fadedColor = startColor;
-            fadedColor.a = alpha;
-            fountainWater.material.color = fadedColor;
-            yield return null;
+            solved = true;
+            HidePOI();
+            StatueManager.Instance.StatueSolved(); 
         }
     }
 }

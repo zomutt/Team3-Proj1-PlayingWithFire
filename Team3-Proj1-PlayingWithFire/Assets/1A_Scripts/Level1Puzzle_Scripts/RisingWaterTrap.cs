@@ -8,6 +8,7 @@ public class RisingWaterTrap : MonoBehaviour
 {
     [SerializeField] private Transform water;
     [SerializeField] private float riseSpeed = 1f;
+    [SerializeField] private float riseHeight = 3f; // how high it climbs before it caps out
     [SerializeField] private float timeToEscape = 5f;
 
     private bool playerInside;
@@ -41,6 +42,7 @@ public class RisingWaterTrap : MonoBehaviour
 
     private IEnumerator RiseWater()
     {
+        Vector3 targetPosition = waterStartPosition + Vector3.up * riseHeight;
         float elapsed = 0f;
 
         while (elapsed < timeToEscape)
@@ -51,7 +53,7 @@ public class RisingWaterTrap : MonoBehaviour
                 yield break; // They got out in time, stop rising and reset for next time.
             }
 
-            water.position += Vector3.up * riseSpeed * Time.deltaTime;
+            water.position = Vector3.MoveTowards(water.position, targetPosition, riseSpeed * Time.deltaTime);
             elapsed += Time.deltaTime;
             yield return null;
         }

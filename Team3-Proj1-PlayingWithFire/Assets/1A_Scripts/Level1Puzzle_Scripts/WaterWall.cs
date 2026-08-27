@@ -9,6 +9,11 @@ public class WaterWall : MonoBehaviour
 
     public IEnumerator Fall()
     {
+        if (waterSound != null)
+        {
+            AudioSource.PlayClipAtPoint(waterSound, transform.position);
+        }
+
         Vector3 start = transform.position;
         Vector3 end = start - new Vector3(0f, lowerDistance, 0f);
         float duration = lowerDistance / lowerSpeed;
@@ -22,12 +27,6 @@ public class WaterWall : MonoBehaviour
         }
 
         transform.position = end;
-
-        if (waterSound != null)
-        {
-            AudioSource.PlayClipAtPoint(waterSound, transform.position);
-        }
-
         gameObject.SetActive(false);
     }
 }

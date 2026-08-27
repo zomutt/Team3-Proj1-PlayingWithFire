@@ -7,8 +7,6 @@ using UnityEngine;
 public class Keys : MonoBehaviour
 {
     [SerializeField] private AudioClip pickupSound;
-    [SerializeField] private float gateLowerDistance = 6f;
-    [SerializeField] private float gateLowerSpeed = 1f;
 
     [SerializeField] private Transform wallCell;
     [SerializeField] private Transform wallRun;
@@ -50,7 +48,7 @@ public class Keys : MonoBehaviour
                 WaterWall.StartCoroutine(WaterWall.Fall());
                 Debug.Log("Red key collected");
             }
-            else if (gameObject.CompareTag("KeyAvoid"))
+            else if (gameObject.CompareTag("KeyFountain"))
             {
                 UIController.Instance.UpdateKeys("Green");
                 Debug.Log("Green key collected");
@@ -73,9 +71,10 @@ public class Keys : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Key has no recognized tag for performing any action.");
+                Debug.LogWarning("Key has no recognized tag for doing anything");
             }
 
+            StatueManager.Instance.KeyCollected();
             gameObject.SetActive(false);
         }
     }

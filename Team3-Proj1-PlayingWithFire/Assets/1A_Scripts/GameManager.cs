@@ -82,10 +82,10 @@ public class GameManager : MonoBehaviour
         }
         hasAllKeys = hasRedKey && hasGreenKey && hasBlueKey && hasPurpleKey;
 
-        if (hasAllKeys && runWaterWall != null)
-        {
-            runWaterWall.SetActive(false);
-        }
+        //if (hasAllKeys && runWaterWall != null)
+        //{
+        //    runWaterWall.SetActive(false);
+        //}
 
         int keysHeld = 0;
         if (hasRedKey) keysHeld++;
