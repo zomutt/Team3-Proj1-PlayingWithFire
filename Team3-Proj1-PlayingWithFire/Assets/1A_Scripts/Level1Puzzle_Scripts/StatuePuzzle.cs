@@ -8,8 +8,8 @@ using UnityEngine;
 public class StatuePuzzle : FireReceiver
 {
     [SerializeField] private GameObject poiRing;
-    [SerializeField] private float rotateHoldTime = 0.15f;  // How long to hold fire to trigger one 45 degree turn.
-    [SerializeField] private float rotateDuration = 0.15f;  // How long the 45 degree turn itself takes to play out.
+    [SerializeField] private float rotateHoldTime = 0.05f;  // How long to hold fire to trigger one 45 degree turn.
+    [SerializeField] private float rotateDuration = 0.1f;   // How long the 45 degree turn itself takes to play out.
     [SerializeField] private float targetFacingAngle = 180f; // how far from the starting rotation counts as "facing away"
 
     private float fireProgress;
@@ -60,7 +60,7 @@ public class StatuePuzzle : FireReceiver
         }
 
         transform.rotation = end;
-        currentAngle = (currentAngle + 45f) % 360f; 
+        currentAngle = (currentAngle + 45f) % 360f;
         rotating = false;
 
         if (Mathf.Approximately(currentAngle, targetFacingAngle))

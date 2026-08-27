@@ -246,6 +246,8 @@ public class UIController : MonoBehaviour
     public void OnClickOpenCredits()
     {
         previousScene = SceneManager.GetActiveScene().name;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(CreditsScene);
     }
 
@@ -263,6 +265,8 @@ public class UIController : MonoBehaviour
 
     public void OnClickMainMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(MainMenuScene);
     }
 
