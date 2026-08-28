@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/1A_Scenes/Menus/MainMenu.unity
     guid: c1d2a2fe0d3163647be353652571fd64
   - enabled: 0
-    path: Assets/1A_Scenes/Menus/How To Play Scene.unity
+    path: Assets/1A_Scenes/Menus/HowToPlayScene.unity
     guid: e306f43e7504401479d1935d23caf45f
   - enabled: 1
     path: Assets/1A_Scenes/Menus/Credits.unity
