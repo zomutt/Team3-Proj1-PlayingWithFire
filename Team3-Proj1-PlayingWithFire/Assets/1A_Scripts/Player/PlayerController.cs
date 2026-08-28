@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         // Ensures there is only one instance of the player in a scene.
-        if (Instance != null)
+        if (Instance)
         {
             Debug.LogWarning("Multiple PlayerController instances found. Destroying duplicate.");
             Destroy(gameObject);
@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         keysCollected = 0; // Initialize keys collected to 0 at the start of the game
+        if (fadePanel)
+        {
+            fadePanel.SetActive(false);
+        }
     }
 
     public void AddKey()
