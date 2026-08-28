@@ -63,6 +63,9 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            yield return PlayerController.Instance.FadeToBlack();
+
             SceneManager.LoadScene(NextScene);
         }
     }

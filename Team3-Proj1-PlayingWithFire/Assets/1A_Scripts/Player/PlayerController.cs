@@ -43,6 +43,25 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(RespawnRoutine());
     }
+
+    // One-way fade, no fade back in -- for when the scene is about to unload anyway (end of level).
+    public IEnumerator FadeToBlack()
+    {
+        fadePanel.SetActive(true);
+
+        Color color = fadeImage.color;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = elapsed / fadeDuration;
+            fadeImage.color = color;
+            yield return null;
+        }
+        color.a = 1f;
+        fadeImage.color = color;
+    }
+
     private IEnumerator RespawnRoutine()
     {
         fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay

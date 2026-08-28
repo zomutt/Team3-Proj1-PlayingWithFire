@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using _1A_Scripts;
+using _1A_Scripts.Managers;
 
 /// <summary>
 /// This lives on LoosePillar.
@@ -87,7 +88,7 @@ public class CrushPuzzle : FireReceiver
         {
             if (!HasFallen)
             {
-                GameManager.Instance.RespawnPlayer();
+                GameManager.RespawnPlayer();
             }
 
             return;
