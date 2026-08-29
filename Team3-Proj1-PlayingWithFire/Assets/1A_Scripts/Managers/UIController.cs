@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace _1A_Scripts.Managers
 {
@@ -27,10 +29,12 @@ namespace _1A_Scripts.Managers
         [SerializeField] private GameObject invPanel;
 
         [SerializeField] private GameObject fadePanel;
+        [SerializeField] private float fadeDuration = 0.5f;
 
         [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
         [SerializeField] private GameObject mmHelpPanel; // Help panel for the main menu
 
+        private Image fadeImage;
         private bool isMenuOpen = false; // Track whether the menu is open or closed
 
         private void Awake()
@@ -42,11 +46,22 @@ namespace _1A_Scripts.Managers
             }
 
             Instance = this;
+
+            if (fadePanel)
+            {
+                fadeImage = fadePanel.GetComponent<Image>();
+            }
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
         {
             isMenuOpen = false; // Reset menu state on start.
+
+            if (fadePanel)
+            {
+                fadePanel.SetActive(false); // off by default so it's not blocking the screen during normal gameplay
+            }
 
             if (helpPanel)
             {
@@ -136,6 +151,40 @@ namespace _1A_Scripts.Managers
             {
                 OnClickBackToPauseMenu();
             }
+        }
+
+        public IEnumerator FadeOut()
+        {
+            fadePanel.SetActive(true);
+
+            Color color = fadeImage.color;
+            float elapsed = 0f;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                color.a = elapsed / fadeDuration;
+                fadeImage.color = color;
+                yield return null;
+            }
+            color.a = 1f;
+            fadeImage.color = color;
+        }
+
+        public IEnumerator FadeIn()
+        {
+            Color color = fadeImage.color;
+            float elapsed = 0f;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                color.a = 1f - (elapsed / fadeDuration);
+                fadeImage.color = color;
+                yield return null;
+            }
+            color.a = 0f;
+            fadeImage.color = color;
+
+            fadePanel.SetActive(false);
         }
 
         public void UpdateKeys(string color)

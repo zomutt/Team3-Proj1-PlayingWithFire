@@ -1,3 +1,4 @@
+using _1A_Scripts.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

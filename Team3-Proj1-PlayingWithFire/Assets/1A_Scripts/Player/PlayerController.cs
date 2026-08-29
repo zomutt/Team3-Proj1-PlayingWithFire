@@ -1,108 +1,59 @@
 using System.Collections;
+using _1A_Scripts.Managers;
 using UnityEngine;
-using UnityEngine.UI;
-public class PlayerController : MonoBehaviour
+
+namespace _1A_Scripts.Player
 {
-    public static PlayerController Instance { get; private set; }
-
-    [SerializeField] private GameObject fadePanel;
-    [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private Transform respawnPoint;     // Only works for one respawn point, but we can add more later if we want to get fancy
-
-    private Image fadeImage;
-
-    private int keysCollected;
-    public int KeysCollected => keysCollected;
-
-    private void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        // Ensures there is only one instance of the player in a scene.
-        if (Instance)
+        public static PlayerController Instance { get; private set; }
+
+        [SerializeField] private Transform respawnPoint;     // Only works for one respawn point, but we can add more later if we want to get fancy
+
+        private int keysCollected;
+        public int KeysCollected => keysCollected;
+
+        private void Awake()
         {
-            Debug.LogWarning("Multiple PlayerController instances found. Destroying duplicate.");
-            Destroy(gameObject);
-            return;
+            // Ensures there is only one instance of the player in a scene.
+            if (Instance)
+            {
+                Debug.LogWarning("Multiple PlayerController instances found. Destroying duplicate.");
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
-        Instance = this;
-
-        fadeImage = fadePanel.GetComponent<Image>();
-    }
-
-    private void Start()
-    {
-        keysCollected = 0; // Initialize keys collected to 0 at the start of the game
-        if (fadePanel)
+        private void Start()
         {
-            fadePanel.SetActive(false);
+            keysCollected = 0; // Initialize keys collected to 0 at the start of the game
         }
-    }
 
-    public void AddKey()
-    {
-        keysCollected++;
-    }
-
-    public void Respawn()
-    {
-        StartCoroutine(RespawnRoutine());
-    }
-
-    // One-way fade, no fade back in -- for when the scene is about to unload anyway (end of level).
-    public IEnumerator FadeToBlack()
-    {
-        fadePanel.SetActive(true);
-
-        Color color = fadeImage.color;
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
+        public void AddKey()
         {
-            elapsed += Time.deltaTime;
-            color.a = elapsed / fadeDuration;
-            fadeImage.color = color;
-            yield return null;
+            keysCollected++;
         }
-        color.a = 1f;
-        fadeImage.color = color;
-    }
 
-    private IEnumerator RespawnRoutine()
-    {
-        fadePanel.SetActive(true); // it's off by default so it's not blocking the screen during normal gameplay
-
-        PlayerMovement.Instance.ToggleMove();
-
-        Color color = fadeImage.color;
-
-        // fade to black
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
+        public void Respawn()
         {
-            elapsed += Time.deltaTime;
-            color.a = elapsed / fadeDuration;
-            fadeImage.color = color;
-            yield return null;
+            StartCoroutine(RespawnRoutine());
         }
-        color.a = 1f;
-        fadeImage.color = color;
 
-        // screen's fully black now, safe to teleport
-        PlayerMovement.Instance.Teleport(respawnPoint.position);
-
-        // fade back in
-        elapsed = 0f;
-        while (elapsed < fadeDuration)
+        private IEnumerator RespawnRoutine()
         {
-            elapsed += Time.deltaTime;
-            color.a = 1f - (elapsed / fadeDuration);
-            fadeImage.color = color;
-            yield return null;
+            PlayerMovement.Instance.ToggleMove();
+
+            yield return UIController.Instance.FadeOut();
+
+            // screen's fully black now, safe to teleport
+            PlayerMovement.Instance.Teleport(respawnPoint.position);
+
+            yield return UIController.Instance.FadeIn();
+
+            PlayerMovement.Instance.ToggleMove();
         }
-        color.a = 0f;
-        fadeImage.color = color;
-
-        fadePanel.SetActive(false);
-
-        PlayerMovement.Instance.ToggleMove();
     }
 }
