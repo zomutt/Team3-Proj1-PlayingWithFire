@@ -12,7 +12,6 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
     }
     public class Keys : MonoBehaviour
     {
-        private enum KeyColor { Red, Green, Blue, Purple }
         [SerializeField] private KeyColor keyColor;
 
         private void OnTriggerEnter(Collider other)
