@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using _1A_Scripts;
+using _1A_Scripts.Managers;
 
 /// <summary>
 /// This lives on LoosePillar.
@@ -26,8 +28,6 @@ public class CrushPuzzle : FireReceiver
     private bool isBurning;
     private bool canBurn = true;   // Can't kill a mob with fire and a pillar twice, now can you?
 
-    [SerializeField] private GameObject greenKey;
-
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -40,8 +40,6 @@ public class CrushPuzzle : FireReceiver
         {
             audioSource.PlayOneShot(partySounds);
         }
-
-        greenKey.SetActive(false);
     }
 
     // Implementation of the abstract method from FireReceiver
@@ -68,7 +66,7 @@ public class CrushPuzzle : FireReceiver
         audioSource.Stop();
         animator.SetTrigger("Fall");
         poiRing.SetActive(false);
-        greenKey.SetActive(true);
+        LevelOnePuzzleManager.Instance.ActivateKey("green");
 
         if (killBox != null)
         {
@@ -90,7 +88,7 @@ public class CrushPuzzle : FireReceiver
         {
             if (!HasFallen)
             {
-                GameManager.Instance.RespawnPlayer();
+                GameManager.RespawnPlayer();
             }
 
             return;

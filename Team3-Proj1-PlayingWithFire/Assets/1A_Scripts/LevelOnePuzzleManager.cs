@@ -49,17 +49,44 @@ namespace _1A_Scripts
             Instance = this;
         }
 
+        private void Start()
+        {
+            ResetGame();
+        }
+
         public void ResetGame()
         {
             foreach (var key in keysArray)
             {
-                key.SetActive(false);
+                key.SetActive(true);
             }
+
+            greenKey.SetActive(false); // still gated behind the Crush puzzle -- only ActivateKey("green") should reveal this one
 
             HasRedKey = false;
             HasGreenKey = false;
             HasBlueKey = false;
             HasPurpleKey = false;
+        }
+
+        // Called by a puzzle once it's solved, to reveal that puzzle's key -- puzzles don't hold their own key references anymore.
+        public void ActivateKey(string color)
+        {
+            switch (color)
+            {
+                case "red":
+                    redKey.SetActive(true);
+                    break;
+                case "green":
+                    greenKey.SetActive(true);
+                    break;
+                case "blue":
+                    blueKey.SetActive(true);
+                    break;
+                case "purple":
+                    purpleKey.SetActive(true);
+                    break;
+            }
         }
 
         public void CollectKeys(string color)
@@ -69,21 +96,25 @@ namespace _1A_Scripts
                 case "red":
                     HasRedKey = true;
                     redKey.SetActive(false);
+                    redImg.gameObject.SetActive(true);
                     RedKeyMechanic();
                     break;
                 case "green":
                     HasGreenKey = true;
                     greenKey.SetActive(false);
+                    greenImg.gameObject.SetActive(true);
                     GreenKeyMechanic();
                     break;
                 case "blue":
                     HasBlueKey = true;
                     blueKey.SetActive(false);
+                    blueImg.gameObject.SetActive(true);
                     BlueKeyMechanic();
                     break;
                 case "purple":
                     HasPurpleKey = true;
                     purpleKey.SetActive(false);
+                    purpleImg.gameObject.SetActive(true);
                     PurpleKeyMechanic();
                     break;
             }
@@ -98,30 +129,29 @@ namespace _1A_Scripts
         private void RedKeyMechanic()
         {
             var ww = cellDoor.GetComponent<WaterWall>();
-            ww.Instance.StartCoroutine(ww.Fall());
+            ww.StartCoroutine(ww.Fall());
         }
 
         private void GreenKeyMechanic()
         {
-            HasGreenKey = true;
+            StatueManager.Instance.UnlockStatues();
         }
 
         private void BlueKeyMechanic()
         {
             var ww = crushDoor.GetComponent<WaterWall>();
-            ww.Instance.StartCoroutine(ww.Fall());
+            ww.StartCoroutine(ww.Fall());
         }
 
         private void PurpleKeyMechanic()
         {
             var ww = runDoor.GetComponent<WaterWall>();
-            ww.Instance.StartCoroutine(ww.Fall());
+            ww.StartCoroutine(ww.Fall());
         }
 
         private bool hasAllThree()        // If the player has all three keys, they may unlock the last puzzle
         {
-            KeyCount = 3;
-            return true;
+            return KeyCount >= 3;
         }
     }
 }

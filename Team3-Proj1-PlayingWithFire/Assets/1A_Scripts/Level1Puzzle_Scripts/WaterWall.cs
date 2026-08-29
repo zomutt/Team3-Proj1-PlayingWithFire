@@ -5,7 +5,6 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
 {
     public class WaterWall : MonoBehaviour
     {
-        public WaterWall Instance;
         [SerializeField] private float lowerDistance = 10f;   // how far down it drops before it's gone
         [SerializeField] private float lowerSpeed = 2f;
         [SerializeField] private AudioClip waterSound; // sound to play when the water wall deactivates
