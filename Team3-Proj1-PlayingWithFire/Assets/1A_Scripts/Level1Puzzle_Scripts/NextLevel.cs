@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using _1A_Scripts.Managers;
 
 namespace _1A_Scripts.Level1Puzzle_Scripts
 {
@@ -64,7 +65,7 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            yield return PlayerController.Instance.FadeToBlack();
+            yield return UIController.Instance.FadeOut();
 
             SceneManager.LoadScene(NextScene);
         }
