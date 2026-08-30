@@ -1,0 +1,405 @@
+#usda 1.0
+(
+    "Exported from Adobe Substance 3D Painter 12.1.3"
+    defaultPrim = "pCube1"
+)
+
+def "pCube1"
+{
+    def Scope "material"
+    {
+        def Material "standardSurface1" (
+            customData = {
+                dictionary adobe = {
+                    dictionary painter = {
+                        asset painterProject_spp = @C:/Program Files/Adobe/Adobe Substance 3D Painter/resources/starter_assets/templates/PBR - Metallic Roughness Alpha-blend.spt@
+                    }
+                }
+            }
+        )
+        {
+            asset inputs:baseColorTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_BaseColor.png@ (
+                colorSpace = "sRGB"
+            )
+            asset inputs:compositedNormalDXTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Normal.png@ (
+                colorSpace = "raw"
+            )
+            asset inputs:emissiveTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Emissive.png@ (
+                colorSpace = "sRGB"
+            )
+            asset inputs:heightTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Height.png@
+            asset inputs:metallicTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Metallic.png@ (
+                colorSpace = "raw"
+            )
+            asset inputs:opacityTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_BaseColor.png@
+            asset inputs:roughnessTexture = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Roughness.png@ (
+                colorSpace = "raw"
+            )
+            float2 inputs:uvscale = (1, 1)
+            float2 inputs:uvtranslation = (0, 0)
+            token outputs:adobe:surface.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.outputs:surface>
+            token outputs:mtlx:surface.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.outputs:surface>
+            token outputs:usdpreviewsurface:surface.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.outputs:surface>
+
+            def NodeGraph "UsdPreviewSurface"
+            {
+                asset inputs:baseColorTexture.connect = </pCube1/material/standardSurface1.inputs:baseColorTexture>
+                asset inputs:compositedNormalDXTexture.connect = </pCube1/material/standardSurface1.inputs:compositedNormalDXTexture>
+                asset inputs:emissiveTexture.connect = </pCube1/material/standardSurface1.inputs:emissiveTexture>
+                asset inputs:metallicTexture.connect = </pCube1/material/standardSurface1.inputs:metallicTexture>
+                asset inputs:roughnessTexture.connect = </pCube1/material/standardSurface1.inputs:roughnessTexture>
+                float2 inputs:uvscale.connect = </pCube1/material/standardSurface1.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </pCube1/material/standardSurface1.inputs:uvtranslation>
+                token outputs:surface.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/UsdPreviewSurfaceShader.outputs:surface>
+
+                def Shader "UsdPreviewSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/diffuseColorTextureShader.outputs:rgb>
+                    float3 inputs:emissiveColor.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/emissiveColorTextureShader.outputs:rgb>
+                    float inputs:ior = 1.4
+                    float inputs:metallic.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/metallicTextureShader.outputs:r>
+                    normal3f inputs:normal.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/normalTextureShader.outputs:rgb>
+                    float inputs:roughness.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/roughnessTextureShader.outputs:r>
+                    token outputs:surface
+                }
+
+                def Shader "diffuseColorTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_BaseColor.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.inputs:baseColorTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    string inputs:varname = "st"
+                    float2 outputs:result
+                }
+
+                def Shader "roughnessTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Roughness.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.inputs:roughnessTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "metallicTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Metallic.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.inputs:metallicTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "emissiveColorTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Emissive.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.inputs:emissiveTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    float4 inputs:bias = (-1, 1, -1, 0)
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Normal.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/UsdPreviewSurface.inputs:compositedNormalDXTexture>
+                    float4 inputs:scale = (2, -2, 2, 1)
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/UsdPreviewSurface/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    normal3f outputs:rgb
+                }
+            }
+
+            def NodeGraph "OpenPBR_1_1"
+            {
+                asset inputs:baseColorTexture.connect = </pCube1/material/standardSurface1.inputs:baseColorTexture>
+                asset inputs:compositedNormalDXTexture.connect = </pCube1/material/standardSurface1.inputs:compositedNormalDXTexture>
+                asset inputs:emissiveTexture.connect = </pCube1/material/standardSurface1.inputs:emissiveTexture>
+                asset inputs:metallicTexture.connect = </pCube1/material/standardSurface1.inputs:metallicTexture>
+                asset inputs:roughnessTexture.connect = </pCube1/material/standardSurface1.inputs:roughnessTexture>
+                float2 inputs:uvscale.connect = </pCube1/material/standardSurface1.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </pCube1/material/standardSurface1.inputs:uvtranslation>
+                token outputs:surface.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/OpenPBR_1_1Shader.outputs:out>
+
+                def Shader "OpenPBR_1_1Shader"
+                {
+                    uniform token info:id = "ND_open_pbr_surface_surfaceshader"
+                    color3f inputs:base_color.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/baseColorTextureShader.outputs:rgb>
+                    float inputs:base_metalness.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/metalnessTextureShader.outputs:r>
+                    color3f inputs:emission_color.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/emissionColorTextureShader.outputs:rgb>
+                    float inputs:emission_luminance = 0
+                    float3 inputs:geometry_normal.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_NormalMap.outputs:out>
+                    bool inputs:geometry_thin_walled = 0
+                    float inputs:specular_ior = 1.5
+                    float inputs:specular_roughness.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/specularRoughnessTextureShader.outputs:r>
+                    float inputs:transmission_depth = 0
+                    float inputs:transmission_dispersion_abbe_number = 20
+                    float inputs:transmission_dispersion_scale = 0
+                    color3f inputs:transmission_scatter = (0, 0, 0)
+                    float inputs:transmission_scatter_anisotropy = 0
+                    token outputs:out
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "ND_geompropvalue_vector2"
+                    string inputs:geomprop = "st"
+                    float2 outputs:out
+                }
+
+                def Shader "TexCoordTransform"
+                {
+                    uniform token info:id = "ND_place2d_vector2"
+                    float2 inputs:offset.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:uvtranslation>
+                    float2 inputs:scale.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:uvscale>
+                    float2 inputs:texcoord.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordReader.outputs:out>
+                    float2 outputs:out
+                }
+
+                def Shader "baseColorTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_BaseColor.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:baseColorTexture>
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    color3f outputs:rgb
+                }
+
+                def Shader "metalnessTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Metallic.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:metallicTexture>
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    float outputs:r
+                }
+
+                def Shader "specularRoughnessTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Roughness.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:roughnessTexture>
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    float outputs:r
+                }
+
+                def Shader "emissionColorTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Emissive.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:emissiveTexture>
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    color3f outputs:rgb
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "ND_UsdUVTexture_23"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Normal.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/OpenPBR_1_1.inputs:compositedNormalDXTexture>
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TexCoordTransform.outputs:out>
+                    string inputs:wrapS = "periodic"
+                    string inputs:wrapT = "periodic"
+                    color3f outputs:rgb
+                }
+
+                def Shader "normal_convert_color3_vector3"
+                {
+                    uniform token info:id = "ND_convert_color3_vector3"
+                    color3f inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normalTextureShader.outputs:rgb>
+                    float3 outputs:out
+                }
+
+                def Shader "normal_extract_red"
+                {
+                    uniform token info:id = "ND_extract_vector3"
+                    float3 inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_convert_color3_vector3.outputs:out>
+                    int inputs:index = 0
+                    float outputs:out
+                }
+
+                def Shader "normal_extract_green"
+                {
+                    uniform token info:id = "ND_extract_vector3"
+                    float3 inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_convert_color3_vector3.outputs:out>
+                    int inputs:index = 1
+                    float outputs:out
+                }
+
+                def Shader "normal_extract_blue"
+                {
+                    uniform token info:id = "ND_extract_vector3"
+                    float3 inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_convert_color3_vector3.outputs:out>
+                    int inputs:index = 2
+                    float outputs:out
+                }
+
+                def Shader "normal_invert_green"
+                {
+                    uniform token info:id = "ND_invert_float"
+                    float inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_extract_green.outputs:out>
+                    float outputs:out
+                }
+
+                def Shader "normal_combine3"
+                {
+                    uniform token info:id = "ND_combine3_vector3"
+                    float inputs:in1.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_extract_red.outputs:out>
+                    float inputs:in2.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_invert_green.outputs:out>
+                    float inputs:in3.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_extract_blue.outputs:out>
+                    float3 outputs:out
+                }
+
+                def Shader "TangentReader"
+                {
+                    uniform token info:id = "ND_geompropvalue_vector3"
+                    string inputs:geomprop = "tangent"
+                    float3 outputs:out
+                }
+
+                def Shader "normal_NormalMap"
+                {
+                    uniform token info:id = "ND_normalmap"
+                    float3 inputs:in.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/normal_combine3.outputs:out>
+                    float3 inputs:tangent.connect = </pCube1/material/standardSurface1/OpenPBR_1_1/TangentReader.outputs:out>
+                    float3 outputs:out
+                }
+            }
+
+            def NodeGraph "AdobeStandardMaterial_4_0"
+            {
+                asset inputs:baseColorTexture.connect = </pCube1/material/standardSurface1.inputs:baseColorTexture>
+                asset inputs:compositedNormalDXTexture.connect = </pCube1/material/standardSurface1.inputs:compositedNormalDXTexture>
+                asset inputs:emissiveTexture.connect = </pCube1/material/standardSurface1.inputs:emissiveTexture>
+                asset inputs:metallicTexture.connect = </pCube1/material/standardSurface1.inputs:metallicTexture>
+                asset inputs:roughnessTexture.connect = </pCube1/material/standardSurface1.inputs:roughnessTexture>
+                float2 inputs:uvscale.connect = </pCube1/material/standardSurface1.inputs:uvscale>
+                float2 inputs:uvtranslation.connect = </pCube1/material/standardSurface1.inputs:uvtranslation>
+                token outputs:surface.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/AdobeStandardMaterial_4_0Shader.outputs:surface>
+
+                def Shader "AdobeStandardMaterial_4_0Shader"
+                {
+                    uniform token info:id = "AdobeStandardMaterial_4_0"
+                    float3 inputs:baseColor.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/baseColorTextureShader.outputs:rgb>
+                    float inputs:coatIOR = 1.6
+                    float3 inputs:emissive.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/emissiveTextureShader.outputs:rgb>
+                    float inputs:emissiveIntensity = 1
+                    float inputs:IOR = 1.4
+                    float inputs:metallic.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/metallicTextureShader.outputs:r>
+                    normal3f inputs:normal.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/normalTextureShader.outputs:rgb>
+                    float inputs:roughness.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/roughnessTextureShader.outputs:r>
+                    token outputs:surface
+                }
+
+                def Shader "baseColorTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_BaseColor.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.inputs:baseColorTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+
+                def Shader "TexCoordReader"
+                {
+                    uniform token info:id = "UsdPrimvarReader_float2"
+                    string inputs:varname = "st"
+                    float2 outputs:result
+                }
+
+                def Shader "roughnessTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Roughness.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.inputs:roughnessTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "metallicTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Metallic.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.inputs:metallicTexture>
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float outputs:r
+                }
+
+                def Shader "normalTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    float4 inputs:bias = (-1, 1, -1, 0)
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Normal.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.inputs:compositedNormalDXTexture>
+                    float4 inputs:scale = (2, -2, 2, 1)
+                    token inputs:sourceColorSpace = "raw"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    normal3f outputs:rgb
+                }
+
+                def Shader "emissiveTextureShader"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @PBR - Metallic Roughness Alpha-blend_textures/platform_standardSurface1_Emissive.png@
+                    asset inputs:file.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0.inputs:emissiveTexture>
+                    token inputs:sourceColorSpace = "sRGB"
+                    float2 inputs:st.connect = </pCube1/material/standardSurface1/AdobeStandardMaterial_4_0/TexCoordReader.outputs:result>
+                    token inputs:wrapS = "repeat"
+                    token inputs:wrapT = "repeat"
+                    float3 outputs:rgb
+                }
+            }
+        }
+    }
+
+    over "pCube1" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </pCube1/material/standardSurface1>
+    }
+}
+
