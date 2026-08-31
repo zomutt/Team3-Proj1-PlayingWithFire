@@ -10,7 +10,7 @@ namespace _1A_Scripts.Managers
 
         public bool IsPaused { get; private set; }
 
-        private const string MainMenuScene = "Main Menu";
+        private const string MainMenuScene = "MainMenu";
 
         private void Awake()
         {

@@ -401,7 +401,7 @@ namespace _1A_Scripts.Managers
         {
             if (mmHelpPanel)
             {
-                helpPanel.SetActive(!mmHelpPanel.activeSelf);
+                mmHelpPanel.SetActive(!mmHelpPanel.activeSelf);
             }
             else
             {
