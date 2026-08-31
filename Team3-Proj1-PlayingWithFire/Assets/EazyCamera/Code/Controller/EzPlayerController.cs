@@ -111,13 +111,23 @@ namespace EazyCamera.Legacy
                     .With("Left", "<Keyboard>/a")
                     .With("Right", "<Keyboard>/d");
 
-                _move.AddBinding(Gamepad.current.leftStick);
+                if (Gamepad.current != null)
+                {
+                    _move.AddBinding(Gamepad.current.leftStick);
+                }
             }
 
             if (_sprint.bindings.Count == 0)
             {
-                _sprint.AddBinding(Keyboard.current.leftShiftKey);
-                _sprint.AddBinding(Gamepad.current.buttonEast);
+                if (Keyboard.current != null)
+                {
+                    _sprint.AddBinding(Keyboard.current.leftShiftKey);
+                }
+
+                if (Gamepad.current != null)
+                {
+                    _sprint.AddBinding(Gamepad.current.buttonEast);
+                }
             }
         }
 #else
