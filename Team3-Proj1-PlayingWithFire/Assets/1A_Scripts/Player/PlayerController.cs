@@ -1,5 +1,6 @@
 using System.Collections;
 using _1A_Scripts.Managers;
+using EazyCamera;
 using UnityEngine;
 
 namespace _1A_Scripts.Player
@@ -8,7 +9,9 @@ namespace _1A_Scripts.Player
     {
         public static PlayerController Instance { get; private set; }
 
-        [SerializeField] private Transform respawnPoint;     // Only works for one respawn point, but we can add more later if we want to get fancy
+        [SerializeField] private Transform respawnPoint1;
+        [SerializeField] private Transform respawnPoint2;
+        public bool hasHitCP2;
 
         private int keysCollected;
         public int KeysCollected => keysCollected;
@@ -30,13 +33,22 @@ namespace _1A_Scripts.Player
         private void Start()
         {
             keysCollected = 0; // Initialize keys collected to 0 at the start of the game
+            hasHitCP2 = false;
         }
 
+        public void HitRespawn()
+        {
+            hasHitCP2 = true;
+        }
+
+        public void ResetCheckpoint()
+        {
+            hasHitCP2 = false;
+        }
         public void AddKey()
         {
             keysCollected++;
         }
-
         public void Respawn()
         {
             StartCoroutine(RespawnRoutine());
@@ -49,7 +61,20 @@ namespace _1A_Scripts.Player
             yield return UIController.Instance.FadeOut();
 
             // screen's fully black now, safe to teleport
-            PlayerMovement.Instance.Teleport(respawnPoint.position);
+            if (!hasHitCP2)
+            {
+                yield return PlayerMovement.Instance.Teleport(respawnPoint1.position);
+            }
+            else if (hasHitCP2)
+            {
+                yield return PlayerMovement.Instance.Teleport(respawnPoint2.position);
+            }
+
+            // otherwise the camera eases toward the new spot instead of just being there already
+            if (EazyCam.Instance)
+            {
+                EazyCam.Instance.SnapToTarget();
+            }
 
             yield return UIController.Instance.FadeIn();
 

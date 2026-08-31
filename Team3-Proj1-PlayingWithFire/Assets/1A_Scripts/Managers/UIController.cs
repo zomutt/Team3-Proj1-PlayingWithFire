@@ -1,4 +1,5 @@
 using System.Collections;
+using _1A_Scripts.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -250,6 +251,12 @@ namespace _1A_Scripts.Managers
 
         public void OnClickStartGame()      // ONLY for start menu.
         {
+            // player survives scene loads (DontDestroyOnLoad), so gotta wipe the old checkpoint or a fresh run starts at CP2 like a liar
+            if (PlayerController.Instance)
+            {
+                PlayerController.Instance.ResetCheckpoint();
+            }
+
             previousScene = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(Level1Scene);
         }
@@ -315,6 +322,12 @@ namespace _1A_Scripts.Managers
 
         public void OnClickMainMenu()
         {
+            // same deal as start game -- catching it here too in case they rage quit to menu instead
+            if (PlayerController.Instance)
+            {
+                PlayerController.Instance.ResetCheckpoint();
+            }
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SceneManager.LoadScene(MainMenuScene);
