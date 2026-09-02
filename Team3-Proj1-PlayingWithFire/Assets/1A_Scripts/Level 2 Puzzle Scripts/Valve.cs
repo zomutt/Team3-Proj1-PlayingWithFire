@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using _1A_Scripts.Level2Puzzles;
@@ -8,9 +9,11 @@ public class Valve : MonoBehaviour
     [SerializeField] private string promptText = "E to rotate";
     [SerializeField] private int maxTurns = 2;
     [SerializeField] private float rotationStep = 45f;
+    [SerializeField] private float rotationDuration = 0.3f;
 
     private int turnCount;
     private bool playerInRange;
+    private bool isRotating;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,7 +38,7 @@ public class Valve : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && turnCount < maxTurns && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && !isRotating && turnCount < maxTurns && Input.GetKeyDown(KeyCode.E))
         {
             Turn();
         }
@@ -43,12 +46,33 @@ public class Valve : MonoBehaviour
 
     private void Turn()
     {
-        transform.Rotate(0f, 0f, rotationStep); 
+        StartCoroutine(RotateSmoothly());
+    }
+
+    private IEnumerator RotateSmoothly()
+    {
+        isRotating = true;
+
+        Transform wheel = transform.GetChild(0);
+        Quaternion start = wheel.localRotation;
+        Quaternion end = start * Quaternion.Euler(0f, 0f, rotationStep);
+        float elapsed = 0f;
+
+        while (elapsed < rotationDuration)
+        {
+            wheel.localRotation = Quaternion.Slerp(start, end, elapsed / rotationDuration);  // Gradually rotates the valve over time. Existing code visually did not do anything. (Sorry)
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        wheel.localRotation = end;
+        isRotating = false;
+
         turnCount++;
 
         if (turnCount >= maxTurns)
         {
-            promptDisplay.gameObject.SetActive(false); 
+            promptDisplay.gameObject.SetActive(false);
         }
 
         LevelTwoPuzzleManager.Instance.CheckValves();
