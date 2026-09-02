@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 9dfd27e7d57f26e45afaaf43cebaa877
+<<<<<<<< HEAD:Team3-Proj1-PlayingWithFire/Assets/1A_ImportedAssets/Yani's Assets/Character Models/PLAYER.prefab.meta
+guid: a8f161c4e31c0af429a078885b9c42a7
 PrefabImporter:
+========
+guid: 5527f099012b0af42b7eb187feb1409d
+NativeFormatImporter:
+>>>>>>>> origin/main:Team3-Proj1-PlayingWithFire/Assets/1A_Scripts/Level 2 Puzzle Scripts/Wheel_BotLeft.controller.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -21,6 +21,7 @@ namespace _1A_Scripts.Player
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float sprintSpeed;
+        [Range(0f, 0.3f)] [SerializeField] private float rotationSmoothTime = 0.12f; // how fast the character turns to face movement direction
 
         [Header("Jump")]
         [SerializeField] private float jumpForce = 8f;
@@ -33,6 +34,7 @@ namespace _1A_Scripts.Player
         private bool isSprinting;
         private bool isGrounded;
         private bool canMove;
+        private float rotationVelocity; // SmoothDampAngle's running velocity state
 
         private void Awake()
         {
@@ -130,6 +132,8 @@ namespace _1A_Scripts.Player
                 camRight * moveInput.x +
                 camForward * moveInput.y;
 
+            Turn(moveDirection);
+
             // Walking vs running
             float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
@@ -151,6 +155,18 @@ namespace _1A_Scripts.Player
             }
 
             animator.SetFloat("Speed", animationSpeed);
+        }
+
+        // same SmoothDampAngle-towards-move-direction approach as Unity's Starter Assets ThirdPersonController --
+        // eases toward the target heading instead of turning at a constant rate, so it doesn't feel snappy
+        private void Turn(Vector3 moveDirection)
+        {
+            if (moveDirection.sqrMagnitude < 0.0001f)
+                return;
+
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(rb.rotation.eulerAngles.y, targetAngle, ref rotationVelocity, rotationSmoothTime);
+            rb.MoveRotation(Quaternion.Euler(0f, angle, 0f));
         }
 
         // PlayerInput calls these on its own when you press stuff, don't wire them up manually

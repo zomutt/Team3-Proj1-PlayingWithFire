@@ -130,9 +130,7 @@ public class PlayerFire : MonoBehaviour
     private IEnumerator fireCD()
     {
         canFire = false;
-        Debug.Log($"Can fire: {canFire}");
         yield return new WaitForSeconds(fireCooldown);
         canFire = true;
-        Debug.Log($"Can fire: {canFire}");
     }
 }
