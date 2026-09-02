@@ -1,0 +1,1369 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &484429663650891285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2351292131528230579}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightUpLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2351292131528230579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484429663650891285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.029564092, y: -0.08159931, z: 0.99252236, w: 0.08583088}
+  m_LocalPosition: {x: 0.0046120547, y: -0.0019644022, z: 0.0013320827}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8189868457347009952}
+  m_Father: {fileID: 2382674030790681632}
+  m_LocalEulerAnglesHint: {x: -5.046237, y: 12.314345, z: 169.85472}
+--- !u!1 &726446775522561205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2452108811884287596}
+  m_Layer: 0
+  m_Name: Soldierladylower:Neck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2452108811884287596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726446775522561205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.110680945, y: 0.00055270357, z: 0.019061383, w: 0.993673}
+  m_LocalPosition: {x: -0, y: 0.005222479, z: 0.000000006124875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1938198770955398149}
+  m_Father: {fileID: 4973740111486932246}
+  m_LocalEulerAnglesHint: {x: 8.291138, y: 1.1633985, z: 1.1517409}
+--- !u!1 &838554271452758830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2382674030790681632}
+  m_Layer: 0
+  m_Name: Soldierladylower:Hips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2382674030790681632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838554271452758830}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00861529, y: -0.013430696, z: 0.043409977, w: 0.9989299}
+  m_LocalPosition: {x: -0.00085131405, y: 0.02280239, z: -0.00014930469}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7130865831234152043}
+  - {fileID: 2351292131528230579}
+  - {fileID: 4596463778019009470}
+  m_Father: {fileID: 3427237856802625640}
+  m_LocalEulerAnglesHint: {x: -0.46955606, y: -10.060535, z: 4.7710695}
+--- !u!1 &859036213111452590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051166297475063964}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftShoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2051166297475063964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859036213111452590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.51716876, y: -0.4776184, z: 0.5851783, w: 0.4024717}
+  m_LocalPosition: {x: -0.0013593864, y: 0.0046902695, z: -0.00057384605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8155353592592148891}
+  m_Father: {fileID: 4973740111486932246}
+  m_LocalEulerAnglesHint: {x: 74.982376, y: 106.01369, z: -162.59793}
+--- !u!1 &972996189873440144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919420538922032502}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightFoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919420538922032502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972996189873440144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5276912, y: 0.020956349, z: 0.059945367, w: 0.84705925}
+  m_LocalPosition: {x: -2.578826e-13, y: 0.008306413, z: -1.0192629e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2065308682224435011}
+  m_Father: {fileID: 8189868457347009952}
+  m_LocalEulerAnglesHint: {x: 67.80371, y: 0.6148861, z: 8.353791}
+--- !u!1 &1059811527596423995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065308682224435011}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightToeBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2065308682224435011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059811527596423995}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.36611483, y: -0.108697325, z: 0.041739136, w: 0.9232566}
+  m_LocalPosition: {x: -3.5263125e-12, y: 0.005732603, z: -1.9201003e-10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4742627346486338415}
+  m_Father: {fileID: 1919420538922032502}
+  m_LocalEulerAnglesHint: {x: 45.359562, y: -14.078688, z: -0.97250676}
+--- !u!1 &1392125714396053831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4147692739742977175}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightHandIndex1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4147692739742977175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392125714396053831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.083582565, y: -0.32962784, z: -0.03237085, w: 0.93984663}
+  m_LocalPosition: {x: 5.683418e-12, y: 0.0010086071, z: -1.1339249e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2322059133421244574}
+  m_Father: {fileID: 8204750638637731908}
+  m_LocalEulerAnglesHint: {x: 10.688965, y: -39.635654, z: -1.5728153}
+--- !u!1 &1969554223364404871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115673574272885357}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftHandIndex2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115673574272885357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969554223364404871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.16908428, y: -0.011814889, z: -0.025512222, w: 0.9852005}
+  m_LocalPosition: {x: -2.5790285e-11, y: 0.0006714363, z: -4.6171074e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 461948117266592247}
+  m_Father: {fileID: 5456577914164340782}
+  m_LocalEulerAnglesHint: {x: 15.305034, y: -1.1036265, z: -0.27094072}
+--- !u!1 &2033794756996777124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8155353592592148891}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8155353592592148891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033794756996777124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.56456155, y: -0.03146822, z: 0.182333, w: 0.8043847}
+  m_LocalPosition: {x: 8.251764e-12, y: 0.003067212, z: -1.0172836e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7919285552992124310}
+  m_Father: {fileID: 2051166297475063964}
+  m_LocalEulerAnglesHint: {x: 56.601387, y: 14.626596, z: 23.802555}
+--- !u!1 &2496649217739003140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4973740111486932246}
+  m_Layer: 0
+  m_Name: Soldierladylower:Spine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4973740111486932246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496649217739003140}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00028330134, y: 0.00434725, z: -0.051125243, w: 0.9986828}
+  m_LocalPosition: {x: -0, y: 0.004642203, z: -1.2222081e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2051166297475063964}
+  - {fileID: 2452108811884287596}
+  - {fileID: 7177313490573257842}
+  m_Father: {fileID: 6802824216642628853}
+  m_LocalEulerAnglesHint: {x: -2.930686, y: 2.2917867, z: 0.098131895}
+--- !u!1 &2598622885227082042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8204750638637731908}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8204750638637731908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598622885227082042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.11724965, y: -0.08565496, z: -0.02208906, w: 0.9891551}
+  m_LocalPosition: {x: 4.60047e-11, y: 0.006161112, z: -2.937293e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4147692739742977175}
+  m_Father: {fileID: 1869664077129131167}
+  m_LocalEulerAnglesHint: {x: -0.07371426, y: 27.886896, z: 9.3011875}
+--- !u!1 &2758261688370785009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7130865831234152043}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftUpLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7130865831234152043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2758261688370785009}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.1059859, y: 0.23832326, z: 0.9551865, w: 0.13995667}
+  m_LocalPosition: {x: -0.004612057, y: -0.0019644022, z: -0.00096159935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1807969005063131788}
+  m_Father: {fileID: 2382674030790681632}
+  m_LocalEulerAnglesHint: {x: -33.813137, y: 1.829484, z: 175.32544}
+--- !u!1 &2904567647278453136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8189868457347009952}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8189868457347009952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904567647278453136}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.056077037, y: -0.04806689, z: -0.037017606, w: 0.9965815}
+  m_LocalPosition: {x: -1.4927436e-11, y: 0.009652222, z: -1.0962697e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1919420538922032502}
+  m_Father: {fileID: 2351292131528230579}
+  m_LocalEulerAnglesHint: {x: -26.089348, y: 1.3912781, z: -0.1482079}
+--- !u!1 &3021156324985178420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 979341913073500916}
+  m_Layer: 0
+  m_Name: Soldierladylower:HeadTop_End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979341913073500916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021156324985178420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.014519391, z: 0.0026680755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1938198770955398149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3229471308290098587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318698881720120615}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &318698881720120615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229471308290098587}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.08656502, y: -0.34059688, z: 0.0062197894, w: 0.93619525}
+  m_LocalPosition: {x: 2.6571028e-11, y: 0.0060908035, z: -2.1939872e-12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5456577914164340782}
+  m_Father: {fileID: 7919285552992124310}
+  m_LocalEulerAnglesHint: {x: -16.32452, y: -84.66187, z: -12.828903}
+--- !u!1 &4154086898323199279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7177313490573257842}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightShoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7177313490573257842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154086898323199279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6915348, y: 0.3783263, z: -0.4489569, w: 0.42081648}
+  m_LocalPosition: {x: 0.0013593864, y: 0.004506572, z: 0.00031629618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1795490345361206503}
+  m_Father: {fileID: 4973740111486932246}
+  m_LocalEulerAnglesHint: {x: 63.771614, y: -109.251625, z: -179.88293}
+--- !u!1 &4303716364461858735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7160548534521420587}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightHandIndex4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7160548534521420587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303716364461858735}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00023042703, y: 0.0015196733, z: -0.000058121383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6125292499667931533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4340539741509656033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7126034302601735088}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftToe_End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7126034302601735088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340539741509656033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5147411e-11, y: 0.0022616237, z: 2.7607916e-12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6452866493481054178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4346366076611760035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795490345361206503}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795490345361206503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346366076611760035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.48198548, y: 0.14249331, z: -0.033899657, w: 0.86384976}
+  m_LocalPosition: {x: -4.2649474e-11, y: 0.0030672092, z: -1.2201253e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1869664077129131167}
+  m_Father: {fileID: 7177313490573257842}
+  m_LocalEulerAnglesHint: {x: 65.94132, y: 28.490038, z: -8.795954}
+--- !u!1 &4621426270812242105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2534576477549745709}
+  - component: {fileID: 8992006923146016847}
+  m_Layer: 0
+  m_Name: SoldierladyMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2534576477549745709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621426270812242105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+  m_LocalPosition: {x: -0.15694536, y: 0, z: 0.074773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3427237856802625640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &8992006923146016847
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621426270812242105}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 3996114307948042532, guid: 3ac9427273d24314d8bb505c706874e6, type: 3}
+  m_Bones:
+  - {fileID: 1938198770955398149}
+  - {fileID: 2452108811884287596}
+  - {fileID: 4973740111486932246}
+  - {fileID: 7130865831234152043}
+  - {fileID: 1807969005063131788}
+  - {fileID: 2351292131528230579}
+  - {fileID: 8189868457347009952}
+  - {fileID: 7093172423475141708}
+  - {fileID: 6452866493481054178}
+  - {fileID: 2051166297475063964}
+  - {fileID: 6802824216642628853}
+  - {fileID: 2382674030790681632}
+  - {fileID: 1919420538922032502}
+  - {fileID: 2065308682224435011}
+  - {fileID: 4596463778019009470}
+  - {fileID: 8155353592592148891}
+  - {fileID: 1115673574272885357}
+  - {fileID: 461948117266592247}
+  - {fileID: 5456577914164340782}
+  - {fileID: 7177313490573257842}
+  - {fileID: 1795490345361206503}
+  - {fileID: 2322059133421244574}
+  - {fileID: 6125292499667931533}
+  - {fileID: 7919285552992124310}
+  - {fileID: 318698881720120615}
+  - {fileID: 1869664077129131167}
+  - {fileID: 8204750638637731908}
+  - {fileID: 4147692739742977175}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 2382674030790681632}
+  m_AABB:
+    m_Center: {x: 0.0011771554, y: 0.0055615306, z: -0.00031870976}
+    m_Extent: {x: 0.022608958, y: 0.033883613, z: 0.018865002}
+  m_DirtyAABB: 0
+--- !u!1 &4683096256780072487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7093172423475141708}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftFoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7093172423475141708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683096256780072487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5319719, y: 0.062052555, z: 0.08282096, w: 0.8404143}
+  m_LocalPosition: {x: 2.6479705e-13, y: 0.008520685, z: -2.9181085e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6452866493481054178}
+  m_Father: {fileID: 1807969005063131788}
+  m_LocalEulerAnglesHint: {x: 54.336716, y: 1.869853, z: 0.9340353}
+--- !u!1 &4741345515588458580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6802824216642628853}
+  m_Layer: 0
+  m_Name: Soldierladylower:Spine1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6802824216642628853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741345515588458580}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00028314898, y: 0.009640786, z: -0.050879825, w: 0.99865824}
+  m_LocalPosition: {x: -0, y: 0.0040619257, z: -3.3568648e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4973740111486932246}
+  m_Father: {fileID: 4596463778019009470}
+  m_LocalEulerAnglesHint: {x: 1.6453315, y: 2.4035916, z: -0.2986572}
+--- !u!1 &5300708176113638736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4596463778019009470}
+  m_Layer: 0
+  m_Name: Soldierladylower:Spine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4596463778019009470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300708176113638736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.09441516, y: 0.014106087, z: -0.020813651, w: 0.9952154}
+  m_LocalPosition: {x: -0, y: 0.003409803, z: -0.0007036686}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6802824216642628853}
+  m_Father: {fileID: 2382674030790681632}
+  m_LocalEulerAnglesHint: {x: -8.82471, y: 1.4272482, z: -3.5226808}
+--- !u!1 &5376189538828468188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6452866493481054178}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftToeBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6452866493481054178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376189538828468188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.3804224, y: 0.119199485, z: -0.048317857, w: 0.9158252}
+  m_LocalPosition: {x: 3.0810597e-12, y: 0.0055379034, z: -6.657314e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7126034302601735088}
+  m_Father: {fileID: 7093172423475141708}
+  m_LocalEulerAnglesHint: {x: 47.822193, y: 20.060417, z: 4.415364}
+--- !u!1 &5721393103637403226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5613575765346335212}
+  m_Layer: 0
+  m_Name: SoldierLadyPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5613575765346335212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721393103637403226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.70501, y: 0, z: 9.5646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3427237856802625640}
+  - {fileID: 3026800492079068365}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6202632509438736052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938198770955398149}
+  m_Layer: 0
+  m_Name: Soldierladylower:Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938198770955398149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6202632509438736052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.009077857, y: 0.0035575337, z: 0.01885698, w: 0.99977463}
+  m_LocalPosition: {x: -0, y: 0.003990917, z: 0.00073337555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 979341913073500916}
+  m_Father: {fileID: 2452108811884287596}
+  m_LocalEulerAnglesHint: {x: 2.3059525, y: 0.11199772, z: -1.8589739}
+--- !u!1 &6246046272115513569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461948117266592247}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftHandIndex3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461948117266592247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6246046272115513569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.15486646, y: -0.023259642, z: -0.12849297, w: 0.9792676}
+  m_LocalPosition: {x: 0.00014413065, y: 0.0009457673, z: -0.000013230366}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 914128703206727965}
+  m_Father: {fileID: 1115673574272885357}
+  m_LocalEulerAnglesHint: {x: 11.332403, y: -2.9302254, z: -10.949323}
+--- !u!1 &6302254459737787511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807969005063131788}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807969005063131788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302254459737787511}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.41063133, y: 0.07336159, z: -0.024365071, w: 0.90851873}
+  m_LocalPosition: {x: 5.581215e-12, y: 0.009774536, z: 7.247678e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7093172423475141708}
+  m_Father: {fileID: 7130865831234152043}
+  m_LocalEulerAnglesHint: {x: -84.514275, y: 28.544418, z: -33.995663}
+--- !u!1 &6342019045360376646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2322059133421244574}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightHandIndex2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2322059133421244574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342019045360376646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.19580562, y: -0.016867036, z: 0.013494017, w: 0.98040485}
+  m_LocalPosition: {x: 1.4677539e-11, y: 0.0012038056, z: 1.8724222e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6125292499667931533}
+  m_Father: {fileID: 4147692739742977175}
+  m_LocalEulerAnglesHint: {x: 27.223072, y: -2.5954473, z: -0.6715164}
+--- !u!1 &6479208942067336405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3427237856802625640}
+  - component: {fileID: 2893951804553939945}
+  m_Layer: 0
+  m_Name: SoldierladyfinalMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3427237856802625640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479208942067336405}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -13.638741, y: 0, z: 2.5578117}
+  m_LocalScale: {x: 90.399994, y: 90.4, z: 90.399994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2382674030790681632}
+  - {fileID: 2534576477549745709}
+  m_Father: {fileID: 5613575765346335212}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!95 &2893951804553939945
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479208942067336405}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 3ac9427273d24314d8bb505c706874e6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 73f0467f91072cf41a11b5ea1472577d, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6886459858121612226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914128703206727965}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftHandIndex4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914128703206727965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886459858121612226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000003407887, y: 0.0006732613, z: -0.00011069293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 461948117266592247}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6936637329511020547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6125292499667931533}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightHandIndex3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6125292499667931533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936637329511020547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1286264, y: -0.009695588, z: -0.18539408, w: 0.9741613}
+  m_LocalPosition: {x: 0.0003188141, y: 0.0019437928, z: -0.00006993928}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7160548534521420587}
+  m_Father: {fileID: 2322059133421244574}
+  m_LocalEulerAnglesHint: {x: 16.430626, y: -4.570235, z: -22.967428}
+--- !u!1 &6948175504894761553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3026800492079068365}
+  - component: {fileID: 5743320504897815588}
+  - component: {fileID: 9070053770966425971}
+  - component: {fileID: 1549503466700570689}
+  m_Layer: 0
+  m_Name: SoldierLadyCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3026800492079068365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948175504894761553}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.5, y: -533395.4, z: 2.5100002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5613575765346335212}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5743320504897815588
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948175504894761553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2984409
+  m_Height: 5.99395
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.49066496, z: 0.018730164}
+--- !u!54 &9070053770966425971
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948175504894761553}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &1549503466700570689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948175504894761553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd60b05417d0e6f4aaddf825e6238e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  cameraTransform: {fileID: 0}
+  moveSpeed: 5
+  sprintSpeed: 10
+  lookSensitivity: 0
+  pitchClamp: 85
+  jumpForce: 8
+  groundCheckDistance: 1.1
+--- !u!1 &7265185190560366636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5456577914164340782}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftHandIndex1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5456577914164340782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265185190560366636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.08802838, y: -0.009389737, z: -0.016878046, w: 0.99593073}
+  m_LocalPosition: {x: -1.1295267e-11, y: 0.0010998008, z: 4.2611557e-12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1115673574272885357}
+  m_Father: {fileID: 318698881720120615}
+  m_LocalEulerAnglesHint: {x: -0.85873365, y: -1.5866863, z: 5.2339354}
+--- !u!1 &7470336114906128936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7919285552992124310}
+  m_Layer: 0
+  m_Name: Soldierladylower:LeftForeArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7919285552992124310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470336114906128936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.061900936, y: -0.00004229614, z: -0.11004185, w: 0.99199754}
+  m_LocalPosition: {x: -3.7330493e-11, y: 0.007563473, z: 6.466794e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 318698881720120615}
+  m_Father: {fileID: 8155353592592148891}
+  m_LocalEulerAnglesHint: {x: 16.873692, y: -4.9774246, z: -32.6341}
+--- !u!1 &8408646286264572145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4742627346486338415}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightToe_End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4742627346486338415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408646286264572145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.8199927e-11, y: 0.0025095076, z: -4.9589464e-12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2065308682224435011}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9161657739140733692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1869664077129131167}
+  m_Layer: 0
+  m_Name: Soldierladylower:RightForeArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1869664077129131167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161657739140733692}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.06258768, y: -0.000404245, z: 0.14088914, w: 0.988045}
+  m_LocalPosition: {x: -3.16499e-11, y: 0.007607243, z: 5.99117e-11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8204750638637731908}
+  m_Father: {fileID: 1795490345361206503}
+  m_LocalEulerAnglesHint: {x: -12.593394, y: -3.4610033, z: 30.22892}

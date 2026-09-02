@@ -1,0 +1,285 @@
+fileFormatVersion: 2
+guid: 3ac9427273d24314d8bb505c706874e6
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Soldierladyfinal(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:ZBrushPolyMesh3D
+      parentName: Soldierladyfinal(Clone)
+      position: {x: -0.15694536, y: 0, z: 0.074773}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Hips
+      parentName: Soldierladyfinal(Clone)
+      position: {x: 0.0000040327895, y: 0.024582367, z: -0.00031588445}
+      rotation: {x: 0.1033234, y: 0.13629164, z: -0.014918555, w: 0.98515296}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftUpLeg
+      parentName: Soldierladylower:Hips
+      position: {x: -0.004612057, y: -0.0019644022, z: -0.00096159935}
+      rotation: {x: -0.0013087769, y: 0.11750558, z: 0.99303085, w: 0.008974259}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftLeg
+      parentName: Soldierladylower:LeftUpLeg
+      position: {x: 5.581215e-12, y: 0.009774536, z: 7.247678e-11}
+      rotation: {x: -0.2169969, y: -0.0030639898, z: 0.01310064, w: 0.9760796}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftFoot
+      parentName: Soldierladylower:LeftLeg
+      position: {x: 2.6479705e-13, y: 0.008520685, z: -2.9181085e-11}
+      rotation: {x: 0.48383373, y: 0.007869804, z: -0.0071759024, w: 0.8750952}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftToeBase
+      parentName: Soldierladylower:LeftFoot
+      position: {x: 3.0810597e-12, y: 0.0055379034, z: -6.657314e-11}
+      rotation: {x: 0.37664348, y: 0.11892902, z: -0.04882721, w: 0.91739386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftToe_End
+      parentName: Soldierladylower:LeftToeBase
+      position: {x: 1.5147411e-11, y: 0.0022616237, z: 2.7607916e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightUpLeg
+      parentName: Soldierladylower:Hips
+      position: {x: 0.0046120547, y: -0.0019644022, z: 0.0013320827}
+      rotation: {x: -0.00067078235, y: -0.012414898, z: 0.99985904, w: -0.011290648}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightLeg
+      parentName: Soldierladylower:RightUpLeg
+      position: {x: -1.4927436e-11, y: 0.009652222, z: -1.0962697e-11}
+      rotation: {x: -0.06565013, y: 0.00073640264, z: -0.012759833, w: 0.9977609}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightFoot
+      parentName: Soldierladylower:RightLeg
+      position: {x: -2.578826e-13, y: 0.008306413, z: -1.0192629e-11}
+      rotation: {x: 0.4778811, y: -0.009633656, z: 0.0046921046, w: 0.87835914}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightToeBase
+      parentName: Soldierladylower:RightFoot
+      position: {x: -3.5263125e-12, y: 0.005732603, z: -1.9201003e-10}
+      rotation: {x: 0.36139864, y: -0.10838859, z: 0.042341903, w: 0.92512167}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightToe_End
+      parentName: Soldierladylower:RightToeBase
+      position: {x: 2.8199927e-11, y: 0.0025095076, z: -4.9589464e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Spine
+      parentName: Soldierladylower:Hips
+      position: {x: -0, y: 0.003409803, z: -0.0007036686}
+      rotation: {x: -0.10180229, y: -0.000092740825, z: 0.00089916243, w: 0.99480426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Spine1
+      parentName: Soldierladylower:Spine
+      position: {x: -0, y: 0.0040619257, z: -3.3568648e-11}
+      rotation: {x: -0.000001603809, y: -1.7961549e-13, z: 6.5942764e-13, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Spine2
+      parentName: Soldierladylower:Spine1
+      position: {x: -0, y: 0.004642203, z: -1.2222081e-11}
+      rotation: {x: 1.3877788e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Neck
+      parentName: Soldierladylower:Spine2
+      position: {x: -0, y: 0.005222479, z: 0.000000006124875}
+      rotation: {x: 0.10158028, y: 8.106102e-20, z: 9.001498e-20, w: 0.99482733}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:Head
+      parentName: Soldierladylower:Neck
+      position: {x: -0, y: 0.003990917, z: 0.00073337555}
+      rotation: {x: 0, y: 0, z: 4.1809622e-29, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:HeadTop_End
+      parentName: Soldierladylower:Head
+      position: {x: -0, y: 0.014519391, z: 0.0026680755}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftShoulder
+      parentName: Soldierladylower:Spine2
+      position: {x: -0.0013593864, y: 0.0046902695, z: -0.00057384605}
+      rotation: {x: 0.42304805, y: -0.50084686, z: 0.6595628, w: 0.36764073}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftArm
+      parentName: Soldierladylower:LeftShoulder
+      position: {x: 8.251764e-12, y: 0.003067212, z: -1.0172836e-11}
+      rotation: {x: -0.0968417, y: 0.11198053, z: -0.102025874, w: 0.9837036}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftForeArm
+      parentName: Soldierladylower:LeftArm
+      position: {x: -3.7330493e-11, y: 0.007563473, z: 6.466794e-11}
+      rotation: {x: 0.00000018855111, y: -0.000042623138, z: -0.00000036962288, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftHand
+      parentName: Soldierladylower:LeftForeArm
+      position: {x: 2.6571028e-11, y: 0.0060908035, z: -2.1939872e-12}
+      rotation: {x: 0.00000023754781, y: -0.55616194, z: 0.000000118443204, w: 0.83107394}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftHandIndex1
+      parentName: Soldierladylower:LeftHand
+      position: {x: -1.1295267e-11, y: 0.0010998008, z: 4.2611557e-12}
+      rotation: {x: 0.00000008938033, y: -0.009636797, z: -0.00000021833786, w: 0.99995357}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftHandIndex2
+      parentName: Soldierladylower:LeftHandIndex1
+      position: {x: -2.5790285e-11, y: 0.0006714363, z: -4.6171074e-11}
+      rotation: {x: 0.006811743, y: 0.00000008444979, z: 0.07545316, w: 0.9971261}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftHandIndex3
+      parentName: Soldierladylower:LeftHandIndex2
+      position: {x: 0.00014413065, y: 0.0009457673, z: -0.000013230366}
+      rotation: {x: 0.07413586, y: -0.012280624, z: -0.07245458, w: 0.99453676}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:LeftHandIndex4
+      parentName: Soldierladylower:LeftHandIndex3
+      position: {x: 0.000003407887, y: 0.0006732613, z: -0.00011069293}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightShoulder
+      parentName: Soldierladylower:Spine2
+      position: {x: 0.0013593864, y: 0.004506572, z: 0.00031629618}
+      rotation: {x: 0.65348303, y: 0.3665812, z: -0.4845463, w: 0.45143452}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightArm
+      parentName: Soldierladylower:RightShoulder
+      position: {x: -4.2649474e-11, y: 0.0030672092, z: -1.2201253e-11}
+      rotation: {x: -0.15064202, y: 0.2752962, z: -0.077478066, w: 0.94631714}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightForeArm
+      parentName: Soldierladylower:RightArm
+      position: {x: -3.16499e-11, y: 0.007607243, z: 5.99117e-11}
+      rotation: {x: -0.0000002569294, y: -0.0004091165, z: -0.00000006248408, w: 0.99999994}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightHand
+      parentName: Soldierladylower:RightForeArm
+      position: {x: 4.60047e-11, y: 0.006161112, z: -2.937293e-11}
+      rotation: {x: -0.0000004216655, y: 0.018663686, z: 0.00000033642104, w: 0.99982584}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightHandIndex1
+      parentName: Soldierladylower:RightHand
+      position: {x: 5.683418e-12, y: 0.0010086071, z: -1.1339249e-11}
+      rotation: {x: 0.00000020383462, y: -0.330763, z: -0.000000011062636, w: 0.9437139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightHandIndex2
+      parentName: Soldierladylower:RightHandIndex1
+      position: {x: 1.4677539e-11, y: 0.0012038056, z: 1.8724222e-11}
+      rotation: {x: 0.017816871, y: 0.00000006574783, z: 0.08119446, w: 0.99653906}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightHandIndex3
+      parentName: Soldierladylower:RightHandIndex2
+      position: {x: 0.0003188141, y: 0.0019437928, z: -0.00006993928}
+      rotation: {x: 0.0010601904, y: -0.005775569, z: -0.15556237, w: 0.98780864}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Soldierladylower:RightHandIndex4
+      parentName: Soldierladylower:RightHandIndex3
+      position: {x: -0.00023042703, y: 0.0015196733, z: -0.000058121383}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
