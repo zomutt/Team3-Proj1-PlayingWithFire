@@ -1,0 +1,40 @@
+using System;
+using UnityEngine;
+
+namespace _1A_Scripts.Level2Puzzles
+{
+    public enum KeyColor
+    {
+        Red, Green, Blue, Purple
+    }
+
+    public class KeysLevelTwo : MonoBehaviour
+    {
+        [SerializeField] private KeyColor keyColor;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+
+            switch (keyColor)
+            {
+                case KeyColor.Red:
+                    LevelTwoPuzzleManager.Instance.CollectKey("red");
+                    break;
+                case KeyColor.Green:
+                    LevelTwoPuzzleManager.Instance.CollectKey("green");
+                    break;
+                case KeyColor.Blue:
+                    LevelTwoPuzzleManager.Instance.CollectKey("blue");
+                    break;
+                case KeyColor.Purple:
+                    LevelTwoPuzzleManager.Instance.CollectKey("purple");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            gameObject.SetActive(false);
+        }
+    }
+}
