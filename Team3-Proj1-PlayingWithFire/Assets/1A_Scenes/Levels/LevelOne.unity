@@ -1094,6 +1094,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7760df00915ee5a4eba63b54c8d51325, type: 2}
     - target: {fileID: 6637650237858564783, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637650237858564783, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.9826433
       objectReference: {fileID: 0}
@@ -1101,13 +1105,25 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.91899776
       objectReference: {fileID: 0}
+    - target: {fileID: 6637650237858564783, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.39426273
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637650237858564783, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637650237858564783, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 8103934723690284112, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -52.167194
+      value: 44.48
       objectReference: {fileID: 0}
     - target: {fileID: 8103934723690284112, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.564
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: 8103934723690284112, guid: 376bec4e75772ec4e9227717bf9c952c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1935,7 +1951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916993817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c511865785e65f44bf1abc047350391, type: 3}
   m_Name: 
@@ -40865,8 +40881,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierLady_ENDLEVEL
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7449413796476261033, guid: 6ec998d661db7684caea1f0ec54f01f1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

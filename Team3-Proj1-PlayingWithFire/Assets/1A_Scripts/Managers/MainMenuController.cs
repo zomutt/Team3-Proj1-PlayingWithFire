@@ -6,7 +6,7 @@ namespace _1A_Scripts.Managers
 {
     public class MainMenuController : MonoBehaviour
     {
-        private const string Level1Scene = "Christie_BuildScene";
+        private const string Level1Scene = "LevelOne";
         private const string CreditsScene = "Credits";
 
         [SerializeField] private GameObject mmHelpPanel;

@@ -27,7 +27,6 @@ namespace _1A_Scripts.Player
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
