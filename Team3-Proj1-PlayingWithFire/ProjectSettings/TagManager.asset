@@ -10,6 +10,9 @@ TagManager:
   - KeyCrush
   - KeyRun
   - Enemy
+  - CinemachineTarget
+  - MyRig
+  - Ground
   layers:
   - Default
   - TransparentFX

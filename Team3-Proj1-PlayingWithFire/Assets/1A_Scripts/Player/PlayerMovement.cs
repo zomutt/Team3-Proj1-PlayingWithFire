@@ -5,7 +5,7 @@ using System.Collections;
 namespace _1A_Scripts.Player
 {
     /// <summary>
-    /// MOVEMENT SCRIPT. Nyooooooom.
+    /// MOVEMENT SCRIPT. Nyooooooom. This was partially ripped from the Basic Third Person Controller asset.
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]
@@ -19,19 +19,22 @@ namespace _1A_Scripts.Player
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float sprintSpeed;
-        [SerializeField] private float turnSpeed = 720f; // degrees/sec the body turns to face its movement direction
+        [Range(0f, 0.3f)] [SerializeField] private float rotationSmoothTime = 0.12f; // how fast the character turns to face movement direction
 
         [Header("Jump")]
         [SerializeField] private float jumpForce = 8f;
         [SerializeField] private float groundCheckDistance = 1.1f;
 
         public bool IsMoving => canMove && moveInput.sqrMagnitude > 0.01f; // for Princess's animator to read
+        public bool IsGrounded => isGrounded;
+        public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
 
         private Rigidbody rb;
         private Vector2 moveInput;
         private bool isSprinting;
         private bool isGrounded;
         private bool canMove;
+        private float rotationVelocity; // SmoothDampAngle's running velocity state
 
         private void Awake()
         {
@@ -113,14 +116,16 @@ namespace _1A_Scripts.Player
             rb.linearVelocity = targetVelocity;
         }
 
-        // MoveRotation instead of transform.rotate so interpolation stays smooth -- same reasoning as the old FPS Turn()
+        // same SmoothDampAngle-towards-move-direction approach as Unity's Starter Assets ThirdPersonController --
+        // eases toward the target heading instead of turning at a constant rate, so it doesn't feel snappy
         private void Turn(Vector3 moveDirection)
         {
             if (moveDirection.sqrMagnitude < 0.0001f)
                 return;
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime));
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(rb.rotation.eulerAngles.y, targetAngle, ref rotationVelocity, rotationSmoothTime);
+            rb.MoveRotation(Quaternion.Euler(0f, angle, 0f));
         }
 
         // PlayerInput calls these on its own when you press stuff, don't wire them up manually
