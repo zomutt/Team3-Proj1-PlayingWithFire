@@ -14,7 +14,9 @@ namespace _1A_Scripts.Player
         public static PlayerMovement Instance;
 
         [Header("References")]
-        [SerializeField] private Transform cameraTransform; 
+        [SerializeField] private Transform cameraTransform;
+
+        [SerializeField] private Animator animator;//yanichanges
 
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
@@ -58,6 +60,14 @@ namespace _1A_Scripts.Player
             // short raycast down = are we touching the ground, so jump doesn't work midair
             isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
 
+            if (isGrounded)
+            {
+                animator.SetBool("isJumping", false); // checks if landed
+            }
+
+            bool firing = Keyboard.current.fKey.isPressed;
+            animator.SetBool("Fire", firing);
+
             Move();
         }
 
@@ -86,47 +96,122 @@ namespace _1A_Scripts.Player
 
         private void Move()
         {
+            //if (!canMove)
+            //    return;
+
+            //// forward = wherever the camera's looking now, not wherever the body's facing -- flattened so looking up/down doesn't mess with speed
+            //Vector3 camForward = cameraTransform.forward;
+            //Vector3 camRight = cameraTransform.right;
+            //camForward.y = 0f;
+            //camRight.y = 0f;
+            //camForward.Normalize();
+            //camRight.Normalize();
+
+            //Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
+            //Debug.Log("MOVE: " + moveInput);
+
+            //Yani change: Makes the player move
             if (!canMove)
                 return;
 
-            // forward = wherever the camera's looking now, not wherever the body's facing -- flattened so looking up/down doesn't mess with speed
+            // Get the camera's forward and right directions
             Vector3 camForward = cameraTransform.forward;
             Vector3 camRight = cameraTransform.right;
+
+            // Ignore looking up/down
             camForward.y = 0f;
             camRight.y = 0f;
+
             camForward.Normalize();
             camRight.Normalize();
 
-            Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
+            // WASD movement relative to camera
+            Vector3 moveDirection =
+                camRight * moveInput.x +
+                camForward * moveInput.y;
 
-            float currentSpeed = moveSpeed;
-            if (isSprinting)
-            {
-                currentSpeed = sprintSpeed;
-            }
+            // Walking vs running
+            float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
             Vector3 targetVelocity = moveDirection * currentSpeed;
+
+            // Keep gravity/jumping
             targetVelocity.y = rb.linearVelocity.y;
+
             rb.linearVelocity = targetVelocity;
+
+
+
+            // Animation speed
+            float animationSpeed = 0f;
+
+            if (moveInput.magnitude > 0.01f)
+            {
+                animationSpeed = isSprinting ? 2f : 1f;
+            }
+
+            animator.SetFloat("Speed", animationSpeed);
         }
 
         // PlayerInput calls these on its own when you press stuff, don't wire them up manually
         private void OnMove(InputValue value)
         {
             moveInput = value.Get<Vector2>();
+            
         }
 
-        private void OnSprint(InputValue value)
+        //private void OnSprint(InputValue value)
+        //{
+        //    isSprinting = value.isPressed;
+        //    Debug.Log("Sprint: " + isSprinting);
+        //}
+
+        private void Update()
         {
-            isSprinting = value.isPressed;
+            isSprinting = Keyboard.current.leftShiftKey.isPressed;
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Debug.Log("SPACE DETECTED");
+            }
         }
 
         private void OnJump(InputValue value)
         {
+            //if (!value.isPressed)
+            //    return;
+
+            //if (isGrounded)
+            //{
+            //    rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+
+            //    animator.SetBool("isJumping", true);//yani changes tells the animator when its jumping
+
+            //}
+            Debug.Log("JUMP: " + value.isPressed);
+
+            if (!value.isPressed)
+                return;
+
             if (isGrounded)
             {
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(
+                    rb.linearVelocity.x,
+                    jumpForce,
+                    rb.linearVelocity.z
+                );
+
+                animator.SetBool("isJumping", true);
             }
-        }
+
+            }
+
+        // tells animator when to use attack
+        //private void OnUseFire(InputValue value)
+        //{
+        //    bool firing = value.isPressed;
+        //    Debug.Log("FIRE: " + firing);
+        //    animator.SetBool("Fire", value.isPressed);
+            
+        //}
     }
 }

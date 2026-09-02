@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   cameraTransform: {fileID: 0}
+  animator: {fileID: 0}
   moveSpeed: 5
   sprintSpeed: 10
-  lookSensitivity: 0
-  pitchClamp: 85
   jumpForce: 8
   groundCheckDistance: 1.1
 --- !u!1 &4827053887639562377
@@ -132,8 +131,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8905594577165641201}
   - {fileID: 5360354317430195032}
+  - {fileID: 8905594577165641201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8943513793127186970
