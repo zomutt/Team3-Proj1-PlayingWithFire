@@ -407,7 +407,6 @@ namespace _1A_Scripts.Managers
             {
                 Debug.LogWarning("where's the help panel lol");
             }
-
         }
     }
 }
