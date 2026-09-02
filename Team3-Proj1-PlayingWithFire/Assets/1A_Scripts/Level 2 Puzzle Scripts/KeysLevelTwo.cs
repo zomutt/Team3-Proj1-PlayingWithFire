@@ -12,6 +12,13 @@ namespace _1A_Scripts.Level2Puzzles
     public class KeysLevelTwo : MonoBehaviour
     {
         [SerializeField] private KeyColor keyColor;
+        [SerializeField] private AudioClip keyClip;
+        private AudioSource audioSource;
+
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -39,6 +46,7 @@ namespace _1A_Scripts.Level2Puzzles
                     throw new ArgumentOutOfRangeException();
             }
             gameObject.SetActive(false);
+            AudioSource.PlayClipAtPoint(keyClip, transform.position);
         }
     }
 }

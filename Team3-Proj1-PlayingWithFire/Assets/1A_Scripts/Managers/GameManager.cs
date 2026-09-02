@@ -21,11 +21,31 @@ namespace _1A_Scripts.Managers
             }
 
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
         {
             StartGame();
+        }
+
+        private void Update()
+        {
+            // Dev cheat: F12 skips to the next scene in the build order.
+            if (Input.GetKeyDown(KeyCode.F12))
+            {
+                int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+                if (nextIndex < SceneManager.sceneCountInBuildSettings)
+                {
+                    Time.timeScale = 1f;
+                    SceneManager.LoadScene(nextIndex);
+                }
+                else
+                {
+                    Debug.LogWarning("F12: already on the last scene in the build.");
+                }
+            }
         }
 
         private void StartGame()

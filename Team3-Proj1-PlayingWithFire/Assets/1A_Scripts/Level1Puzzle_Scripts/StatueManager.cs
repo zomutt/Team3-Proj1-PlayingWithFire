@@ -14,7 +14,8 @@ public class StatueManager : MonoBehaviour
     [SerializeField] private Transform fountainWater;
     [SerializeField] private float waterLowerDistance = 3f;
     [SerializeField] private float waterLowerSpeed = 1f;
-
+    [SerializeField] private AudioClip bubblePop;
+    private AudioSource audioSource;
     private int statuesSolved;
     private bool canInteract;
     public bool CanInteract => canInteract;
@@ -28,6 +29,8 @@ public class StatueManager : MonoBehaviour
         }
 
         Instance = this;
+        
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -61,6 +64,7 @@ public class StatueManager : MonoBehaviour
             if (keyBubble != null)
             {
                 keyBubble.SetActive(false);
+                audioSource.PlayOneShot(bubblePop);
             }
 
             if (fountainWater != null)

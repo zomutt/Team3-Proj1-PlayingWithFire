@@ -53,9 +53,11 @@ namespace _1A_Scripts.Managers
                 fadeImage = fadePanel.GetComponent<Image>();
             }
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private void Start()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             isMenuOpen = false; // Reset menu state on start.
 

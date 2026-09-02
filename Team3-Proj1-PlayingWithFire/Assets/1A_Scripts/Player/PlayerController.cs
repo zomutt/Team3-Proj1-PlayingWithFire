@@ -11,6 +11,9 @@ namespace _1A_Scripts.Player
 
         [SerializeField] private Transform respawnPoint1;
         [SerializeField] private Transform respawnPoint2;
+        
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip respawnClip;
         public bool hasHitCP2;
 
         private int keysCollected;
@@ -27,7 +30,6 @@ namespace _1A_Scripts.Player
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
@@ -51,6 +53,7 @@ namespace _1A_Scripts.Player
         }
         public void Respawn()
         {
+            audioSource.PlayOneShot(respawnClip);
             StartCoroutine(RespawnRoutine());
         }
 
