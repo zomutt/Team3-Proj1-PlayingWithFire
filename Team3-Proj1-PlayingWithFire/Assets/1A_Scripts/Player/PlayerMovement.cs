@@ -19,6 +19,7 @@ namespace _1A_Scripts.Player
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float sprintSpeed;
+        [SerializeField] private float turnSpeed = 720f; // degrees/sec the body turns to face its movement direction
 
         [Header("Jump")]
         [SerializeField] private float jumpForce = 8f;
@@ -99,6 +100,8 @@ namespace _1A_Scripts.Player
 
             Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
 
+            Turn(moveDirection);
+
             float currentSpeed = moveSpeed;
             if (isSprinting)
             {
@@ -108,6 +111,16 @@ namespace _1A_Scripts.Player
             Vector3 targetVelocity = moveDirection * currentSpeed;
             targetVelocity.y = rb.linearVelocity.y;
             rb.linearVelocity = targetVelocity;
+        }
+
+        // MoveRotation instead of transform.rotate so interpolation stays smooth -- same reasoning as the old FPS Turn()
+        private void Turn(Vector3 moveDirection)
+        {
+            if (moveDirection.sqrMagnitude < 0.0001f)
+                return;
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime));
         }
 
         // PlayerInput calls these on its own when you press stuff, don't wire them up manually
