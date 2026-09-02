@@ -47,9 +47,10 @@ public class BrazierFire : FireReceiver
     private void AdvanceColor()
     {
         colorIndex = (colorIndex + 1) % colorBraziers.Length;
+        Debug.Log($"[BrazierFire] {name} switching to colorIndex={colorIndex} ({colorBraziers[colorIndex].name}), needs={correctColorIndex}, correct={IsCorrect()}");
         SwitchTo(colorBraziers[colorIndex]);
         LevelTwoPuzzleManager.Instance.CheckBraziers();
-    } 
+    }
 
     private void SwitchTo(GameObject next)
     {

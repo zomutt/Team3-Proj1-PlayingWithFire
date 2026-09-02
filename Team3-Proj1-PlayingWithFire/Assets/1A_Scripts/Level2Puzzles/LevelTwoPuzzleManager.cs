@@ -66,23 +66,27 @@ namespace _1A_Scripts.Level2Puzzles
             }
         }
 
-        public void Activate(string keyColor)
-        {
-            switch (keyColor)
-            {
-                case "Red":
-                    keyRed.SetActive(true);
-                    break;
-                case "Green":
-                case "Blue":
-                case "Purple":
-                    break;
-                default:
-                    Debug.LogWarning($"KeyColor {keyColor} is missing or invalid. Proper format: Red");
-                    break;
-            }
-        }
+        //public void Activate(string keyColor)
+        //{
+        //    switch (keyColor)
+        //    {
+        //        case "Red":
+        //            keyRed.SetActive(true);
+        //            break;
+        //        case "Green":
+        //        case "Blue":
+        //        case "Purple":
+        //            break;
+        //        default:
+        //            Debug.LogWarning($"KeyColor {keyColor} is missing or invalid. Proper format: Red");
+        //            break;
+        //    }
+        //}
 
+        public void ActivateBlue()    // Unlike level 1, the blue key is the only one not active from the start. Hence, why over-engineer it?
+        {
+            keyBlue.SetActive(true);
+        }
         public void CollectKey(string keyColor)
         {
             switch (keyColor)
@@ -117,11 +121,14 @@ namespace _1A_Scripts.Level2Puzzles
             {
                 if (!brazier.IsCorrect())
                 {
+                    Debug.Log($"[LevelTwoPuzzleManager] CheckBraziers blocked by {brazier.name}");
                     return;
                 }
             }
 
+            Debug.Log("[LevelTwoPuzzleManager] All braziers correct, dropping waterfall");
             brazierWaterfall.StartCoroutine(brazierWaterfall.Fall()); // drops waterfall once it checks all braziers are correct
+            ActivateBlue(); // activates blue key once waterfall is dropped
         }
 
         public void CheckValves()

@@ -14,7 +14,9 @@ namespace _1A_Scripts.Player
 
         private void Update()
         {
-            animator.SetBool("IsWalking", PlayerMovement.Instance.IsMoving);
+            // matches the parameters SoldierLadyAnim.controller actually reads
+            animator.SetFloat("Speed", PlayerMovement.Instance.CurrentSpeed);
+            animator.SetBool("isJumping", !PlayerMovement.Instance.IsGrounded);
         }
     }
 }
