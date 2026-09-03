@@ -13,11 +13,13 @@ namespace _1A_Scripts.Level2Puzzles
     {
         [SerializeField] private KeyColor keyColor;
         [SerializeField] private AudioClip keyClip;
+        [SerializeField] private GameObject poi;
         private AudioSource audioSource;
 
         private void Start()
         {
             audioSource = GetComponent<AudioSource>();
+            poi.SetActive(true);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -45,6 +47,7 @@ namespace _1A_Scripts.Level2Puzzles
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            poi.SetActive(false);
             gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(keyClip, transform.position);
         }

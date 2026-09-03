@@ -6,8 +6,7 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
 {
     public class Valve : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI promptDisplay;
-        [SerializeField] private string promptText = "E to rotate";
+        [SerializeField] private GameObject promptDisplay;
         [SerializeField] private int maxTurns = 2;
         [SerializeField] private float rotationStep = 45f;
         [SerializeField] private AudioClip creakSound;
@@ -24,8 +23,11 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
 
             if (turnCount < maxTurns)
             {
-                promptDisplay.text = promptText;
                 promptDisplay.gameObject.SetActive(true);
+            }
+            else if (turnCount >= maxTurns)    // Edge-case protection: If the player enters the trigger after the valve has been fully turned, the prompt will not display.
+            {
+                promptDisplay.gameObject.SetActive(false);
             }
         } // detects player and shows text
 
