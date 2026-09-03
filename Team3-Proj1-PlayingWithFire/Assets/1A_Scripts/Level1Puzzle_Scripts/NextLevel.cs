@@ -18,23 +18,9 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
 
         private void OnTriggerEnter(Collider other)        // When the player enters the trigger area, the countdown starts.
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") && countdownRoutine == null)
             {
                 countdownRoutine = StartCoroutine(CountdownRoutine());
-            }
-        }
-
-        private void OnTriggerExit(Collider other)            // The player may abort the countdown by leaving the trigger area before the countdown finishes.
-        {
-            if (other.CompareTag("Player") && countdownRoutine != null)
-            {
-                StopCoroutine(countdownRoutine);
-                countdownRoutine = null;
-
-                if (countdownPopup != null)
-                {
-                    countdownPopup.SetActive(false);
-                }
             }
         }
 
@@ -58,7 +44,7 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
                     countdownText.text = secondsLeft.ToString();
                 }
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSecondsRealtime(1f);
                 secondsLeft--;
             }
 

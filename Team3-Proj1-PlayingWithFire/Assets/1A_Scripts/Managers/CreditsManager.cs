@@ -7,6 +7,12 @@ namespace _1A_Scripts.Managers
     {
         private const string MainMenuScene = "MainMenu";
 
+        private void Awake()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         public void OnClickMainMenu()
         {
             SceneManager.LoadScene(MainMenuScene);
