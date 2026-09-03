@@ -30,6 +30,7 @@ namespace _1A_Scripts.Player
             }
 
             Instance = this;
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Start()

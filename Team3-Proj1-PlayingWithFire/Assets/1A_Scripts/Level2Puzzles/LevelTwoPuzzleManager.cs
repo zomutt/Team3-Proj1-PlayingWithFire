@@ -1,3 +1,4 @@
+using _1A_Scripts.Level_2_Puzzle_Scripts;
 using _1A_Scripts.Level1Puzzle_Scripts;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ namespace _1A_Scripts.Level2Puzzles
 
         private bool hasRedKey;
         private bool hasGreenKey;
+        private bool hasBlueKey;
         private bool hasPurpleKey;
 
         private void Awake()
@@ -103,15 +105,16 @@ namespace _1A_Scripts.Level2Puzzles
                     hasPurpleKey = true;
                     break;
                 case "blue":
+                    hasBlueKey = true;
                     break;
                 default:
                     Debug.LogWarning($"KeyColor {keyColor} is missing or invalid. Proper format: red");
                     break;
             } //drops waterfalls dedicated to each key
 
-            if (hasRedKey && hasGreenKey && hasPurpleKey)
+            if (hasRedKey && hasGreenKey && hasBlueKey && hasPurpleKey)
             {
-                exitWaterfall.StartCoroutine(exitWaterfall.Fall()); // once player gets all 3 keys, it disables waterfall
+                exitWaterfall.StartCoroutine(exitWaterfall.Fall()); // once player gets all 4 keys, it disables waterfall
             }
         }
 
