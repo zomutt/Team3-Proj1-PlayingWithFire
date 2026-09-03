@@ -192,19 +192,19 @@ namespace _1A_Scripts.Managers
 
         public void UpdateKeys(string color)
         {
-            if (color == "Red" && keyRed != null)
+            if (color == "red" && keyRed != null)
             {
                 keyRed.SetActive(true);
             }
-            else if (color == "Purple" && keyPurple != null)
+            else if (color == "purple" && keyPurple != null)
             {
                 keyPurple.SetActive(true);
             }
-            else if (color == "Blue" && keyBlue != null)
+            else if (color == "blue" && keyBlue != null)
             {
                 keyBlue.SetActive(true);
             }
-            else if (color == "Green" && keyGreen != null)
+            else if (color == "green" && keyGreen != null)
             {
                 keyGreen.SetActive(true);
             }

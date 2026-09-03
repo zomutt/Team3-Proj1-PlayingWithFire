@@ -28,6 +28,8 @@ namespace _1A_Scripts.Player
         [SerializeField] private float groundCheckDistance = 1.1f;
 
         public bool IsMoving => canMove && moveInput.sqrMagnitude > 0.01f; // for Princess's animator to read
+        public bool IsGrounded => isGrounded;
+        public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
 
         private Rigidbody rb;
         private Vector2 moveInput;

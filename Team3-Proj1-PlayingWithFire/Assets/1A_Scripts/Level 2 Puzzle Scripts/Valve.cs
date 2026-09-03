@@ -1,61 +1,66 @@
-using UnityEngine;
-using TMPro;
 using _1A_Scripts.Level2Puzzles;
+using TMPro;
+using UnityEngine;
 
-public class Valve : MonoBehaviour
+namespace _1A_Scripts.Level_2_Puzzle_Scripts
 {
-    [SerializeField] private TextMeshProUGUI promptDisplay;
-    [SerializeField] private string promptText = "E to rotate";
-    [SerializeField] private int maxTurns = 2;
-    [SerializeField] private float rotationStep = 45f;
-
-    private int turnCount;
-    private bool playerInRange;
-
-    private void OnTriggerEnter(Collider other)
+    public class Valve : MonoBehaviour
     {
-        if (!other.CompareTag("Player")) return;
+        [SerializeField] private TextMeshProUGUI promptDisplay;
+        [SerializeField] private string promptText = "E to rotate";
+        [SerializeField] private int maxTurns = 2;
+        [SerializeField] private float rotationStep = 45f;
+        [SerializeField] private AudioClip creakSound;
+        private AudioSource audioSource;    
 
-        playerInRange = true;
+        private int turnCount;
+        private bool playerInRange;
 
-        if (turnCount < maxTurns)
+        private void OnTriggerEnter(Collider other)
         {
-            promptDisplay.text = promptText;
-            promptDisplay.gameObject.SetActive(true);
-        }
-    } // detects player and shows text
+            if (!other.CompareTag("Player")) return;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
+            playerInRange = true;
 
-        playerInRange = false;
-        promptDisplay.gameObject.SetActive(false);
-    }
+            if (turnCount < maxTurns)
+            {
+                promptDisplay.text = promptText;
+                promptDisplay.gameObject.SetActive(true);
+            }
+        } // detects player and shows text
 
-    private void Update()
-    {
-        if (playerInRange && turnCount < maxTurns && Input.GetKeyDown(KeyCode.E))
+        private void OnTriggerExit(Collider other)
         {
-            Turn();
-        }
-    } // just makes sure the conditions are met for player to turn
+            if (!other.CompareTag("Player")) return;
 
-    private void Turn()
-    {
-        transform.Rotate(0f, 0f, rotationStep); 
-        turnCount++;
-
-        if (turnCount >= maxTurns)
-        {
-            promptDisplay.gameObject.SetActive(false); 
+            playerInRange = false;
+            promptDisplay.gameObject.SetActive(false);
         }
 
-        LevelTwoPuzzleManager.Instance.CheckValves();
-    } // sends info to puzzle manager once valve reaches the max turns and disables it
+        private void Update()
+        {
+            if (playerInRange && turnCount < maxTurns && Input.GetKeyDown(KeyCode.E))
+            {
+                Turn();
+            }
+        } // just makes sure the conditions are met for player to turn
 
-    public bool IsFullyTurned()
-    {
-        return turnCount >= maxTurns;
+        private void Turn()
+        {
+            transform.Rotate(0f, 0f, rotationStep); 
+            turnCount++;
+
+            if (turnCount >= maxTurns)
+            {
+                promptDisplay.gameObject.SetActive(false); 
+            }
+
+            LevelTwoPuzzleManager.Instance.CheckValves();
+        } // sends info to puzzle manager once valve reaches the max turns and disables it
+
+        public bool IsFullyTurned()
+        {
+            return turnCount >= maxTurns;
+        }
     }
 }
