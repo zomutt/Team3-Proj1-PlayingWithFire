@@ -1672,6 +1672,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5964007366501369590, guid: 858e392d792748e47b5eb736dba3e69d, type: 3}
+      propertyPath: _settings.Distance
+      value: -3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964007366501369590, guid: 858e392d792748e47b5eb736dba3e69d, type: 3}
+      propertyPath: _settings.DefaultRotation.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964007366501369590, guid: 858e392d792748e47b5eb736dba3e69d, type: 3}
+      propertyPath: _settings.DefaultRotation.y
+      value: 94.16
+      objectReference: {fileID: 0}
     - target: {fileID: 4355316696701624653, guid: 858e392d792748e47b5eb736dba3e69d, type: 3}
       propertyPath: field of view
       value: 56.4
