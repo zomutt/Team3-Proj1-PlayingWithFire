@@ -2483,31 +2483,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.54557294
+      value: 3.4714308
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5354052
+      value: 0.9912157
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7297614
+      value: 0.25260758
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0666815
+      value: 0.66608346
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.02860728
+      value: 0.14158036
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.91657543
+      value: -0.71631396
       objectReference: {fileID: 0}
     - target: {fileID: 931629874368735137, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.39322352
+      value: 0.15225717
       objectReference: {fileID: 0}
     - target: {fileID: 1723258014054021927, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2548,6 +2548,18 @@ PrefabInstance:
     - target: {fileID: 1723258014054021927, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717034511873914048, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
+      propertyPath: _settings.Distance
+      value: -3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717034511873914048, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
+      propertyPath: _settings.DefaultRotation.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717034511873914048, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
+      propertyPath: _settings.DefaultRotation.y
+      value: 94.16
       objectReference: {fileID: 0}
     - target: {fileID: 3746336409883044088, guid: 9dfd27e7d57f26e45afaaf43cebaa877, type: 3}
       propertyPath: m_Name
