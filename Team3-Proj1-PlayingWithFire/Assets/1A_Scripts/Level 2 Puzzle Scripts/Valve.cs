@@ -1,5 +1,4 @@
 using _1A_Scripts.Level2Puzzles;
-using TMPro;
 using UnityEngine;
 
 namespace _1A_Scripts.Level_2_Puzzle_Scripts
@@ -8,8 +7,11 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
     {
         [SerializeField] private GameObject promptDisplay;
         [SerializeField] private int maxTurns = 2;
-        [SerializeField] private float rotationStep = 45f;
+        [SerializeField] private float targetAngle = 180;   // Renamed for clarity and changed to 180 for more visible effect.
+        private float currentAngle = 0f;
+        [SerializeField] private float rotationSpeed = 2f;     // More control over VFX
         [SerializeField] private AudioClip creakSound;
+        [SerializeField] private GameObject valve;
         private AudioSource audioSource;    
 
         private int turnCount;
@@ -29,7 +31,7 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
             {
                 promptDisplay.gameObject.SetActive(false);
             }
-        } // detects player and shows text
+        }
 
         private void OnTriggerExit(Collider other)
         {
@@ -49,7 +51,14 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
 
         private void Turn()
         {
-            transform.Rotate(0f, 0f, rotationStep); 
+            // Valve only because the pivot point is *not* set to the middle of the valve; this causes it to "jump".
+            // I also swapped the rotation code out completely for smoother flow.
+
+            // Smoothly moves the float towards the target angle.
+            currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+            // Applies said float directly to the Euler angles. :)
+            valve.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
+            
             turnCount++;
 
             if (turnCount >= maxTurns)
