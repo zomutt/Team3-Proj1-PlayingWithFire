@@ -13,6 +13,7 @@ TagManager:
   - CinemachineTarget
   - MyRig
   - Ground
+  - Level3
   layers:
   - Default
   - TransparentFX
