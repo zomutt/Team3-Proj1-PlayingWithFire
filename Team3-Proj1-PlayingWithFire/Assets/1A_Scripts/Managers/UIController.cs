@@ -22,6 +22,8 @@ namespace _1A_Scripts.Managers
         [SerializeField] private GameObject confirmQuitPanel;
         [SerializeField] private GameObject settingsPanel;
 
+        [SerializeField] private GameObject HintCanvas;
+
         [FormerlySerializedAs("keyCellRed")] [SerializeField] private GameObject keyRed;
         [FormerlySerializedAs("keyCrushBlue")] [SerializeField] private GameObject keyBlue;
         [FormerlySerializedAs("keyFountainGreen")] [SerializeField] private GameObject keyGreen;
@@ -120,6 +122,15 @@ namespace _1A_Scripts.Managers
             else
             {
                 Debug.LogWarning("no key icons assigned");
+            }
+
+            if (HintCanvas)
+            {
+                HintCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("no hint canvas assigned");
             }
         }
 

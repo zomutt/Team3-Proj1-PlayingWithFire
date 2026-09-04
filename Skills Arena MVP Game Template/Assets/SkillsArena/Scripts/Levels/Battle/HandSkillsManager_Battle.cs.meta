@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 8e32c9219d471554f8f01d63be88edbd
-AssetOrigin:
-  serializedVersion: 1
-  productId: 391012
-  packageName: Skills Arena | MVP Game Template
-  packageVersion: 1.0
-  assetPath: Assets/SkillsArena/Scripts/Levels/Battle/HandSkillsManager_Battle.cs
-  uploadId: 985392

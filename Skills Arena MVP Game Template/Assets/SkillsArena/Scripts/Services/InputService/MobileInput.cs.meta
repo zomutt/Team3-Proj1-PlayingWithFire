@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: a3d82eeaa99b4de41bd41c1d72b774aa
-AssetOrigin:
-  serializedVersion: 1
-  productId: 391012
-  packageName: Skills Arena | MVP Game Template
-  packageVersion: 1.0
-  assetPath: Assets/SkillsArena/Scripts/Services/InputService/MobileInput.cs
-  uploadId: 985392

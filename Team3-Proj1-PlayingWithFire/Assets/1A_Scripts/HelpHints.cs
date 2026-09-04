@@ -8,12 +8,14 @@ namespace _1A_Scripts
         [SerializeField] private GameObject CollectImg;
         [SerializeField] private GameObject UseFireImg;
         [SerializeField] private GameObject AvoidImg;
+        [SerializeField] private GameObject EndLevel;
         [SerializeField] private GameObject[] allPanels;   // For activating and deactivating
         public enum HintPanels
         {
             Collect,
             UseFire,
             Avoid,
+            EndLevel
         }
 
         private void Awake()
@@ -32,7 +34,7 @@ namespace _1A_Scripts
             DisableAll();
         }
 
-        private void DisableAll()
+        public void DisableAll()
         {
             foreach (var panel in allPanels)
             {
@@ -43,21 +45,11 @@ namespace _1A_Scripts
         public void DisplayHint(HintPanels hintType)
         {
             DisableAll();
-            switch (hintType)
-            {
-                case HintPanels.Collect:
-                    CollectImg.SetActive(true);
-                    break;
-                case HintPanels.UseFire:
-                    UseFireImg.SetActive(true);
-                    break;
-                case HintPanels.Avoid:
-                    AvoidImg.SetActive(true);
-                    break;
-                default:
-                    Debug.LogWarning("Unknown hint type. Use Collect, UseFire, or Avoid.");
-                    break;
-            }
+            
+            CollectImg.SetActive(hintType == HintPanels.Collect);
+            UseFireImg.SetActive(hintType == HintPanels.UseFire);
+            AvoidImg.SetActive(hintType == HintPanels.Avoid);
+            EndLevel.SetActive(hintType == HintPanels.EndLevel);
         }
     }
 }

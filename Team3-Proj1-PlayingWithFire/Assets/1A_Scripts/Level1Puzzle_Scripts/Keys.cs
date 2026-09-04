@@ -12,9 +12,17 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
         Blue,
         Purple
     }
+
     public class Keys : MonoBehaviour
     {
         [SerializeField] private KeyColor keyColor;
+        [SerializeField] private AudioClip audioClip;
+        private AudioSource audioSource;
+
+        void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -39,7 +47,8 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
+                if (audioClip)
+                    audioSource.PlayOneShot(audioClip);
             }
             //else if (SceneManager.GetActiveScene().name == "LevelTwo")     // Already handled in KeysLevelTwo.cs, but this is here for future reference if we want to add more levels.
             //{
