@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2e96daa0aa360e646bb5dc73e800acdb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/UI_Prefabs/Transition.prefab
+  uploadId: 985392

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 02877f3ae6367d9489af27feb863083a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/Particles/Particle/Hit_1_Big.prefab
+  uploadId: 985392

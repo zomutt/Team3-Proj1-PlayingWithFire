@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: eef1f94d7ca278f4792022a18efcf01f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/ManagerPrefabs/GameBootstrapper.prefab
+  uploadId: 985392

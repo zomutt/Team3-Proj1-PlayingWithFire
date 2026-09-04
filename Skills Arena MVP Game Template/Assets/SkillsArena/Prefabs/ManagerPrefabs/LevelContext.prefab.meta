@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7995268105fa9674794d20ffc4409db2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/ManagerPrefabs/LevelContext.prefab
+  uploadId: 985392

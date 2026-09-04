@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 5782dd46b834e2f46afeafd1769c56a0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Levels/Battle/FightManager.cs
+  uploadId: 985392

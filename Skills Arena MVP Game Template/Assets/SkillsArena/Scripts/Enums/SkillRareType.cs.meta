@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a1aba7ffc1d2a56409b3d66b93dd02bf
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Enums/SkillRareType.cs
+  uploadId: 985392

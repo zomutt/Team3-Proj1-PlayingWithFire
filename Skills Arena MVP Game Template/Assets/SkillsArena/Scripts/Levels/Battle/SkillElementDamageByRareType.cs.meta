@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b3a7772eddb4d8548b548706aac83186
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Levels/Battle/SkillElementDamageByRareType.cs
+  uploadId: 985392

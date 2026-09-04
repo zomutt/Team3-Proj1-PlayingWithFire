@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a1e30579db97678448adad848fe6967e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Levels/Battle/DependencySkills/DependencySkillsOnRound.cs
+  uploadId: 985392

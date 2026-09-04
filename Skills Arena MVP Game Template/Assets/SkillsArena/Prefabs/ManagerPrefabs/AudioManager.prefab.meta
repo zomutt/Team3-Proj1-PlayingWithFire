@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f6d30e0f9efdd6445819a1313cc23c82
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/ManagerPrefabs/AudioManager.prefab
+  uploadId: 985392

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 29bf3cf6c5b083449975125f4294c2ce
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Infrastructure/States/LoadLevelState.cs
+  uploadId: 985392

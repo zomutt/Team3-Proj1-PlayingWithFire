@@ -10,7 +10,7 @@ public class BobAndSpin : MonoBehaviour
     [SerializeField] private float bobSpeed = 2f;
 
     [Header("Rotate")]
-    [SerializeField] private float rotateSpeed = 30f;
+    [SerializeField] private float rotateSpeed = 15f;
 
     private Vector3 startPosition;
 

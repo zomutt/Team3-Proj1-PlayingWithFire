@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b49d0377e5828614493c40dff96407c3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/BattleLevel/GamePrefabs/Enemy.prefab
+  uploadId: 985392

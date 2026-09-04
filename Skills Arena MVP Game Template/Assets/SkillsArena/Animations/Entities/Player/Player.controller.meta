@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a419c192611b2374da676d93ba502de4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Animations/Entities/Player/Player.controller
+  uploadId: 985392

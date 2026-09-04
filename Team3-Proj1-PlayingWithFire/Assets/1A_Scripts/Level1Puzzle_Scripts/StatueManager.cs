@@ -1,4 +1,5 @@
 using System.Collections;
+using _1A_Scripts.Level1Puzzle_Scripts;
 using UnityEngine;
 
 /// <summary>
@@ -61,11 +62,7 @@ public class StatueManager : MonoBehaviour
 
         if (statuesSolved >= 4)
         {
-            if (keyBubble != null)
-            {
-                keyBubble.SetActive(false);
-                audioSource.PlayOneShot(bubblePop);
-            }
+            KeyPurpleLevel1.Instance.CollectPurple();
 
             if (fountainWater != null)
             {

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2b90a1a3c3a748842b114b6cc84aa0d0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Prefabs/BattleLevel/GamePrefabs/SkillBallForBattle.prefab
+  uploadId: 985392

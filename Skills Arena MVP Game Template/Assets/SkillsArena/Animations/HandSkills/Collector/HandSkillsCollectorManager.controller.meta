@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5a72a4d645bb8534eaa64b2096f74d38
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Animations/HandSkills/Collector/HandSkillsCollectorManager.controller
+  uploadId: 985392

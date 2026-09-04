@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: d36b7722483e47e418d71d97a3cb66a2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Levels/Battle/EnemySkillsRateData.cs
+  uploadId: 985392

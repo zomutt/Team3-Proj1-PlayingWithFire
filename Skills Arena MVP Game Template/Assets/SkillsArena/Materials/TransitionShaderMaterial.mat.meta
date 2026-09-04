@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e894ee09707db4948be8227ac71e3753
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Materials/TransitionShaderMaterial.mat
+  uploadId: 985392

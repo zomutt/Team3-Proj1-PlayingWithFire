@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a198b6ce461f5564b93fcdf8dbf014a9
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Infrastructure/GameBootstrapper.cs
+  uploadId: 985392

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 54ee8ce9e5d8d294794be6ac5821cd51
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Animations/Transition/CloseAnim.anim
+  uploadId: 985392

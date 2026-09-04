@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 4d318eca2cc115345bc03402c775eeef
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391012
+  packageName: Skills Arena | MVP Game Template
+  packageVersion: 1.0
+  assetPath: Assets/SkillsArena/Scripts/Infrastructure/SceneLoader.cs
+  uploadId: 985392
