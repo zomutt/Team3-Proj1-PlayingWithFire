@@ -21,6 +21,11 @@ namespace EazyCamera
 
         private bool _enabled = true;
 
+        // instead of snapping straight to a new distance whenever occlusion changes, we ease toward
+        // it each frame -- smoothSpeed is how fast that ease-in is (higher = snappier, lower = smoother)
+        private float _targetDistance = 0f;
+        private const float smoothSpeed = 10f;
+
         public EazyCollider(EazyCam camera)
         {
             Debug.Assert(camera != null, "Attempting to create collsions on a non-camera object");
@@ -31,6 +36,7 @@ namespace EazyCamera
             _nearPlaneDistance = _cameraComponent.nearClipPlane;
 
             _layermask = _controlledCamera.CameraSettings.CollisionLayer;
+            _targetDistance = _controlledCamera.GetDistance();
 
             UpdateNearClipPlanePoints();
         }
@@ -40,7 +46,15 @@ namespace EazyCamera
             if (_enabled)
             {
                 HandleCollisions();
+                ApplySmoothedDistance();
             }
+        }
+
+        private void ApplySmoothedDistance()
+        {
+            float current = _controlledCamera.GetDistance();
+            float smoothed = Mathf.Lerp(current, _targetDistance, Time.deltaTime * smoothSpeed);
+            _controlledCamera.SetDistance(smoothed);
         }
 
         public void HandleCollisions()
@@ -121,7 +135,7 @@ namespace EazyCamera
                             hitDistance = hit.distance;
 
                             IsOccluded = true;
-                            _controlledCamera.SetDistance(-_nearPlaneDistance - hitDistance);
+                            _targetDistance = -_nearPlaneDistance - hitDistance;
 
 #if UNITY_EDITOR
                             lineColor = Color.red;
@@ -147,7 +161,7 @@ namespace EazyCamera
                     //Debug.Log("camera is occluded by " + hit.collider.gameObject.name);
 #endif
                     IsOccluded = true;
-                    _controlledCamera.SetDistance(-_nearPlaneDistance - hit.distance);
+                    _targetDistance = -_nearPlaneDistance - hit.distance;
                 }
             }
         }
@@ -197,14 +211,15 @@ namespace EazyCamera
 
             if (!objectWasHit)
             {
-                _controlledCamera.ResetToUnoccludedDistance();
+                EazyCam.Settings settings = _controlledCamera.CameraSettings;
+                _targetDistance = settings.EnableZoom ? settings.ZoomDistance : settings.DefaultDistance;
                 IsOccluded = false;
             }
             else
             {
                 if (closestHitDistance > _controlledCamera.GetDistance())
                 {
-                    _controlledCamera.SetDistance(-closestHitDistance);
+                    _targetDistance = -closestHitDistance;
                 }
             }
         }

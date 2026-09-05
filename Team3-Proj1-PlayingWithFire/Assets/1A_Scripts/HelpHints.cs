@@ -22,13 +22,14 @@ namespace _1A_Scripts
 
         private void Awake()
         {
+            // Scene-local on purpose -- each level has its own hint images, and UIController already
+            // re-finds whichever HelpHints belongs to the scene that just loaded.
             if (!Instance)
                 Instance = this;
             else
             {
                 Destroy(gameObject);
             }
-            DontDestroyOnLoad(gameObject);
         }
         
         private void Start()

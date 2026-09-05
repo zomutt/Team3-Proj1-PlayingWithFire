@@ -5,7 +5,7 @@ public class Enemy : FireReceiver
 {
     public override void ReceiveFire()
     {
-        PlayerController.Instance.Respawn();
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

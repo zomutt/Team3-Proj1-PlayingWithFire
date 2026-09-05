@@ -12,6 +12,7 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
         Blue,
         Purple
     }
+    
 
     public class Keys : MonoBehaviour
     {
@@ -19,15 +20,18 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
         [SerializeField] private AudioClip audioClip;
         private AudioSource audioSource;
 
+        [SerializeField] private GameObject POIRing;
+
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
+            POIRing.SetActive(true);
         }
-
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;
-
+            
+            POIRing.SetActive(false);
             if (SceneManager.GetActiveScene().name == "LevelOne")          // Will create LevelTwo logic on a day that isn't deadline day. It works.
             {
                 switch (keyColor)
@@ -50,26 +54,6 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
                 if (audioClip)
                     audioSource.PlayOneShot(audioClip);
             }
-            //else if (SceneManager.GetActiveScene().name == "LevelTwo")     // Already handled in KeysLevelTwo.cs, but this is here for future reference if we want to add more levels.
-            //{
-            //    switch (keyColor)
-            //    {
-            //        case KeyColor.Red:
-            //            UIController.Instance.UpdateKeys("red");
-            //            break;
-            //        case KeyColor.Green:
-            //            UIController.Instance.UpdateKeys("green");
-            //            break;
-            //        case KeyColor.Blue:
-            //            UIController.Instance.UpdateKeys("blue");
-            //            break;
-            //        case KeyColor.Purple:
-            //            UIController.Instance.UpdateKeys("purple");
-            //            break;
-            //        default:
-            //            throw new ArgumentOutOfRangeException();
-            //    }
-            //}
             gameObject.SetActive(false);
         }
     }

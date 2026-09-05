@@ -124,13 +124,15 @@ namespace _1A_Scripts.Managers
                 Debug.LogWarning("no key icons assigned");
             }
 
-            if (HintCanvas)
+            HelpHints hintScript = FindFirstObjectByType<HelpHints>();
+            if (hintScript)
             {
+                HintCanvas = hintScript.gameObject;
                 HintCanvas.SetActive(true);
             }
             else
             {
-                Debug.LogWarning("no hint canvas assigned");
+                Debug.LogWarning("no HelpHints found in this scene");
             }
         }
 
@@ -264,10 +266,11 @@ namespace _1A_Scripts.Managers
 
         public void OnClickStartGame()      // ONLY for start menu.
         {
-            // player survives scene loads (DontDestroyOnLoad), so gotta wipe the old checkpoint or a fresh run starts at CP2 like a liar
-            if (PlayerController.Instance)
+            // player, UI state, etc. all survive scene loads -- gotta wipe them or a fresh run starts
+            // still hurt/keyed-up/at CP2 like a liar
+            if (GameManager.Instance)
             {
-                PlayerController.Instance.ResetCheckpoint();
+                GameManager.Instance.ResetForNewGame();
             }
 
             previousScene = SceneManager.GetActiveScene().name;
@@ -336,9 +339,9 @@ namespace _1A_Scripts.Managers
         public void OnClickMainMenu()
         {
             // same deal as start game -- catching it here too in case they rage quit to menu instead
-            if (PlayerController.Instance)
+            if (GameManager.Instance)
             {
-                PlayerController.Instance.ResetCheckpoint();
+                GameManager.Instance.ResetForNewGame();
             }
 
             Cursor.lockState = CursorLockMode.None;

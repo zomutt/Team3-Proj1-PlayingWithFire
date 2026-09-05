@@ -40,6 +40,11 @@ namespace _1A_Scripts.Player
 
         private void Awake()
         {
+            if (Instance)
+            {
+                Destroy(gameObject);
+                return;
+            }
             Instance = this;
 
             rb = GetComponent<Rigidbody>();

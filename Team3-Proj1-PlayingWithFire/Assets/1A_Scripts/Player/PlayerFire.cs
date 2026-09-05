@@ -75,7 +75,7 @@ public class PlayerFire : MonoBehaviour
                     Debug.DrawLine(fireOrigin.position, hit.point, Color.red);
 
                     // Works for the ice door, pillar, torch, or anything else that inherits from FireReceiver -- this line never needs to change again. pLS.
-                    FireReceiver receiver = hit.collider.GetComponent<FireReceiver>();
+                    FireReceiver receiver = hit.collider.GetComponentInParent<FireReceiver>();
                     if (receiver != null)
                     {
                         receiver.ReceiveFire();
