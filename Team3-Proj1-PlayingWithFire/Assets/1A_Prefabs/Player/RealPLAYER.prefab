@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 6982700853088458742}
   - component: {fileID: 3530258528096026893}
   - component: {fileID: 1511917301592261}
+  - component: {fileID: 6711898067587134619}
+  - component: {fileID: 4251558973064241395}
   m_Layer: 0
   m_Name: RealPLAYER
   m_TagString: Player
@@ -33,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23087800569239645}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7822176, z: -0, w: 0.6230054}
+  m_LocalRotation: {x: 0, y: 0.7822169, z: 0, w: 0.6230062}
   m_LocalPosition: {x: -30.595, y: 0.978, z: 5.332}
   m_LocalScale: {x: 0.6414, y: 1.0027647, z: 0.6414}
   m_ConstrainProportionsScale: 0
@@ -231,15 +233,15 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: a998b0f2b4e624148ae2ede68244cf80, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 50
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -335,6 +337,63 @@ MonoBehaviour:
   respawnClip: {fileID: 8300000, guid: e13078a3794629c4ebf665f3baa66b4d, type: 3}
   hasHitCP2: 0
   hasHitCP3: 0
+--- !u!114 &6711898067587134619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23087800569239645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab1a7cf76a2d0440849314943bce424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_1A_Scripts.Player.PlayerCombat
+  playerDamage: 10
+  playerMaxHealth: 30
+  playerHealth: 30
+  playerIframe: 0.2
+--- !u!114 &4251558973064241395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23087800569239645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b7bc1e15170234e906d272d89deba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_1A_Scripts.Player.FootstepSounds
+  footstepClips:
+  - {fileID: 8300000, guid: 2be570f18cdbe524aaa1ad068a3d9074, type: 3}
+  - {fileID: 8300000, guid: 2de65266bed098747b2b6d9a27ebdfc1, type: 3}
+  - {fileID: 8300000, guid: bb34608a0a845e148ae557416b7af578, type: 3}
+  - {fileID: 8300000, guid: 3bb773509ab7ec44ca0bfdb3ee4401ed, type: 3}
+  - {fileID: 8300000, guid: 466a85deea16ab64fb1f437119dfeac0, type: 3}
+  - {fileID: 8300000, guid: be3034a79dc569540ba21e4a2f312d7a, type: 3}
+  - {fileID: 8300000, guid: 5866b981b628de94b973e7dd1ccfcf50, type: 3}
+  - {fileID: 8300000, guid: b8ce496724cf7d3449176610b10806d2, type: 3}
+  - {fileID: 8300000, guid: 74b9f54a1d8429b46a7ef81a8a52df46, type: 3}
+  - {fileID: 8300000, guid: 3f1edb02d56eb4646915ab6de59c0db9, type: 3}
+  - {fileID: 8300000, guid: 868c8543c2099774683b38bdb2428e0d, type: 3}
+  - {fileID: 8300000, guid: 80ac8c3a8fa203349b65c5bbc550fc70, type: 3}
+  - {fileID: 8300000, guid: e508d29ffb279874f97f05aa758b2b3f, type: 3}
+  - {fileID: 8300000, guid: 7449d9412f6057b4cb42d7e0e45d4aef, type: 3}
+  - {fileID: 8300000, guid: dae2bbff40c6f8e4f850a2a85c7d23e8, type: 3}
+  - {fileID: 8300000, guid: 543407df598ea1b408cdd9a963bba87e, type: 3}
+  - {fileID: 8300000, guid: 993026c7bbfde1646a89d5d0ed59add5, type: 3}
+  - {fileID: 8300000, guid: 65c29a8187d84744d80ce1f56076fb4d, type: 3}
+  - {fileID: 8300000, guid: 607ec888b36ce054d8f8da3e6008161e, type: 3}
+  - {fileID: 8300000, guid: bfb345714145da34bb59369fa2cc6541, type: 3}
+  - {fileID: 8300000, guid: ad71708d68b064e45a155ede55f907e6, type: 3}
+  - {fileID: 8300000, guid: 93e953a18ccb3ce46ac7171579c5218b, type: 3}
+  - {fileID: 8300000, guid: c99d20f240d3896479e64d7b2d160b95, type: 3}
+  - {fileID: 8300000, guid: f795b8b17d3a598409131012df04277a, type: 3}
+  - {fileID: 8300000, guid: a998b0f2b4e624148ae2ede68244cf80, type: 3}
+  stepInterval: 0.45
+  referenceSpeed: 3
+  minSpeedToStep: 0.1
 --- !u!1 &31947079406949919
 GameObject:
   m_ObjectHideFlags: 0
@@ -11900,8 +11959,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280277521763696304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2073034, y: -0.07477108, z: 0.015893102, w: 0.97528565}
-  m_LocalPosition: {x: 0.8272056, y: 1.5453941, z: -5.363161}
+  m_LocalRotation: {x: 0.2079059, y: -0.0072622, z: 0.0015436411, w: 0.9781207}
+  m_LocalPosition: {x: 0.08057588, y: 1.5453941, z: -5.4259834}
   m_LocalScale: {x: 1.5590893, y: 1.5590897, z: 1.55909}
   m_ConstrainProportionsScale: 0
   m_Children:

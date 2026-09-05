@@ -7,10 +7,10 @@ namespace _1A_Scripts.Enemy
 {
     /// <summary>
     /// This script handles enemy AI movement, animations, attack, etc etc
-    /// He slidin' still :( Gl;hf.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(AudioSource))]
     internal class MonsterAI : FireReceiver
     {
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
@@ -37,9 +37,24 @@ namespace _1A_Scripts.Enemy
         [SerializeField] private float iframe = .3f;
         private bool canBeAttacked;
 
-        [Header("Health")] 
+        [Header("Health")]
         [SerializeField] private int maxHealth = 30;
         private int currentHealth;
+
+        [Header("Death")]
+        // Monster02_Die.anim (InPlace variant) is exactly 1s long. Kept as a field, not hardcoded,
+        // in case the clip changes -- update this to match if it ever does.
+        [SerializeField] private float deathAnimDuration = 1f;
+        [SerializeField] private float deathFloorTime = 3f; // how long he lies there after the anim before Destroy
+
+        [Header("Audio")] 
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip[] hitClip;        // Arrays in case I decide to add in more SFX variety
+        [SerializeField] private AudioClip[] attackClip;
+        [SerializeField] private AudioClip[] aggroClip;
+        [SerializeField] private AudioClip[] deathClip;
+        
+        
 
         private Animator animator;
         private NavMeshAgent agent;
@@ -55,6 +70,7 @@ namespace _1A_Scripts.Enemy
         {
             animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
+            audioSource = GetComponent<AudioSource>();
             currentHealth = maxHealth;
             canBeAttacked = true;
 
@@ -120,7 +136,7 @@ namespace _1A_Scripts.Enemy
         }
         public override void ReceiveFire()
         {
-            TakeDamage(PlayerCombat.Instance.PlayerDamage);
+            TakeDamage(PlayerCombat.Instance.PlayerDamage); // already plays a hitClip itself, don't play another here
         }
         private void ChasePlayer() // Triggered when player gets too close, basically aggro/hate
         {
@@ -133,9 +149,20 @@ namespace _1A_Scripts.Enemy
 
             animator.SetBool(IsWalking, true);
             animator.SetBool(IsAttacking, false);
+
+            PlayRandomClip(aggroClip);
         }
 
-        // Still slides some even with this -- probably needs an Animator-side fix, not a code one.
+        // Guards against the prefab not having an AudioSource (throws otherwise) and an empty
+        // clip array -- a thrown exception here used to be able to skip whatever ran after it,
+        // e.g. Die()'s actual death trigger/Destroy call.
+        private void PlayRandomClip(AudioClip[] clips)
+        {
+            if (!audioSource || clips == null || clips.Length == 0) return;
+            audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+        }
+
+        // Still slides some even with this -- probably needs an Animator-side fix, not a code one. (Yes. This was indeed the answer.)
         private void RotateTowardsMovement()
         {
             Vector3 direction = agent.desiredVelocity;
@@ -173,6 +200,8 @@ namespace _1A_Scripts.Enemy
             animator.SetTrigger(Attack);
 
             PlayerCombat.Instance.TakeDamage(damage);
+
+            PlayRandomClip(attackClip);
         }
 
         private void Idle()
@@ -200,6 +229,8 @@ namespace _1A_Scripts.Enemy
             {
                 StartCoroutine(Iframe());
             }
+
+            PlayRandomClip(hitClip);
         }
 
         private void Die()
@@ -209,8 +240,30 @@ namespace _1A_Scripts.Enemy
 
             // Death can land mid-chase soooo... We gotta make it chill.
             animator.speed = 1f;
+
+            // Dying mid-chase/attack left IsWalking or IsAttacking stuck true, which was enough
+            // for a bool-gated transition to pull him right back out of Die once it let go --
+            // looked like he stood back up. Clearing them didn't fix it either, so something in
+            // the Animator Controller itself leaves the Die state unconditionally -- that needs
+            // an actual Animator-graph fix. Duct tape for now: freeze the Animator on a fixed
+            // timer instead. Polling the Animator's own state to decide when to freeze was racing
+            // the same bug (it can leave Die before the clip visually finishes), so this waits a
+            // known duration instead of asking the broken state machine what it's doing.
+            animator.SetBool(IsWalking, false);
+            animator.SetBool(IsAttacking, false);
             animator.SetTrigger(Die1);
-            Destroy(gameObject, 3f);   // 3f allows the animation to actually play. Might get tweaked.
+            StartCoroutine(FreezeAfterDeathAnim());
+
+            // Full lifetime = the death anim playing, then deathFloorTime lying there before he's removed.
+            Destroy(gameObject, deathAnimDuration + deathFloorTime);
+
+            PlayRandomClip(deathClip); // after the trigger/Destroy -- a missing AudioSource shouldn't be able to skip those
+        }
+
+        private IEnumerator FreezeAfterDeathAnim()
+        {
+            yield return new WaitForSeconds(deathAnimDuration);
+            animator.enabled = false; // locks him on whatever pose he's on so he can't transition out of Die
         }
 
         private IEnumerator Iframe()

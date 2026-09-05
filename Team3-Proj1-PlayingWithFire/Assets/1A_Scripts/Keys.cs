@@ -9,7 +9,6 @@ namespace _1A_Scripts
     {
         [SerializeField] private KeyColor keyColor;
         [SerializeField] private AudioClip audioClip;
-        private AudioSource audioSource;
 
         [SerializeField] private GameObject POIRing;
 
@@ -17,7 +16,6 @@ namespace _1A_Scripts
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
             POIRing.SetActive(true);
 
             // Whichever level's puzzle manager exists in this scene picks up the key -- no scene-name check needed.
@@ -47,7 +45,11 @@ namespace _1A_Scripts
 
             if (audioClip)
             {
-                audioSource.PlayOneShot(audioClip);
+                // Not audioSource.PlayOneShot -- deactivating this object right below would cut
+                // the sound off instantly, since disabling a GameObject stops everything on it,
+                // including audio already playing. PlayClipAtPoint spawns its own short-lived
+                // object to play the clip, so it survives this one being deactivated.
+                AudioSource.PlayClipAtPoint(audioClip, transform.position);
             }
 
             gameObject.SetActive(false);
