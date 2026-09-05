@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _1A_Scripts.Level2Puzzles
 {
-    public class LevelTwoPuzzleManager : MonoBehaviour
+    public class LevelTwoPuzzleManager : MonoBehaviour, IKeyCollector
     {
         public static LevelTwoPuzzleManager Instance;
 

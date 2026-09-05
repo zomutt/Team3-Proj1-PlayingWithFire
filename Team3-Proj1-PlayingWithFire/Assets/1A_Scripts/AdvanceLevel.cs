@@ -5,29 +5,16 @@ namespace _1A_Scripts
 {
     public class AdvanceLevel : MonoBehaviour
     {
-        private const string LevelOneScene = "LevelOne";
-        private const string LevelTwoScene = "LevelTwo";
-        private const string LevelThreeScene = "LevelThree";
-        private const string CreditsScene = "Credits";
-
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player"))
                 return;
 
-            var currentScene = SceneManager.GetActiveScene().name;
+            int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
-            switch (currentScene)
+            if (nextIndex < SceneManager.sceneCountInBuildSettings)
             {
-                case LevelOneScene:
-                    SceneManager.LoadScene(LevelTwoScene);
-                    break;
-                case LevelTwoScene:
-                    SceneManager.LoadScene(LevelThreeScene);
-                    break;
-                case LevelThreeScene:
-                    SceneManager.LoadScene(CreditsScene);
-                    break;
+                SceneManager.LoadScene(nextIndex);
             }
         }
     }

@@ -32,6 +32,7 @@ namespace _1A_Scripts.Player
         public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
 
         private Rigidbody rb;
+        private FootstepSounds footstepSounds;
         private Vector2 moveInput;
         private bool isSprinting;
         private bool isGrounded;
@@ -48,6 +49,7 @@ namespace _1A_Scripts.Player
             Instance = this;
 
             rb = GetComponent<Rigidbody>();
+            footstepSounds = GetComponent<FootstepSounds>();
 
             // no tipping over, we handle rotation ourselves below
             rb.freezeRotation = true;
@@ -224,6 +226,7 @@ namespace _1A_Scripts.Player
                 );
 
                 animator.SetBool("isJumping", true);
+                footstepSounds?.PlayJumpSound();
             }
 
             }

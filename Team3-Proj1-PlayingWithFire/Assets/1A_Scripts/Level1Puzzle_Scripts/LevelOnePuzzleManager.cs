@@ -8,7 +8,7 @@ namespace _1A_Scripts
     /// This is a master script for all of Level One that controls puzzle behaviour. Puzzles may still have their own supporting scripts, but this is a 
     /// centralised way to reduce clutter in our main scripts so that they can be reused throughout the game.
     /// </summary>
-    public class LevelOnePuzzleManager : MonoBehaviour
+    public class LevelOnePuzzleManager : MonoBehaviour, IKeyCollector
     {
         public static LevelOnePuzzleManager Instance;
         public bool HasRedKey { get; private set; }
@@ -88,6 +88,8 @@ namespace _1A_Scripts
                     break;
             }
         }
+
+        public void CollectKey(string color) => CollectKeys(color); // so Keys.cs can call any level's manager through IKeyCollector
 
         public void CollectKeys(string color)
         {
