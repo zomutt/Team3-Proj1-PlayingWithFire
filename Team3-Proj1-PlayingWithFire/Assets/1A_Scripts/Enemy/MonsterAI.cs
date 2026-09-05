@@ -42,10 +42,8 @@ namespace _1A_Scripts.Enemy
         private int currentHealth;
 
         [Header("Death")]
-        // Monster02_Die.anim (InPlace variant) is exactly 1s long. Kept as a field, not hardcoded,
-        // in case the clip changes -- update this to match if it ever does.
-        [SerializeField] private float deathAnimDuration = 1f;
-        [SerializeField] private float deathFloorTime = 3f; // how long he lies there after the anim before Destroy
+        [SerializeField] private float deathAnimDuration = 1f; // Monster02_Die.anim's actual length
+        [SerializeField] private float deathFloorTime = 3f; // how long he lies there before Destroy
 
         [Header("Audio")] 
         private AudioSource audioSource;
@@ -153,16 +151,12 @@ namespace _1A_Scripts.Enemy
             PlayRandomClip(aggroClip);
         }
 
-        // Guards against the prefab not having an AudioSource (throws otherwise) and an empty
-        // clip array -- a thrown exception here used to be able to skip whatever ran after it,
-        // e.g. Die()'s actual death trigger/Destroy call.
-        private void PlayRandomClip(AudioClip[] clips)
+        private void PlayRandomClip(AudioClip[] clips) // no-ops without an AudioSource or clips, doesn't throw
         {
             if (!audioSource || clips == null || clips.Length == 0) return;
             audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
         }
 
-        // Still slides some even with this -- probably needs an Animator-side fix, not a code one. (Yes. This was indeed the answer.)
         private void RotateTowardsMovement()
         {
             Vector3 direction = agent.desiredVelocity;
@@ -240,30 +234,35 @@ namespace _1A_Scripts.Enemy
 
             // Death can land mid-chase soooo... We gotta make it chill.
             animator.speed = 1f;
-
-            // Dying mid-chase/attack left IsWalking or IsAttacking stuck true, which was enough
-            // for a bool-gated transition to pull him right back out of Die once it let go --
-            // looked like he stood back up. Clearing them didn't fix it either, so something in
-            // the Animator Controller itself leaves the Die state unconditionally -- that needs
-            // an actual Animator-graph fix. Duct tape for now: freeze the Animator on a fixed
-            // timer instead. Polling the Animator's own state to decide when to freeze was racing
-            // the same bug (it can leave Die before the clip visually finishes), so this waits a
-            // known duration instead of asking the broken state machine what it's doing.
             animator.SetBool(IsWalking, false);
             animator.SetBool(IsAttacking, false);
             animator.SetTrigger(Die1);
-            StartCoroutine(FreezeAfterDeathAnim());
+            StartCoroutine(FreezeAfterDeathAnim()); // safety net, see below
 
-            // Full lifetime = the death anim playing, then deathFloorTime lying there before he's removed.
+            RemoveColliders();
+
             Destroy(gameObject, deathAnimDuration + deathFloorTime);
 
             PlayRandomClip(deathClip); // after the trigger/Destroy -- a missing AudioSource shouldn't be able to skip those
         }
 
-        private IEnumerator FreezeAfterDeathAnim()
+        private void RemoveColliders()
+        {
+            foreach (Collider col in GetComponentsInChildren<Collider>())
+            {
+                Destroy(col);
+            }
+
+            foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+            {
+                Destroy(col);
+            }
+        }
+
+        private IEnumerator FreezeAfterDeathAnim() // fixed the graph bug that caused this, keeping it as a backstop
         {
             yield return new WaitForSeconds(deathAnimDuration);
-            animator.enabled = false; // locks him on whatever pose he's on so he can't transition out of Die
+            animator.enabled = false;
         }
 
         private IEnumerator Iframe()

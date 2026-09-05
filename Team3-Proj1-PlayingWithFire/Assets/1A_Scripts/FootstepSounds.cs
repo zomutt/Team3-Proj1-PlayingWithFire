@@ -1,3 +1,4 @@
+using _1A_Scripts.Player;
 using UnityEngine;
 
 namespace _1A_Scripts
@@ -13,10 +14,12 @@ namespace _1A_Scripts
         [SerializeField] private float stepInterval = 0.45f;
         [SerializeField] private float referenceSpeed = 6f;    // above this and the steps come quicker
         [SerializeField] private float minSpeedToStep = 0.1f;  // Go slow, go fast, who cares? You runnin', babe. Till you're not. :)
+        [SerializeField] private float airborneVelocityThreshold = 0.5f; // above this Y speed, he's airborne not walking
 
         private const float SpeedSampleWindow = 0.1f; // averaged over this long so a Rigidbody's FixedUpdate ticks don't spike a single frame's reading
 
         private AudioSource audioSource;
+        private PlayerMovement playerMovement; // null on an enemy -- IsGrounded() just treats that as always-grounded
         private Vector3 sampleStartPosition;
         private float sampleTimer;
         private float speed;
@@ -27,6 +30,7 @@ namespace _1A_Scripts
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            playerMovement = GetComponent<PlayerMovement>();
             sampleStartPosition = transform.position;
         }
 
@@ -40,7 +44,7 @@ namespace _1A_Scripts
                 sampleTimer = 0f;
             }
 
-            if (speed < minSpeedToStep)
+            if (speed < minSpeedToStep || !IsGrounded())
             {
                 stepTimer = 0f;
                 return;
@@ -50,11 +54,15 @@ namespace _1A_Scripts
 
             float interval = stepInterval * (referenceSpeed / speed);
 
-            if (stepTimer >= interval)
-            {
-                stepTimer = 0f;
-                PlayRandomFootstep();
-            }
+            if (!(stepTimer >= interval)) return;
+            stepTimer = 0f;
+            PlayRandomFootstep();
+        }
+
+        private bool IsGrounded()
+        {
+            if (!playerMovement) return true;
+            return Mathf.Abs(playerMovement.VerticalVelocity) < airborneVelocityThreshold;
         }
 
         private void PlayRandomFootstep()

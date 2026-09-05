@@ -45,11 +45,7 @@ namespace _1A_Scripts
 
             if (audioClip)
             {
-                // Not audioSource.PlayOneShot -- deactivating this object right below would cut
-                // the sound off instantly, since disabling a GameObject stops everything on it,
-                // including audio already playing. PlayClipAtPoint spawns its own short-lived
-                // object to play the clip, so it survives this one being deactivated.
-                AudioSource.PlayClipAtPoint(audioClip, transform.position);
+                AudioSource.PlayClipAtPoint(audioClip, transform.position); // SetActive(false) below would cut PlayOneShot off mid-sound
             }
 
             gameObject.SetActive(false);

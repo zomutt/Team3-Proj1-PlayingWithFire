@@ -30,6 +30,7 @@ namespace _1A_Scripts.Player
         public bool IsMoving => canMove && moveInput.sqrMagnitude > 0.01f; // for Princess's animator to read
         public bool IsGrounded => isGrounded;
         public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
+        public float VerticalVelocity => rb.linearVelocity.y; // for FootstepSounds' airborne check
 
         private Rigidbody rb;
         private FootstepSounds footstepSounds;

@@ -49,10 +49,7 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
                 Turn();
             }
 
-            // Runs every frame regardless of when the last keypress landed, so the valve keeps
-            // easing towards pendingTargetAngle instead of only advancing by one frame's worth
-            // the instant E is pressed (which just looked like an instant jump per turn).
-            if (!Mathf.Approximately(currentAngle, pendingTargetAngle))
+            if (!Mathf.Approximately(currentAngle, pendingTargetAngle)) // eases every frame instead of jumping on keypress
             {
                 currentAngle = Mathf.MoveTowards(currentAngle, pendingTargetAngle, rotationSpeed * Time.deltaTime);
                 valve.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);

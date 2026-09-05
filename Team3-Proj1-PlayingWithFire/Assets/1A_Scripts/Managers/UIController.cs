@@ -1,5 +1,4 @@
 using System.Collections;
-using _1A_Scripts.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -12,37 +11,47 @@ namespace _1A_Scripts.Managers
         public static UIController Instance { get; private set; }
 
         private const string CreditsScene = "Credits";        // Const string for the name of the credits scene, so we don't have to hardcode it in multiple places -- it basically lives forever
-        private const string Level1Scene = "Christie_BuildScene";
+        private const string Level1Scene = "LevelOne";
+        private const string Level2Scene = "LevelTwo";
+        private const string Level3Scene = "LevelThree";
         private const string MainMenuScene = "MainMenu";
 
         private static string previousScene;         // Also persists between scenes, so we can go back to the previous scene when we open the credits or help menu, except is shared between other objects
 
+        [Header("Panels")]
         [SerializeField] private GameObject helpPanel;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject confirmQuitPanel;
         [SerializeField] private GameObject settingsPanel;
 
         [SerializeField] private GameObject HintCanvas;
-
+        
+        [Header("Keys")]
         [FormerlySerializedAs("keyCellRed")] [SerializeField] private GameObject keyRed;
         [FormerlySerializedAs("keyCrushBlue")] [SerializeField] private GameObject keyBlue;
         [FormerlySerializedAs("keyFountainGreen")] [SerializeField] private GameObject keyGreen;
         [FormerlySerializedAs("keyRunPurple")] [SerializeField] private GameObject keyPurple;
 
-        [SerializeField] private GameObject invPanel;
-
+        [Header("Fade Panels")]
         [SerializeField] private GameObject fadePanel;
         [SerializeField] private float fadeDuration = 0.5f;
 
-        [SerializeField] private GameObject[] closeAllOnStart;   // Array to hold the key icons for easy management
+        [Header("Bulk")]
+        [SerializeField] private GameObject[] closeAllOnStart;   
+        [SerializeField] private GameObject[] openAllOnStart;    
         [SerializeField] private GameObject mmHelpPanel; // Help panel for the main menu
 
+        [Header("Health")] 
+        [SerializeField] private Image[] hearts;
+        private SpriteRenderer sr;
+        private SpriteRenderer originalSr;
+
         private Image fadeImage;
-        private bool isMenuOpen = false; // Track whether the menu is open or closed
+        private bool isMenuOpen = false;
 
         private void Awake()
         {
-            if (Instance != null)
+            if (Instance)
             {
                 Destroy(gameObject);
                 return;
@@ -57,6 +66,45 @@ namespace _1A_Scripts.Managers
             DontDestroyOnLoad(gameObject);
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            FindHintCanvas(); // HintCanvas does not persist through scenes (caused issues), so we have to find it each time we start a level.
+            
+            sr = hearts[0].GetComponent<SpriteRenderer>();   // We only need to store one because they are all the same
+        }
+        
+        private void DisableAll()
+        {
+            foreach (var obj in closeAllOnStart)
+            {
+                obj.SetActive(false);
+            }
+        }
+
+        private void EnableAll()
+        {
+            foreach (var obj in openAllOnStart)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (var heart in hearts)
+            {
+                heart.gameObject.SetActive(true);
+            }
+        }
+
+        private void FindHintCanvas()
+        {
+            HelpHints hintScript = FindFirstObjectByType<HelpHints>();
+            if (hintScript)
+            {
+                HintCanvas = hintScript.gameObject;
+                HintCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("no HelpHints found in this scene");
+            }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -104,36 +152,9 @@ namespace _1A_Scripts.Managers
                 Debug.LogWarning("no settings panel assigned");
             }
 
-            if (invPanel)
-            {
-                invPanel.SetActive(true);
-            }
-
-            if (closeAllOnStart != null)
-            {
-                foreach (var obj in closeAllOnStart)
-                {
-                    if (obj != null)
-                    {
-                        obj.SetActive(false);
-                    }
-                }
-            }
-            else
-            {
-                Debug.LogWarning("no key icons assigned");
-            }
-
-            HelpHints hintScript = FindFirstObjectByType<HelpHints>();
-            if (hintScript)
-            {
-                HintCanvas = hintScript.gameObject;
-                HintCanvas.SetActive(true);
-            }
-            else
-            {
-                Debug.LogWarning("no HelpHints found in this scene");
-            }
+            DisableAll();
+            EnableAll();
+            FindHintCanvas();
         }
 
         private void Update()
@@ -205,23 +226,42 @@ namespace _1A_Scripts.Managers
 
         public void UpdateKeys(string color)
         {
-            if (color == "red" && keyRed != null)
+            switch (color)
             {
-                keyRed.SetActive(true);
-            }
-            else if (color == "purple" && keyPurple != null)
-            {
-                keyPurple.SetActive(true);
-            }
-            else if (color == "blue" && keyBlue != null)
-            {
-                keyBlue.SetActive(true);
-            }
-            else if (color == "green" && keyGreen != null)
-            {
-                keyGreen.SetActive(true);
+                case "red" when keyRed:
+                    keyRed.SetActive(true);
+                    break;
+                case "purple" when keyPurple:
+                    keyPurple.SetActive(true);
+                    break;
+                case "blue" when keyBlue:
+                    keyBlue.SetActive(true);
+                    break;
+                case "green" when keyGreen:
+                    keyGreen.SetActive(true);
+                    break;
             }
         }
+
+        public void UpdateHealthDisplay(int currentHealth)
+        {
+            Color lostHeartColor = Color.black;
+            lostHeartColor.a = 0.5f;   // 50% transparency
+
+            // Redraws every heart every time instead of only the one that changed -- way less annoying than trying to track what was already lit up.
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i < currentHealth)
+                {
+                    hearts[i].color = Color.white; // still got this heart
+                }
+                else
+                {
+                    hearts[i].color = lostHeartColor; // rip :(
+                }
+            }
+        }
+
         public void OnClickTogglePause()
         {
             if (!GameManager.Instance)
@@ -285,7 +325,7 @@ namespace _1A_Scripts.Managers
                 return;
             }
 
-            bool opening = !helpPanel.activeSelf;
+            var opening = !helpPanel.activeSelf;
             helpPanel.SetActive(opening);
 
             if (GameManager.Instance)
@@ -347,6 +387,16 @@ namespace _1A_Scripts.Managers
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SceneManager.LoadScene(MainMenuScene);
+        }
+
+        public void OnClickRestartLevel()      // Start the current level over from scratch
+        {
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.ResetForNewGame();
+            }
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void OnClickQuitGame()      // Are you sure you want to quit?
@@ -418,10 +468,6 @@ namespace _1A_Scripts.Managers
             if (mmHelpPanel)
             {
                 mmHelpPanel.SetActive(!mmHelpPanel.activeSelf);
-            }
-            else
-            {
-                Debug.LogWarning("where's the help panel lol");
             }
         }
     }
