@@ -8,13 +8,15 @@ namespace _1A_Scripts
         [SerializeField] private GameObject CollectImg;
         [SerializeField] private GameObject UseFireImg;
         [SerializeField] private GameObject AvoidImg;
-        [SerializeField] private GameObject EndLevel;
+        [SerializeField] private GameObject EndLevelImg;
+        [SerializeField] private GameObject StatuesImg;
         [SerializeField] private GameObject[] allPanels;   // For activating and deactivating
         public enum HintPanels
         {
             Collect,
             UseFire,
             Avoid,
+            Statues,
             EndLevel
         }
 
@@ -49,7 +51,8 @@ namespace _1A_Scripts
             CollectImg.SetActive(hintType == HintPanels.Collect);
             UseFireImg.SetActive(hintType == HintPanels.UseFire);
             AvoidImg.SetActive(hintType == HintPanels.Avoid);
-            EndLevel.SetActive(hintType == HintPanels.EndLevel);
+            StatuesImg.SetActive(hintType == HintPanels.Statues);
+            EndLevelImg.SetActive(hintType == HintPanels.EndLevel);
         }
     }
 }
