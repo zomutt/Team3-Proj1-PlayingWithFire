@@ -14,6 +14,7 @@ namespace _1A_Scripts
         [SerializeField] private GameObject Enemy2Img;
         [SerializeField] private GameObject JumpImg;
         [SerializeField] private GameObject ValveImg;
+        [SerializeField] private GameObject KingImg;
         
         [Header("Bulk")]
         [SerializeField] private GameObject[] allPanels;   // For activating and deactivating
@@ -26,13 +27,12 @@ namespace _1A_Scripts
             EndLevel,
             Enemies2,
             Jump,
-            Valve
+            Valve,
+            King
         }
 
         private void Awake()
         {
-            // Scene-local on purpose -- each level has its own hint images, and UIController already
-            // re-finds whichever HelpHints belongs to the scene that just loaded.
             if (!Instance)
                 Instance = this;
             else
@@ -66,6 +66,7 @@ namespace _1A_Scripts
             Enemy2Img.SetActive(hintType == HintPanels.Enemies2);
             JumpImg.SetActive(hintType == HintPanels.Jump);
             ValveImg.SetActive(hintType == HintPanels.Valve);
+            KingImg.SetActive(hintType == HintPanels.King);
         }
     }
 }

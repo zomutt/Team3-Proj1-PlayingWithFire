@@ -1,4 +1,5 @@
 using System.Collections;
+using _1A_Scripts.Managers;
 using UnityEngine;
 
 namespace _1A_Scripts.Player
@@ -36,13 +37,15 @@ namespace _1A_Scripts.Player
         private void Start()
         {
             playerHealth = playerMaxHealth;
+            UIController.Instance.UpdateHealthDisplay();
         }
         
-        public void HealPlayer(float healAmount)
+        public void HealPlayer(int healAmount)
         {
             if (playerHealth + healAmount > playerMaxHealth) return;
 
             playerHealth += healAmount;
+            UIController.Instance.UpdateHealthDisplay();
         }
 
         // Player survives scene loads (DontDestroyOnLoad'd along with the rest of the Player object),
@@ -51,6 +54,7 @@ namespace _1A_Scripts.Player
         {
             playerHealth = playerMaxHealth;
             canTakeDamage = true;
+            UIController.Instance.UpdateHealthDisplay();
         }
         
         public void TakeDamage(float damageAmount)
@@ -59,6 +63,7 @@ namespace _1A_Scripts.Player
             
             playerHealth -= damageAmount;
             StartCoroutine(Iframe());
+            UIController.Instance.UpdateHealthDisplay();
         }
 
         private IEnumerator Iframe()

@@ -1,4 +1,5 @@
 using System.Collections;
+using _1A_Scripts.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -42,13 +43,13 @@ namespace _1A_Scripts.Managers
         [SerializeField] private GameObject mmHelpPanel; // Help panel for the main menu
 
         [Header("Health")] 
-        [SerializeField] private Image[] hearts;
-        private SpriteRenderer sr;
-        private SpriteRenderer originalSr;
+        [SerializeField] private Image healthBar;
 
         private Image fadeImage;
         private bool isMenuOpen = false;
 
+        [Header("Level 3")]
+        public Image note;
         private void Awake()
         {
             if (Instance)
@@ -68,8 +69,6 @@ namespace _1A_Scripts.Managers
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             FindHintCanvas(); // HintCanvas does not persist through scenes (caused issues), so we have to find it each time we start a level.
-            
-            sr = hearts[0].GetComponent<SpriteRenderer>();   // We only need to store one because they are all the same
         }
         
         private void DisableAll()
@@ -78,6 +77,7 @@ namespace _1A_Scripts.Managers
             {
                 obj.SetActive(false);
             }
+            note.gameObject.SetActive(false);
         }
 
         private void EnableAll()
@@ -87,10 +87,7 @@ namespace _1A_Scripts.Managers
                 obj.SetActive(true);
             }
 
-            foreach (var heart in hearts)
-            {
-                heart.gameObject.SetActive(true);
-            }
+            healthBar.gameObject.SetActive(true);
         }
 
         private void FindHintCanvas()
@@ -243,23 +240,9 @@ namespace _1A_Scripts.Managers
             }
         }
 
-        public void UpdateHealthDisplay(int currentHealth)
+        public void UpdateHealthDisplay()
         {
-            Color lostHeartColor = Color.black;
-            lostHeartColor.a = 0.5f;   // 50% transparency
-
-            // Redraws every heart every time instead of only the one that changed -- way less annoying than trying to track what was already lit up.
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i < currentHealth)
-                {
-                    hearts[i].color = Color.white; // still got this heart
-                }
-                else
-                {
-                    hearts[i].color = lostHeartColor; // rip :(
-                }
-            }
+            healthBar.fillAmount = PlayerCombat.Instance.PlayerHealth / PlayerCombat.Instance.PlayerMaxHealth;
         }
 
         public void OnClickTogglePause()

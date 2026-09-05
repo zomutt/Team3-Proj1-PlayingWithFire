@@ -1,44 +1,47 @@
 using UnityEngine;
 
-public class WaterProjectile : MonoBehaviour // attach to enemy
+namespace _1A_Scripts.Level_3_scripts
 {
-    [SerializeField] private GameObject waterOrbPrefab;
-    [SerializeField] private Transform firePoint; // only if you want to make the point different than the object it's attached to
-
-    [SerializeField] private int orbCount = 6;
-    [SerializeField] private float orbSpeed = 8f;
-    [SerializeField] private float orbLifetime = 4f; // in case orb doesn't hit anything that destroys it, it goes away after 4 seconds
-
-    [SerializeField] private float fireInterval = 6f;
-
-    private float fireTimer;
-
-    private void Update()
+    public class WaterProjectile : MonoBehaviour // attach to enemy
     {
-        fireTimer += Time.deltaTime;
+        [SerializeField] private GameObject waterOrbPrefab;
+        [SerializeField] private Transform firePoint; // only if you want to make the point different than the object it's attached to
 
-        if (fireTimer >= fireInterval)
+        [SerializeField] private int orbCount = 6;
+        [SerializeField] private float orbSpeed = 8f;
+        [SerializeField] private float orbLifetime = 4f; // in case orb doesn't hit anything that destroys it, it goes away after 4 seconds
+
+        [SerializeField] private float fireInterval = 6f;
+
+        private float fireTimer;
+
+        private void Update()
         {
-            fireTimer = 0f;
-            FireRing();
-        } 
-    } // fires as soon as the interval is over
+            fireTimer += Time.deltaTime;
 
-    private void FireRing()
-    {
-        Vector3 origin = firePoint != null ? firePoint.position : transform.position;
+            if (fireTimer >= fireInterval)
+            {
+                fireTimer = 0f;
+                FireRing();
+            } 
+        } // fires as soon as the interval is over
 
-        for (int i = 0; i < orbCount; i++)
+        private void FireRing()
         {
-            float angle = (360f / orbCount) * i;
-            Vector3 direction = Quaternion.Euler(0f, angle, 0f) * transform.forward; // adjusts ring to fit the amount of orbs 
+            Vector3 origin = firePoint != null ? firePoint.position : transform.position;
 
-            GameObject orb = Instantiate(waterOrbPrefab, origin, Quaternion.LookRotation(direction));
+            for (int i = 0; i < orbCount; i++)
+            {
+                float angle = (360f / orbCount) * i;
+                Vector3 direction = Quaternion.Euler(0f, angle, 0f) * transform.forward; // adjusts ring to fit the amount of orbs 
 
-            Rigidbody rb = orb.GetComponent<Rigidbody>();
-            rb.linearVelocity = direction * orbSpeed;
+                GameObject orb = Instantiate(waterOrbPrefab, origin, Quaternion.LookRotation(direction));
 
-            Destroy(orb, orbLifetime);
+                Rigidbody rb = orb.GetComponent<Rigidbody>();
+                rb.linearVelocity = direction * orbSpeed;
+
+                Destroy(orb, orbLifetime);
+            }
         }
     }
 }
