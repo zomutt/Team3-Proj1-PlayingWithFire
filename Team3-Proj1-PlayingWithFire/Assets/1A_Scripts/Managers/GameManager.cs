@@ -1,4 +1,5 @@
 using _1A_Scripts.Player;
+using _1A_Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -69,6 +70,30 @@ namespace _1A_Scripts.Managers
         public static void RespawnPlayer()
         {
             PlayerController.Instance.Respawn();
+        }
+
+        // Player survives scene loads (DontDestroyOnLoad) -- this is the one place that clears its
+        // state (and any leftover HelpHints panel) so a new playthrough doesn't start still hurt/
+        // keyed-up/paused from the last run.
+        public void ResetForNewGame()
+        {
+            Time.timeScale = 1f;
+            IsPaused = false;
+
+            if (PlayerController.Instance)
+            {
+                PlayerController.Instance.ResetCheckpoint();
+            }
+
+            if (PlayerCombat.Instance)
+            {
+                PlayerCombat.Instance.ResetHealth();
+            }
+
+            if (HelpHints.Instance)
+            {
+                HelpHints.Instance.DisableAll();
+            }
         }
 
         public void WinLevel()

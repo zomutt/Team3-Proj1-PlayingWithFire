@@ -9,10 +9,11 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
     /// </summary>
     public class StatuePuzzle : FireReceiver
     {
-        [SerializeField] private GameObject poiRing;
+        public GameObject poiRing;
         [SerializeField] private float rotateHoldTime = 0.05f;  // How long to hold fire to trigger one 45 degree turn.
         [SerializeField] private float rotateDuration = 0.1f;   // How long the 45 degree turn itself takes to play out.
         [SerializeField] private float targetFacingAngle = 180f; // how far from the starting rotation counts as "facing away"
+        [SerializeField] private GameObject flame;
 
         private float fireProgress;
         private bool rotating;
@@ -23,7 +24,12 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
         {
             if (poiRing)
             {
-                poiRing.SetActive(true);
+                poiRing.SetActive(false);
+            }
+
+            if (flame)
+            {
+                flame.SetActive(false);
             }
         }
 
@@ -69,6 +75,7 @@ namespace _1A_Scripts.Level1Puzzle_Scripts
             if (poiRing)
             {
                 poiRing.SetActive(false);
+                flame.SetActive(true);
             }
             StatueManager.Instance.StatueSolved();
         }

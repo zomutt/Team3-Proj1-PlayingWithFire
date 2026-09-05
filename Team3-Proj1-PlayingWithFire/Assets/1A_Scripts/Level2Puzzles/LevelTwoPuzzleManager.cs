@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _1A_Scripts.Level2Puzzles
 {
-    public class LevelTwoPuzzleManager : MonoBehaviour
+    public class LevelTwoPuzzleManager : MonoBehaviour, IKeyCollector
     {
         public static LevelTwoPuzzleManager Instance;
 
@@ -54,6 +54,11 @@ namespace _1A_Scripts.Level2Puzzles
 
         private void ActivateAll()
         {
+            if (ActivateOnStart == null)
+            {
+                Debug.LogWarning($"{gameObject} has no keys attached!");
+                return;
+            }
             foreach (var go in ActivateOnStart)
             {
                 go.SetActive(true);

@@ -30,8 +30,10 @@ namespace _1A_Scripts.Player
         public bool IsMoving => canMove && moveInput.sqrMagnitude > 0.01f; // for Princess's animator to read
         public bool IsGrounded => isGrounded;
         public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
+        public float VerticalVelocity => rb.linearVelocity.y; // for FootstepSounds' airborne check
 
         private Rigidbody rb;
+        private FootstepSounds footstepSounds;
         private Vector2 moveInput;
         private bool isSprinting;
         private bool isGrounded;
@@ -40,9 +42,15 @@ namespace _1A_Scripts.Player
 
         private void Awake()
         {
+            if (Instance)
+            {
+                Destroy(gameObject);
+                return;
+            }
             Instance = this;
 
             rb = GetComponent<Rigidbody>();
+            footstepSounds = GetComponent<FootstepSounds>();
 
             // no tipping over, we handle rotation ourselves below
             rb.freezeRotation = true;
@@ -219,6 +227,7 @@ namespace _1A_Scripts.Player
                 );
 
                 animator.SetBool("isJumping", true);
+                footstepSounds?.PlayJumpSound();
             }
 
             }

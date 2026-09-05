@@ -24,7 +24,9 @@ public class CrushPuzzle : FireReceiver
 
     [SerializeField] float burnTime = 3f;  // How long the object must be on fire before it falls.
     [SerializeField] float screamDelay; // Delay before the scream sound plays after the object is hit by fire.
+    [SerializeField] float wobbleForgiveness = 0.2f; // brief gaps in raycast contact (aim wobble) still count as burning, up to this many seconds
     private float burnProgress;
+    private float lastFireTime = -1f;
     private bool isBurning;
     private bool canBurn = true;   // Can't kill a mob with fire and a pillar twice, now can you?
 
@@ -50,7 +52,11 @@ public class CrushPuzzle : FireReceiver
             return;
         }
 
-        burnProgress += Time.deltaTime;
+        // credit the real time since the last successful hit, not just the last frame --
+        // a brief gap from aim wobble still counts as burning, capped so a genuine pause doesn't
+        float sinceLastHit = (lastFireTime < 0f) ? Time.deltaTime : Time.time - lastFireTime;
+        burnProgress += Mathf.Min(sinceLastHit, wobbleForgiveness);
+        lastFireTime = Time.time;
 
         if (burnProgress >= burnTime)
         {

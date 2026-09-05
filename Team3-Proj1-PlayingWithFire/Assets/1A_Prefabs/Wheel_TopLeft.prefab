@@ -273,7 +273,7 @@ MonoBehaviour:
   promptDisplay: {fileID: 8736779021882406950}
   maxTurns: 1
   targetAngle: 180
-  rotationSpeed: 2
+  rotationSpeed: 90
   creakSound: {fileID: 8300000, guid: 67e93c7992649724dbe0d8f14c2c7ebb, type: 3}
   valve: {fileID: 6106877204710882617}
 --- !u!65 &1535784990058764745

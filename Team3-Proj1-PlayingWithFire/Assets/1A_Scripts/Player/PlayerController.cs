@@ -11,10 +11,12 @@ namespace _1A_Scripts.Player
 
         [SerializeField] private Transform respawnPoint1;
         [SerializeField] private Transform respawnPoint2;
+        [SerializeField] private Transform respawnPoint3;
         
         private AudioSource audioSource;
         [SerializeField] private AudioClip respawnClip;
         public bool hasHitCP2;
+        public bool hasHitCP3;
 
         private int keysCollected;
         public int KeysCollected => keysCollected;
@@ -28,7 +30,7 @@ namespace _1A_Scripts.Player
                 Destroy(gameObject);
                 return;
             }
-
+            DontDestroyOnLoad(gameObject);
             Instance = this;
             audioSource = GetComponent<AudioSource>();
         }
@@ -37,6 +39,7 @@ namespace _1A_Scripts.Player
         {
             keysCollected = 0; // Initialize keys collected to 0 at the start of the game
             hasHitCP2 = false;
+            hasHitCP3 = false;
         }
 
         public void HitRespawn()
@@ -44,9 +47,16 @@ namespace _1A_Scripts.Player
             hasHitCP2 = true;
         }
 
+        public void HitRespawn3()
+        {
+            hasHitCP3 = true;
+        }
+
         public void ResetCheckpoint()
         {
             hasHitCP2 = false;
+            hasHitCP3 = false;
+            keysCollected = 0; // player object survives scene loads, so a new run needs this cleared too
         }
         public void AddKey()
         {
@@ -54,7 +64,10 @@ namespace _1A_Scripts.Player
         }
         public void Respawn()
         {
-            audioSource.PlayOneShot(respawnClip);
+            if (audioSource && respawnClip)
+            {
+                audioSource.PlayOneShot(respawnClip);
+            }
             StartCoroutine(RespawnRoutine());
         }
 
@@ -64,14 +77,18 @@ namespace _1A_Scripts.Player
 
             yield return UIController.Instance.FadeOut();
 
-            // screen's fully black now, safe to teleport
-            if (!hasHitCP2)
+            // screen's fully black now, safe to teleport -- respawn at the furthest checkpoint reached
+            if (hasHitCP3)
             {
-                yield return PlayerMovement.Instance.Teleport(respawnPoint1.position);
+                yield return PlayerMovement.Instance.Teleport(respawnPoint3.position);
             }
             else if (hasHitCP2)
             {
                 yield return PlayerMovement.Instance.Teleport(respawnPoint2.position);
+            }
+            else
+            {
+                yield return PlayerMovement.Instance.Teleport(respawnPoint1.position);
             }
 
             // otherwise the camera eases toward the new spot instead of just being there already

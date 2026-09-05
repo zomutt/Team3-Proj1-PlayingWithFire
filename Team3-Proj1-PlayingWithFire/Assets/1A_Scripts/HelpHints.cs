@@ -5,11 +5,18 @@ namespace _1A_Scripts
     public class HelpHints : MonoBehaviour
     {
         public static HelpHints Instance;
+        [Header("Panels")]
         [SerializeField] private GameObject CollectImg;
         [SerializeField] private GameObject UseFireImg;
         [SerializeField] private GameObject AvoidImg;
         [SerializeField] private GameObject EndLevelImg;
         [SerializeField] private GameObject StatuesImg;
+        [SerializeField] private GameObject Enemy2Img;
+        [SerializeField] private GameObject JumpImg;
+        [SerializeField] private GameObject ValveImg;
+        [SerializeField] private GameObject KingImg;
+        
+        [Header("Bulk")]
         [SerializeField] private GameObject[] allPanels;   // For activating and deactivating
         public enum HintPanels
         {
@@ -17,7 +24,11 @@ namespace _1A_Scripts
             UseFire,
             Avoid,
             Statues,
-            EndLevel
+            EndLevel,
+            Enemies2,
+            Jump,
+            Valve,
+            King
         }
 
         private void Awake()
@@ -28,7 +39,6 @@ namespace _1A_Scripts
             {
                 Destroy(gameObject);
             }
-            DontDestroyOnLoad(gameObject);
         }
         
         private void Start()
@@ -53,6 +63,10 @@ namespace _1A_Scripts
             AvoidImg.SetActive(hintType == HintPanels.Avoid);
             StatuesImg.SetActive(hintType == HintPanels.Statues);
             EndLevelImg.SetActive(hintType == HintPanels.EndLevel);
+            Enemy2Img.SetActive(hintType == HintPanels.Enemies2);
+            JumpImg.SetActive(hintType == HintPanels.Jump);
+            ValveImg.SetActive(hintType == HintPanels.Valve);
+            KingImg.SetActive(hintType == HintPanels.King);
         }
     }
 }
