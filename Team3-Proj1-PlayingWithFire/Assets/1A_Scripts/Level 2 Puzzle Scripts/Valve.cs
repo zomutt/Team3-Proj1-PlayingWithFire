@@ -9,6 +9,7 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
         [SerializeField] private int maxTurns = 2;
         [SerializeField] private float targetAngle = 180;   // Renamed for clarity and changed to 180 for more visible effect.
         private float currentAngle = 0f;
+        private float pendingTargetAngle = 0f;   // the notch currentAngle is currently easing towards
         [SerializeField] private float rotationSpeed = 2f;     // More control over VFX
         [SerializeField] private AudioClip creakSound;
         [SerializeField] private GameObject valve;
@@ -47,23 +48,26 @@ namespace _1A_Scripts.Level_2_Puzzle_Scripts
             {
                 Turn();
             }
+
+            // Runs every frame regardless of when the last keypress landed, so the valve keeps
+            // easing towards pendingTargetAngle instead of only advancing by one frame's worth
+            // the instant E is pressed (which just looked like an instant jump per turn).
+            if (!Mathf.Approximately(currentAngle, pendingTargetAngle))
+            {
+                currentAngle = Mathf.MoveTowards(currentAngle, pendingTargetAngle, rotationSpeed * Time.deltaTime);
+                valve.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
+            }
         } // just makes sure the conditions are met for player to turn
 
         private void Turn()
         {
             // Valve only because the pivot point is *not* set to the middle of the valve; this causes it to "jump".
-            // I also swapped the rotation code out completely for smoother flow.
-
-            // Smoothly moves the float towards the target angle.
-            currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
-            // Applies said float directly to the Euler angles. :)
-            valve.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
-            
             turnCount++;
+            pendingTargetAngle = targetAngle * turnCount / maxTurns;
 
             if (turnCount >= maxTurns)
             {
-                promptDisplay.gameObject.SetActive(false); 
+                promptDisplay.gameObject.SetActive(false);
             }
 
             LevelTwoPuzzleManager.Instance.CheckValves();

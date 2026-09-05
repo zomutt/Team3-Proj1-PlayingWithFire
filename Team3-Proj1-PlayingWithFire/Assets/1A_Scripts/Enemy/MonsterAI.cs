@@ -7,8 +7,7 @@ namespace _1A_Scripts.Enemy
 {
     /// <summary>
     /// This script handles enemy AI movement, animations, attack, etc etc
-    /// Honestly, it most works, but I'm not entirely sure which parts of it do or not.
-    /// He slidin' still :(
+    /// He slidin' still :( Gl;hf.
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
@@ -49,6 +48,9 @@ namespace _1A_Scripts.Enemy
 
         private const float AnimatedWalkSpeed = 1.832f; // The walk clips speed in m/s. God hates us. :^))
 
+        // If he needs to turn more than this many degrees, just snap to face the new direction instead of slowly turning -- a big turn take too long and looks like sliding.
+        private const float SnapTurnAngle = 100f;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
@@ -58,6 +60,9 @@ namespace _1A_Scripts.Enemy
 
             agent.speed = moveSpeed;
             agent.stoppingDistance = attackRange;
+
+            // Taking rotation over from the agent -- known Unity quirk
+            agent.updateRotation = false;
 
             // Snap onto the mesh if he spawns just barely off it. Trying to rule out positioning issues.
             if (!agent.isOnNavMesh && NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas))
@@ -121,12 +126,33 @@ namespace _1A_Scripts.Enemy
         {
             agent.isStopped = false;
             agent.SetDestination(player.position);
+            RotateTowardsMovement();
 
             // Keeps the walk clip's pace matched to how fast he's actually moving
             animator.speed = agent.velocity.magnitude / AnimatedWalkSpeed;
 
             animator.SetBool(IsWalking, true);
             animator.SetBool(IsAttacking, false);
+        }
+
+        // Still slides some even with this -- probably needs an Animator-side fix, not a code one.
+        private void RotateTowardsMovement()
+        {
+            Vector3 direction = agent.desiredVelocity;
+            direction.y = 0f;
+            if (direction.sqrMagnitude < 0.0001f) return;
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            if (Quaternion.Angle(transform.rotation, targetRotation) > SnapTurnAngle)
+            {
+                transform.rotation = targetRotation;
+            }
+            else
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
+                    agent.angularSpeed * Time.deltaTime);
+            }
         }
 
         private void AttackPlayer() // Only triggered when close enough to player (very close, melee range)
@@ -180,8 +206,11 @@ namespace _1A_Scripts.Enemy
         {
             isDead = true;
             agent.isStopped = true;
+
+            // Death can land mid-chase soooo... We gotta make it chill.
+            animator.speed = 1f;
             animator.SetTrigger(Die1);
-            Destroy(gameObject, 3f); // Allows the animation to actually play. Might get tweaked.
+            Destroy(gameObject, 3f);   // 3f allows the animation to actually play. Might get tweaked.
         }
 
         private IEnumerator Iframe()

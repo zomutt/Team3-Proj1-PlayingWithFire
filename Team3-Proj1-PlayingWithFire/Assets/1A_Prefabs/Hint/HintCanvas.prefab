@@ -1245,9 +1245,9 @@ MonoBehaviour:
   AvoidImg: {fileID: 4232264049901472697}
   EndLevelImg: {fileID: 1916976165763405031}
   StatuesImg: {fileID: 6671488614362782395}
-  Enemy2Img: {fileID: 0}
-  JumpImg: {fileID: 0}
-  ValveImg: {fileID: 0}
+  Enemy2Img: {fileID: 2539498611926076167}
+  JumpImg: {fileID: 4531192430225161207}
+  ValveImg: {fileID: 7975946913795211321}
   allPanels:
   - {fileID: 1383252138207788855}
   - {fileID: 4232264049901472697}
