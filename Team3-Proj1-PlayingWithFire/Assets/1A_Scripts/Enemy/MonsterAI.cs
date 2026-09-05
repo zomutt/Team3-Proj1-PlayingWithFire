@@ -7,6 +7,8 @@ namespace _1A_Scripts.Enemy
 {
     /// <summary>
     /// This script handles enemy AI movement, animations, attack, etc etc
+    /// Honestly, it most works, but I'm not entirely sure which parts of it do or not.
+    /// He slidin' still :(
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
@@ -20,28 +22,30 @@ namespace _1A_Scripts.Enemy
 
         [Header("References")] [SerializeField]
         private Transform player;
-        private GameObject[] playerObjs;
 
-        [Header("Detection")] [SerializeField] private float chaseRange = 10f;
+        [Header("Detection")] 
+        [SerializeField] private float chaseRange = 10f;
         [SerializeField] private float attackRange = 2f;
-        [SerializeField] private float attackExitBuffer = 0.5f; // stops attack/chase flickering when distance sits right at attackRange
+        [SerializeField] private float attackExitBuffer = 0.5f; // Attempt to stop attack/chase flicker right at attackRange
         private bool isInAttackRange;
 
-        [Header("Movement")] [SerializeField] private float moveSpeed = 3f;
+        [Header("Movement")] 
+        [SerializeField] private float moveSpeed = 3f;
 
-        [Header("Combat")] [SerializeField] private float attackCooldown = 1.5f;
+        [Header("Combat")] 
+        [SerializeField] private float attackCooldown = 1.5f;
         [SerializeField] private int damage = 10;
         [SerializeField] private float iframe = .3f;
         private bool canBeAttacked;
 
-        [Header("Health")] [SerializeField] private int maxHealth = 30;
+        [Header("Health")] 
+        [SerializeField] private int maxHealth = 30;
         private int currentHealth;
 
         private Animator animator;
         private NavMeshAgent agent;
         private float lastAttackTime;
         private bool isDead;
-        private float nextSpeedLogTime; // TEMP: throttles the speed-debug log so it doesn't flood the console
 
         private const float AnimatedWalkSpeed = 1.832f; // The walk clips speed in m/s. God hates us. :^))
 
@@ -55,36 +59,19 @@ namespace _1A_Scripts.Enemy
             agent.speed = moveSpeed;
             agent.stoppingDistance = attackRange;
 
-            // TEMP diagnostic: find out exactly what Unity thinks is going on before we touch anything else.
-            bool foundNearby = NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas);
-            Debug.LogError($"[MonsterAI] pos={transform.position} isOnNavMesh={agent.isOnNavMesh} " +
-                           $"nearestValidPointFound={foundNearby} nearestPoint={hit.position} distanceToNearest={Vector3.Distance(transform.position, hit.position):F3}");
-
-            // The model's pivot can sit slightly off the baked mesh even when it looks flush with the
-            // floor visually -- snap onto the nearest valid point so isOnNavMesh doesn't come back false.
-            if (!agent.isOnNavMesh && foundNearby)
+            // Snap onto the mesh if he spawns just barely off it. Trying to rule out positioning issues.
+            if (!agent.isOnNavMesh && NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas))
             {
                 agent.Warp(hit.position);
             }
 
-            // TEMP diagnostic: find every "Player"-tagged object in the scene, in case there's more than one
-            // and FindGameObjectWithTag is quietly grabbing the wrong one.
-            playerObjs = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject obj in playerObjs)
-            {
-                Debug.LogError($"[MonsterAI] found Player-tagged object: {obj.name} at {obj.transform.position}");
-            }
+            if (player) return;
 
-            if (!player)
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj) // Sets target
             {
-                GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-                if (playerObj) // Sets target
-                {
-                    player = playerObj.transform;
-                }
+                player = playerObj.transform;
             }
-
-            Debug.LogError($"[MonsterAI] player assigned = {player != null}"); // TEMP diagnostic
         }
 
         private void Update()
@@ -94,25 +81,13 @@ namespace _1A_Scripts.Enemy
                 return;
             }
 
-            if (!agent.isOnNavMesh) // agent isn't on baked NavMesh data -- every agent call below would throw
-            {
-                return;
-            }
+            if (!agent.isOnNavMesh) return;
 
             var distance =
                 Vector3.Distance(transform.position,
                     player.position); // Literally just calculates the distance between the enemy and player to check for chase condition
 
-            if (Time.time >= nextSpeedLogTime) // TEMP diagnostic, throttled -- fires every frame-ish regardless of state
-            {
-                nextSpeedLogTime = Time.time + 0.3f;
-                Debug.Log($"[MonsterAI] LIVE distance={distance:F2} chaseRange={chaseRange} enemyPos={transform.position} playerPos={player.position} isInAttackRange={isInAttackRange}");
-            }
-
-            // Hysteresis: once he's committed to attacking, don't drop back out of it until the player is
-            // meaningfully farther away than attackRange. Otherwise tiny distance jitter right at the
-            // boundary flips Attack/Chase back and forth every frame. Uses the straight-line distance
-            // (not agent.remainingDistance) since that stays 0 until SetDestination has ever been called.
+            // So he doesn't flicker between attack/chase
             if (isInAttackRange)
             {
                 if (distance > attackRange + attackExitBuffer)
@@ -147,16 +122,8 @@ namespace _1A_Scripts.Enemy
             agent.isStopped = false;
             agent.SetDestination(player.position);
 
-            // NavMeshAgent accelerates/brakes instead of moving at a flat speed, so the walk clip's
-            // playback rate has to track real velocity each frame or it'll slide during those ramps.
+            // Keeps the walk clip's pace matched to how fast he's actually moving
             animator.speed = agent.velocity.magnitude / AnimatedWalkSpeed;
-
-            if (Time.time >= nextSpeedLogTime) // TEMP diagnostic, throttled
-            {
-                nextSpeedLogTime = Time.time + 0.3f;
-                Debug.Log($"[MonsterAI] agent.speed={agent.speed:F2} agent.velocity.magnitude={agent.velocity.magnitude:F2} " +
-                          $"animator.speed={animator.speed:F2} remainingDistance={agent.remainingDistance:F2} pathPending={agent.pathPending}");
-            }
 
             animator.SetBool(IsWalking, true);
             animator.SetBool(IsAttacking, false);
@@ -165,7 +132,7 @@ namespace _1A_Scripts.Enemy
         private void AttackPlayer() // Only triggered when close enough to player (very close, melee range)
         {
             agent.isStopped = true;
-            animator.speed = 1f; // combat/hit/death clips should always play at normal speed
+            animator.speed = 1f;
             animator.SetBool(IsWalking, false);
 
             bool cooldownIsOver =
