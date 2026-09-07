@@ -14,6 +14,7 @@ TagManager:
   - MyRig
   - Ground
   - Level3
+  - Walls
   layers:
   - Default
   - TransparentFX
