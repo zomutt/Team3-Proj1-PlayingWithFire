@@ -7,6 +7,9 @@ namespace _1A_Scripts.Level_3_scripts
         [SerializeField] private GameObject orbRed;
         [SerializeField] private GameObject fireVFX;
         [SerializeField] private GameObject poi;
+        [SerializeField] private float burnTime = 2f;
+        private float currentTime;
+        private bool isBurning;
 
 
         private void Start()
@@ -15,13 +18,29 @@ namespace _1A_Scripts.Level_3_scripts
             fireVFX.SetActive(false);
             
             poi.SetActive(true);
+            isBurning = false;
+            currentTime = 0f;
+        }
+
+        private void Update()
+        {
+            if (isBurning) return;
+            
+            currentTime += Time.deltaTime;
+            if (currentTime >= burnTime)
+                Ignite();
         }
 
         public override void ReceiveFire()
         {
-            poi.SetActive(false);
+            isBurning = true;
+        }
+
+        private void Ignite()
+        {
             orbRed.SetActive(true);
             fireVFX.SetActive(true);
+            poi.SetActive(false);
         }
     }
 }
