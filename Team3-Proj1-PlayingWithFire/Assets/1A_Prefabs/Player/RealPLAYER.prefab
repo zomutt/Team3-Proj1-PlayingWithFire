@@ -235,8 +235,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a998b0f2b4e624148ae2ede68244cf80, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.065
+  m_Pitch: 1.32
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -350,8 +350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_1A_Scripts.Player.PlayerCombat
   playerDamage: 10
-  playerMaxHealth: 30
-  playerHealth: 30
+  playerMaxHealth: 40
+  playerHealth: 40
   playerIframe: 0.2
 --- !u!114 &4251558973064241395
 MonoBehaviour:
@@ -394,6 +394,7 @@ MonoBehaviour:
   stepInterval: 0.45
   referenceSpeed: 3
   minSpeedToStep: 0.1
+  airborneVelocityThreshold: 0.5
 --- !u!1 &31947079406949919
 GameObject:
   m_ObjectHideFlags: 0
@@ -11959,8 +11960,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280277521763696304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2079059, y: -0.0072622, z: 0.0015436411, w: 0.9781207}
-  m_LocalPosition: {x: 0.08057588, y: 1.5453941, z: -5.4259834}
+  m_LocalRotation: {x: 0.14443882, y: 0.7035696, z: -0.14954832, w: 0.6795312}
+  m_LocalPosition: {x: -4.9595995, y: 1.4132596, z: 0.17244844}
   m_LocalScale: {x: 1.5590893, y: 1.5590897, z: 1.55909}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12084,7 +12085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EazyCamera.EazyCam
   _followTarget: {fileID: 2218785581367661626}
   _settings:
-    Distance: -3.81
+    Distance: -3.4842372
     DefaultRotation: {x: 24, y: 94.16}
     OrbitEnabled: 1
     MoveSpeed: 5

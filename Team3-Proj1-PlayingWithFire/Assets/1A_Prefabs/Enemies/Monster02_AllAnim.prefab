@@ -258,6 +258,8 @@ MonoBehaviour:
   damage: 10
   iframe: 0.3
   maxHealth: 30
+  deathAnimDuration: 1
+  deathFloorTime: 3
   hitClip:
   - {fileID: 8300000, guid: a0955358cf782e744bcfa52992f6e135, type: 3}
   - {fileID: 8300000, guid: bfb58e6b09a3bcb4b8530d445b10ba52, type: 3}
@@ -375,7 +377,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.503
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
