@@ -64,6 +64,10 @@ namespace _1A_Scripts.Player
             playerHealth -= damageAmount;
             StartCoroutine(Iframe());
             UIController.Instance.UpdateHealthDisplay();
+            if (playerHealth <= 0)
+            {
+                PlayerController.Instance.Respawn();
+            }
         }
 
         private IEnumerator Iframe()

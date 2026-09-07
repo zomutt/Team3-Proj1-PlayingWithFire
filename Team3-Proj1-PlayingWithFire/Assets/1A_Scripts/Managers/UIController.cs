@@ -290,7 +290,6 @@ namespace _1A_Scripts.Managers
         public void OnClickStartGame()      // ONLY for start menu.
         {
             // player, UI state, etc. all survive scene loads -- gotta wipe them or a fresh run starts
-            // still hurt/keyed-up/at CP2 like a liar
             if (GameManager.Instance)
             {
                 GameManager.Instance.ResetForNewGame();
@@ -361,7 +360,6 @@ namespace _1A_Scripts.Managers
 
         public void OnClickMainMenu()
         {
-            // same deal as start game -- catching it here too in case they rage quit to menu instead
             if (GameManager.Instance)
             {
                 GameManager.Instance.ResetForNewGame();
