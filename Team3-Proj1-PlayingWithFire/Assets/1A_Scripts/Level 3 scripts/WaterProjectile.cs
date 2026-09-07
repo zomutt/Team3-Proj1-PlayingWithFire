@@ -1,7 +1,11 @@
-using UnityEngine;
+ using System.Collections;
+ using UnityEngine;
 
 namespace _1A_Scripts.Level_3_scripts
 {
+    /// <summary>
+    /// Slightly modified to allow use of ObjectPooling because of performance concerns.
+    /// </summary>
     public class WaterProjectile : MonoBehaviour // attach to enemy
     {
         [SerializeField] private GameObject waterOrbPrefab;
@@ -35,12 +39,9 @@ namespace _1A_Scripts.Level_3_scripts
                 float angle = (360f / orbCount) * i;
                 Vector3 direction = Quaternion.Euler(0f, angle, 0f) * transform.forward; // adjusts ring to fit the amount of orbs 
 
-                GameObject orb = Instantiate(waterOrbPrefab, origin, Quaternion.LookRotation(direction));
-
+                GameObject orb = ProjectilePool.Instance.GetProjectile(origin, Quaternion.LookRotation(direction));
                 Rigidbody rb = orb.GetComponent<Rigidbody>();
                 rb.linearVelocity = direction * orbSpeed;
-
-                Destroy(orb, orbLifetime);
             }
         }
     }
