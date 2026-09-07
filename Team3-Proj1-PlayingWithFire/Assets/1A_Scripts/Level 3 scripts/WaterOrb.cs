@@ -1,33 +1,56 @@
-using _1A_Scripts.Level_3_scripts;
+using System.Collections;
 using _1A_Scripts.Player;
 using UnityEngine;
-using System.Collections;
 
-namespace _1A_Scripts.Level1Puzzle_Scripts
+namespace _1A_Scripts.Level_3_scripts
 {
     /// <summary>
     /// This should only go on level 3 orbs.
     /// </summary>
-    public class WaterOrb : MonoBehaviour
+    public class WaterOrb : FireReceiver
     {
         [SerializeField] private float damage = 10f;
         [SerializeField] private float orbLifetime = 4f;
+        private bool hasReleased;   // edge case protection
 
         private void OnEnable()
         {
+            hasReleased = false;
             StartCoroutine(OrbLifetime());
         }
-        private void OnCollisionEnter(Collision collision)
+
+        public override void ReceiveFire()
         {
-            if (!collision.gameObject.CompareTag("Player")) return;
-            
-            PlayerCombat.Instance.TakeDamage(damage);
+            if (hasReleased) return;
+            hasReleased = true;
+            ProjectilePool.Instance.ReleaseProjectile(gameObject); // Orbs really don't feel like they should have life, so one shot, one kill.
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (hasReleased)  return;
+            if (other.gameObject.layer == LayerMask.NameToLayer("CameraStatic"))   // Deletes the orb if it hits a wall
+            {
+                // Intentionally empty.
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                PlayerCombat.Instance.TakeDamage(damage);
+            }
+            else
+            {
+                return;
+            }
+            // ORB SFX WILL GO HERE
+            hasReleased = true;     // Prevents double releasing -- this will literally mess everything up.
             ProjectilePool.Instance.ReleaseProjectile(gameObject);
         }
         private IEnumerator OrbLifetime()
         {
             yield return new WaitForSeconds(orbLifetime);
-            ProjectilePool.Instance.ReleaseProjectile(gameObject);    
+            if (hasReleased) yield break;
+            hasReleased = true;
+            ProjectilePool.Instance.ReleaseProjectile(gameObject);
         }
     }
 }

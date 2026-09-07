@@ -1,18 +1,21 @@
 using _1A_Scripts.Player;
 using UnityEngine;
 
-public class Enemy : FireReceiver
+namespace _1A_Scripts.Enemy
 {
-    public override void ReceiveFire()
+    public class Enemy : FireReceiver
     {
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        public override void ReceiveFire()
         {
-            PlayerController.Instance.Respawn();
+            Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                PlayerController.Instance.Respawn();
+            }
         }
     }
 }

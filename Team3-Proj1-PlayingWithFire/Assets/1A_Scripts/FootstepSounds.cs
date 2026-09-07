@@ -44,7 +44,7 @@ namespace _1A_Scripts
                 sampleTimer = 0f;
             }
 
-            if (speed < minSpeedToStep || !IsGrounded())
+            if (speed < minSpeedToStep || !IsGrounded())     // No footsteps while jumping.
             {
                 stepTimer = 0f;
                 return;
@@ -62,13 +62,17 @@ namespace _1A_Scripts
         private bool IsGrounded()
         {
             if (!playerMovement) return true;
-            return Mathf.Abs(playerMovement.VerticalVelocity) < airborneVelocityThreshold;
+            return Mathf.Abs(playerMovement.VerticalVelocity) < airborneVelocityThreshold;      // Checks your velocity around a certain threshold -- basically tweaks to make sure everything looks and runs well
         }
 
         private void PlayRandomFootstep()
         {
             int footstepCount = footstepClips.Length - JumpClipCount;
-            if (footstepClips == null || footstepCount <= 0) return;
+            if (footstepClips == null || footstepCount <= 0)
+            {
+                Debug.LogWarning("No footstep clips found");
+                return;
+            }
 
             int index;
             do     // Pick a sound
