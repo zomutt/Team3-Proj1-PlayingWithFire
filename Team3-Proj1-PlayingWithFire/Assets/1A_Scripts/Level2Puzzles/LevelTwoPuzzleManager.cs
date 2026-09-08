@@ -111,7 +111,6 @@ namespace _1A_Scripts.Level2Puzzles
                     break;
                 case "blue":
                     hasBlueKey = true;
-                    brazierWaterfall.StartCoroutine(brazierWaterfall.Fall()); // door opens on pickup, not on solve
                     break;
                 default:
                     Debug.LogWarning($"KeyColor {keyColor} is missing or invalid. Proper format: red");
@@ -135,8 +134,9 @@ namespace _1A_Scripts.Level2Puzzles
                 }
             }
 
-            Debug.Log("[LevelTwoPuzzleManager] All braziers correct, spawning blue key");
-            ActivateBlue(); // door opens once the key is actually picked up, not here
+            Debug.Log("[LevelTwoPuzzleManager] All braziers correct, dropping waterfall");
+            brazierWaterfall.StartCoroutine(brazierWaterfall.Fall()); // drops waterfall once it checks all braziers are correct
+            ActivateBlue(); // activates blue key once waterfall is dropped
         }
 
         public void CheckValves()
