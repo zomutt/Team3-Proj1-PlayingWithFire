@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace _1A_Scripts.Level1Puzzle_Scripts
+namespace _1A_Scripts
 {
     public class WaterWall : MonoBehaviour
     {
