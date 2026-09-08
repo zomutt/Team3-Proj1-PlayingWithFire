@@ -27,6 +27,11 @@ namespace _1A_Scripts.Player
         [SerializeField] private float jumpForce = 8f;
         [SerializeField] private float groundCheckDistance = 1.1f;
 
+        [Header("Dash")]
+        [SerializeField] private float dashSpeed = 20f;
+        [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private float dashCooldown = 1f; // adjust these variables to liking
+
         public bool IsMoving => canMove && moveInput.sqrMagnitude > 0.01f; // for Princess's animator to read
         public bool IsGrounded => isGrounded;
         public float CurrentSpeed => new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude; // horizontal speed only, for the animator's blend
@@ -39,6 +44,9 @@ namespace _1A_Scripts.Player
         private bool isGrounded;
         private bool canMove;
         private float rotationVelocity; // SmoothDampAngle's running velocity state
+
+        private bool isDashing;
+        private bool canDash = true;
 
         private void Awake()
         {
@@ -126,6 +134,9 @@ namespace _1A_Scripts.Player
             if (!canMove)
                 return;
 
+            if (isDashing)
+                return; 
+
             // Get the camera's forward and right directions
             Vector3 camForward = cameraTransform.forward;
             Vector3 camRight = cameraTransform.right;
@@ -167,6 +178,31 @@ namespace _1A_Scripts.Player
             animator.SetFloat("Speed", animationSpeed);
         }
 
+        private IEnumerator Dash()
+        {
+            canDash = false;
+            isDashing = true;
+
+            
+            Vector3 dashDirection = transform.forward;
+
+            float elapsed = 0f;
+            while (elapsed < dashDuration)
+            {
+                Vector3 dashVelocity = dashDirection * dashSpeed;
+                dashVelocity.y = rb.linearVelocity.y;
+                rb.linearVelocity = dashVelocity;
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            isDashing = false;
+
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
+        }
+
         // same SmoothDampAngle-towards-move-direction approach as Unity's Starter Assets ThirdPersonController --
         // eases toward the target heading instead of turning at a constant rate, so it doesn't feel snappy
         private void Turn(Vector3 moveDirection)
@@ -195,6 +231,12 @@ namespace _1A_Scripts.Player
         private void Update()
         {
             isSprinting = Keyboard.current.leftShiftKey.isPressed;
+
+            if (Keyboard.current.qKey.wasPressedThisFrame && canDash && canMove)
+            {
+                StartCoroutine(Dash());
+            }
+
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Debug.Log("SPACE DETECTED");
