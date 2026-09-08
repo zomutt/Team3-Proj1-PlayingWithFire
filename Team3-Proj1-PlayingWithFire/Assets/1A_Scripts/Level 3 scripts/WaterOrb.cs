@@ -12,6 +12,7 @@ namespace _1A_Scripts.Level_3_scripts
         [SerializeField] private float damage = 10f;
         [SerializeField] private float orbLifetime = 4f;
         private bool hasReleased;   // edge case protection
+        [SerializeField] private AudioClip splashClip;
 
         private void OnEnable()
         {
@@ -36,12 +37,13 @@ namespace _1A_Scripts.Level_3_scripts
             else if (other.gameObject.CompareTag("Player"))
             {
                 PlayerCombat.Instance.TakeDamage(damage);
+                if (splashClip) 
+                    AudioSource.PlayClipAtPoint(splashClip, transform.position);
             }
             else
             {
                 return;
             }
-            // ORB SFX WILL GO HERE
             hasReleased = true;     // Prevents double releasing -- this will literally mess everything up.
             ProjectilePool.Instance.ReleaseProjectile(gameObject);
         }

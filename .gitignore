@@ -44,3 +44,8 @@ Desktop.ini
 *.unitypackage
 *Build/
 *Build.zip
+
+# Local AI assistant notes (not for team repo)
+CLAUDE.md
+CLAUDE.md
+*.md
