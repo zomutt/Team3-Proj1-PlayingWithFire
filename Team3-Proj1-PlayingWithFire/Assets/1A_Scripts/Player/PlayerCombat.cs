@@ -60,10 +60,19 @@ namespace _1A_Scripts.Player
         public void TakeDamage(float damageAmount)
         {
             if (!canTakeDamage) return;
-            
+
             playerHealth -= damageAmount;
-            StartCoroutine(Iframe());
             UIController.Instance.UpdateHealthDisplay();
+
+            if (playerHealth <= 0)
+            {
+                PlayerController.Instance.Respawn();
+                playerHealth = playerMaxHealth * 0.25f;
+                UIController.Instance.UpdateHealthDisplay();
+                return;
+            }
+
+            StartCoroutine(Iframe());
         }
 
         private IEnumerator Iframe()
