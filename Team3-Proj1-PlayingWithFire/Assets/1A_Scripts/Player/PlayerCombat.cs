@@ -62,17 +62,25 @@ namespace _1A_Scripts.Player
             if (!canTakeDamage) return;
 
             playerHealth -= damageAmount;
-            UIController.Instance.UpdateHealthDisplay();
 
             if (playerHealth <= 0)
             {
-                PlayerController.Instance.Respawn();
-                playerHealth = playerMaxHealth * 0.25f;
+                playerHealth = 0;
                 UIController.Instance.UpdateHealthDisplay();
+                PlayerController.Instance.Respawn();
                 return;
             }
 
+            UIController.Instance.UpdateHealthDisplay();
             StartCoroutine(Iframe());
+        }
+
+        // Called by PlayerController's respawn routine once the screen is faded to black,
+        // so the heal happens off-screen instead of overwriting the 0-health display instantly.
+        public void RespawnHeal()
+        {
+            playerHealth = playerMaxHealth * 0.25f;
+            UIController.Instance.UpdateHealthDisplay();
         }
 
         private IEnumerator Iframe()
