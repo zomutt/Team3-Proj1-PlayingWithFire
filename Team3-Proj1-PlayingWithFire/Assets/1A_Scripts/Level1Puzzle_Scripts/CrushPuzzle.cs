@@ -114,7 +114,7 @@ public class CrushPuzzle : FireReceiver
     private IEnumerator ScreamDelay()
     {
         yield return new WaitForSeconds(screamDelay);
-        if (screams != null)
+        if (screams)
         {
             audioSource.Stop();    // Makes sure partySounds stop
             audioSource.PlayOneShot(screams);  

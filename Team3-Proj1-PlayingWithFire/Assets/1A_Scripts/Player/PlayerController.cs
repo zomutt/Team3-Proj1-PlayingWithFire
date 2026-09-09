@@ -77,7 +77,10 @@ namespace _1A_Scripts.Player
 
             yield return UIController.Instance.FadeOut();
 
-            // screen's fully black now, safe to teleport -- respawn at the furthest checkpoint reached
+            // screen's fully black now -- heal here so the player never sees the bar jump, only empty then full
+            PlayerCombat.Instance.RespawnHeal();
+
+            // safe to teleport -- respawn at the furthest checkpoint reached
             if (hasHitCP3)
             {
                 yield return PlayerMovement.Instance.Teleport(respawnPoint3.position);
