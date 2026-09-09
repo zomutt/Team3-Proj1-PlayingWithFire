@@ -158,32 +158,35 @@ namespace _1A_Scripts.Managers
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OnClickTogglePause();
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
             }
 
-            if (isMenuOpen && Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                OnClickToggleSettings();
+                settingsPanel.SetActive(true);
             }
 
-            if (isMenuOpen && Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.H))
             {
-                OnClickToggleHelp();
+                helpPanel.SetActive(true);
             }
 
-            if (isMenuOpen && Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M))
             {
-                OnClickQuitGame();
+                confirmQuitPanel.SetActive(true);
             }
 
-            if (isMenuOpen && Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                settingsPanel.SetActive(false);
+                helpPanel.SetActive(false);
+                confirmQuitPanel.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 OnClickMainMenu();
-            }
-
-            if (isMenuOpen && Input.GetKeyDown(KeyCode.R))
-            {
-                OnClickBackToPauseMenu();
             }
         }
 
