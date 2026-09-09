@@ -1154,8 +1154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.34228325, y: -44.71733}
-  m_SizeDelta: {x: 1213.7896, y: 890.5211}
+  m_AnchoredPosition: {x: 0.34228516, y: -1909}
+  m_SizeDelta: {x: 1213.7896, y: 18537.498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822482287
 MonoBehaviour:
@@ -1177,28 +1177,87 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CREDITS
-
-
-
-
-
-
-
-
-
-    Christie Comer - Artist/Programmer
-
-    Yania Solivan
-    - Artist
-
-    Pedro Martinez-Rodriguez - Programmer
-
-
-    **will convert into
-    scrolling text and credit all external asset creators**
-
-'
+  m_text: "CREDITS\n\nUnlit wall torch - Wissam El Hajj - Unity  Assets Store  https://assetstore.unity.com/packages/3d/props/3d-game-props-61815\n\nColumns
+    - lowpoly86 - Unity Asset Store https://assetstore.unity.com/publishers/99642\n\r\nBroken
+    column (must be two parts; it is meant to break for a puzzle) - lowpoly86 - Unity
+    Asset Store https://assetstore.unity.com/publishers/99642\n\r\nLarge fountain
+    - GVOZDY - Unity Asset Store https://assetstore.unity.com/publishers/91841\r\n\nStairs\t
+    - Lylek Games - Unity Assets Store    https://assetstore.unity.com/packages/3d/environments/medieval-stone-keep-56596\n\r\nArchway
+    - Lylek Games - Unity Assets Store https://assetstore.unity.com/packages/3d/environments/medieval-stone-keep-56596\n\r\nWater
+    god/diety/whatever statue - \"\nKE 3D Assets - Unity Assets Shop https://assetstore.unity.com/packages/3d/props/ke-statues-lite-340510\"\n\r\nKey
+    variety 1 (red) - INSTANT ZOOMIES- Unity Assets store https://assetstore.unity.com/packages/3d/props/horror-starter-pack-free-178413\n\nCell
+    furnishings - Gregory Seguru - Unity asset Store (Prison Cell) https://assetstore.unity.com/packages/3d/environments/dungeons/prison-cell-84470\n\r\nFlame
+    stream for MC - SKJ - Unity Asset Store https://assetstore.unity.com/publishers/23285\n\r\nSnow
+    Particles - Swift Games - Unity Asset Store https://assetstore.unity.com/publishers/13075\n\r\nWater
+    texture - LowlyPoly - Unity Asset Store https://assetstore.unity.com/publishers/16677\n\r\nSwimming
+    Pool - IZaRTaX - Unity Asset Store https://assetstore.unity.com/publishers/4327\n\r\nStylized
+    Water Spell VFX - FlexUnit - Unity Asset Store https://assetstore.unity.com/packages/vfx/stylized-water-spell-vfx-327177\n\r\nMagic
+    Effects FREE - Hovl Studios - Unity Asset Store\n\r\nDynamic water shaders -
+    codeDog0 - Unity Asset Store https://assetstore.unity.com/packages/vfx/shaders/ocean-lake-shaders-urp-303983\r\n\nBricks
+    Texture - GlowFox games - Unity Asset Store https://assetstore.unity.com/packages/2d/textures-materials/texture-pack-bricks-n-blocks-180041\r\n\nChurch
+    Alters / Monument Pack - Cathedral Warehouse - Unreal Asset Store https://www.fab.com/listings/f0af25f3-43b2-4705-956b-e911622bad14\r\n\nInterior
+    Design Pack - Pheonix3D Studio  - Unity Asset Store https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116\r\n\nVarious
+    Plants - Unity Asset Store - mike wee, Flash Haze Multimedia, MARCIN'S ASSETS,
+    Nobiax/Yughues, Entian-Astea, PxlTiger, Game Asset Studio, JahasArt-Studios,
+    Ella Uvarova, Shapes, \r\n\nAtmospheric Ambience - John Leonard French Unity
+    - Asset Store assetstore.unity.com/packages/audio/music/endless-cave-ambience-54032\r\n\nFire
+    SFX - DRAGON-STUDIO - Pixabay https://pixabay.com/users/dragon-studio-38165424/\r\n\nFountain
+    SFX - DRAGON-STUDIO - Pixabay https://pixabay.com/users/dragon-studio-38165424/\r\n\nSacral
+    Chant SFX - SamuelFJohanns - Pixabay \r\n\nCthulu Model - SnoozyRat - Unity Asset
+    \n\nStore https://assetstore.unity.com/packages/3d/props/cthulhu-idol-pbr-324662\r\n\nBlue
+    Floral Vase - Virtual Museams of Maloposka - Sketchfab https://sketchfab.com/3d-models/hydria-apothecary-vase-7d6938c0c0b54b06a0210a982a73023e\r\n\nVase
+    with Plant - Mehdi Shasavan - Sketchfab https://sketchfab.com/3d-models/vase-flower-pot-23mb-917e3c83221046ecafb891d05671af8d\r\n\nMisc
+    Character Shaders - codeDog0 - Unity Asset Store https://assetstore.unity.com/packages/vfx/shaders/character-effects-shaders-304307\r\n\t\t\r\n2D
+    Flame - Quality Graphic Shop, Edited by Christie Comer https://www.magnific.com/premium-psd/fiery-flame-illustration_422482849.htm#fromView=detail&position=3&from_element=cross_selling__psd\r\n\nWater
+    Orb - tamminen - Sketchfab https://sketchfab.com/3d-models/water-orb-30ca9b8469da4a49ab127b6bb5b87d61\r\n\nMoonrising
+    - Font - HawtPixel - https://www.dafont.com/moonrising.font\r\n\nStick Man -
+    PolyOne - https://assetstore.unity.com/packages/3d/characters/free-pack-stick-man-389802\r\n\nKey
+    Pickup - litupsubway - Pixabay https://pixabay.com/sound-effects/film-special-effects-key-collect-sfx-522219/\r\n\nElemental
+    Water Splash SFX - DRAGON STUDIO https://pixabay.com/sound-effects/film-special-effects-elemental-spell-impact-water-478377/\r\n\nJapanese
+    Food Kashipan - FREE - DevDan - https://assetstore.unity.com/packages/3d/props/food/japanese-food-kashipan-free-210938\r\n\nBread/Pastry
+    - LUMI Studio - https://assetstore.unity.com/packages/3d/props/food/baked-bread-and-pastry-338188\r\n\nRye
+    Bread - Meshive Lab - https://assetstore.unity.com/packages/3d/props/food/artisan-rye-bread-370160\r\n\nCroissants
+    - Optimesh - https://assetstore.unity.com/packages/3d/props/food/croissants-pack-112263\r\n\nTeacup
+    and Plate - dendromery - https://sketchfab.com/3d-models/cup-and-plate-d9a67048ec164c569fb274bae2a6cda0\r\n\nSandwich
+    Plate - Numbian - https://sketchfab.com/3d-models/plate-with-small-sandwitches-3c60a71b1e034fde8329b1dacbd2d2e4#download\r\n\nAncient
+    Plate - Oldmode - https://sketchfab.com/3d-models/ancient-plate-e3ca8f1b323444878f05912e9140fe5b\r\n\nPizza
+    - Rigsters - https://sketchfab.com/3d-models/pizza-40d50989fec1460f8838b608d999ccd0\r\n\nTofu
+    - DevDan - https://assetstore.unity.com/packages/3d/props/food/japanese-food-tofu-free-203533\r\n\nDining
+    Kit - Red Blue Pixel Studio - https://assetstore.unity.com/packages/package/327318\r\n\nEazyCam
+    - Lint & Buttons https://assetstore.unity.com/packages/3d/characters/eazy-camera-102275\r\n\t\t\r\nBasic
+    Third Person Controller (ripped the scripts)\t\tPbwanskaas Productions - https://assetstore.unity.com/packages/tools/game-toolkits/basic-third-person-controller-324573\r\n\nThe
+    Secret Spring (Music) - Helmut Schenker - https://www.epidemicsound.com/music/tracks/78e1cbfe-365c-47ec-ac91-33609b240963/\r\n\nDeath
+    sound - freesound_gamestudio https://pixabay.com/sound-effects/film-special-effects-disappear-408437/\r\n\nBubble
+    Pop - Jayvardhan - https://freesound.org/people/Jayvardhan/sounds/848515/\r\n\nModular
+    Gate System - WB 3-D Assets https://assetstore.unity.com/packages/3d/environments/balustrade-modular-system-lite-387382\r\n\nBackground
+    Mountain - MetaStudio - https://assetstore.unity.com/packages/3d/environments/balustrade-modular-system-lite-387382\r\n\nURP
+    Tree Models - ALIyerEdon\r\n\nURP Riverside Trees - R3DWORKS - https://assetstore.unity.com/packages/package/389712\r\n\nCreak
+    sound - Sergenious - https://freesound.org/people/Sergenious/sounds/55773/\r\n\nVFX
+    - Low Poly Fire Particles\t - Game Seed Assets - https://assetstore.unity.com/packages/vfx/particles/fire-explosions/vfx-low-poly-fire-particles-372598\r\n\nAllSky
+    Free - rpgwhitelock - https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014\r\n\nVine
+    Cloumns - Amerveer https://sketchfab.com/3d-models/ancient-columns-e01981066a2844ab85d2b8a17edf67bb\r\n\nAncient
+    Mask - SL - https://sketchfab.com/3d-models/ancient-mask-660b69e1aeac4d5d974645707154ff21\r\n\nAncient
+    Chinese Porcelain Vase\t\t\n\nSmashMesh - https://sketchfab.com/3d-models/ancient-chinese-porcelain-vase-39eb515623694df3a0bf052cfde6690f\r\n\nBiscuit
+    Eater - https://sketchfab.com/3d-models/stylized-ancient-steampunk-pillar-d3aa879bf63346cda6cd8dcda73b7482#download\r\n\nEntropyNine
+    - https://sketchfab.com/3d-models/ancient-ouroboros-relief-7130ee7a98c24adca50be2ed7d2b66af\r\n\ncryptic7
+    - https://sketchfab.com/3d-models/ancient-alien-statue-022dad37b68a499dad1dd56715e81580\r\n\nTeranox
+    - https://sketchfab.com/3d-models/ancient-sofa-model-736451d3e52c4400bdcc450e530ad029\r\n\nAncient
+    Floor or Wall Tile - Dragon - https://sketchfab.com/3d-models/ancient-floor-or-wall-tile-42bb14b8017b47f9a7b079cb6e0db50d\r\n\nStone
+    Dragon_circle - Game industry \n\nveteran - https://sketchfab.com/3d-models/stone-dragon-circle-e3333cceae804ceea760d72f3a3cf79b\r\n\nArch1\t
+    - chuckcg - https://sketchfab.com/3d-models/arch-1-38b5572e58fb40fca8c0d38f8e1192c5\r\n\nAncient
+    War Memorial Obelisk (Game Ready)\t\tReinaw13 - https://sketchfab.com/3d-models/ancient-war-memorial-obelisk-game-ready-7b00df41c5a542469d769687bbad6503\r\n\nWinged
+    Dragon, one of pair, 5th-4th century BCE\t\tMinneapolis Institute of Art - https://sketchfab.com/3d-models/winged-dragon-one-of-pair-5th-4th-century-bce-b390b4046d6c46beb811c8c9e21014d4\r\n\nStylized
+    Fountain - Kesenkai - https://sketchfab.com/3d-models/stylized-fountain-959f5011bcdd4a8c8700d6830824d1e1\r\n\nMosaic
+    | NCMA Explore - NCMA Explore | North Carolina Museum of Art - https://sketchfab.com/3d-models/mosaic-ncma-explore-339940a5ea9b4fffa1cb330536437c4c\r\n\"\nFire
+    2D Assets\"\t\t\"https://assetstore.unity.com/packages/2d/gui/icons/40-free-fire-mage-skill-icons-249257\nCaptainCatSparrow
+    \"\r\n\nRPG Button - JiroCraft - https://assetstore.unity.com/packages/2d/gui/icons/2d-rpg-button-7-278861\r\n\nRPG
+    UI - \" https://assetstore.unity.com/packages/templates/packs/skills-arena-mvp-game-template-391012\nPsevdonim
+    - \"\r\n\nStone UI - Yuliya Pauliukevich https://www.vecteezy.com/vector-art/12991432-stone-game-menu-boards-with-vines-rope-or-leaves?autodl_token=c5c9382be55dc47f1f3f6e05fb73aea5007b100bc1a34da0d35bf05d0534a1349bb0e289de64e359ca590f3603382e87040b10ec129fb0e0a99c484f5b9be2d6\r\n\nOrbs
+    - Matthew Guz - https://assetstore.unity.com/packages/vfx/particles/spells/orbs-effects-free-292126\r\nMonsters
+    - PixeliusVita\r\n\nFootsteps SFX\t - Sound Works 12\r\n\nFire Heart - m lukmanul
+    hakim\r\n\nFantasy SFX - SF Audio Guild\r\n\nFemale Fighting Game Grunts\t\t\nAderuMoro\r\n\t\tLucasPresoto\r\n\t\tIlumisoft\r\n\t\tBamsparkyu\r\n\r\n\r\n\n\n\nChristie
+    Comer - Artist/Programmer\nYania Solivan - Artist\nPedro Martinez-Rodriguez -
+    Programmer\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
