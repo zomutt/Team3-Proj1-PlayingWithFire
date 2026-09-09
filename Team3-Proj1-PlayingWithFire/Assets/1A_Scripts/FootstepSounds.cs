@@ -9,6 +9,7 @@ namespace _1A_Scripts
     {
         // 0-4 = jump sounds, 5-24 = footsteps. Don't rearrange the array or I *will* cry.
         [SerializeField] private AudioClip[] footstepClips;
+        [SerializeField] private float footstepVolume = 0.5f;
         private const int JumpClipCount = 5;
 
         [SerializeField] private float stepInterval = 0.45f;
@@ -82,7 +83,7 @@ namespace _1A_Scripts
             while (footstepCount > 1 && index == lastFootstepIndex);   // Reroll, no playing the same one back to back.
 
             lastFootstepIndex = index;   
-            audioSource.PlayOneShot(footstepClips[index]);
+            audioSource.PlayOneShot(footstepClips[index], footstepVolume);
         }
 
         public void PlayJumpSound()     // The wheeeee gotta have a thud
@@ -97,7 +98,7 @@ namespace _1A_Scripts
             while (JumpClipCount > 1 && index == lastJumpIndex);
 
             lastJumpIndex = index;
-            audioSource.PlayOneShot(footstepClips[index]);
+            audioSource.PlayOneShot(footstepClips[index], footstepVolume);
         }
     }
 }

@@ -4,21 +4,29 @@ using UnityEngine;
 
 namespace _1A_Scripts.Player
 {
+    [RequireComponent(typeof(AudioSource))]
     public class PlayerCombat : MonoBehaviour
     {
         public static PlayerCombat Instance;
-        
+
         [SerializeField] private int playerDamage;
         public int PlayerDamage => playerDamage;
-        
+
         [SerializeField] private float playerMaxHealth;
         public float PlayerMaxHealth => playerMaxHealth;
-        
+
         [SerializeField] private float playerHealth;
         public float PlayerHealth => playerHealth;
 
         [SerializeField] private float playerIframe;
         public float PlayerIframe => playerIframe;
+
+        [Header("Sound FX")]
+        [SerializeField] private AudioClip hurtSound;
+        [SerializeField] private float hurtVolume = 1f;
+        [SerializeField] private AudioClip healSound;
+        [SerializeField] private float healVolume = 1f;
+        private AudioSource audioSource;
 
         private float currentIframeCD;
         private bool canTakeDamage;
@@ -32,6 +40,7 @@ namespace _1A_Scripts.Player
             }
             Instance = this;
             canTakeDamage = true;
+            audioSource = GetComponent<AudioSource>();
         }
         
         private void Start()
@@ -42,9 +51,21 @@ namespace _1A_Scripts.Player
         
         public void HealPlayer(int healAmount)
         {
-            if (playerHealth + healAmount > playerMaxHealth) return;
-
             playerHealth += healAmount;
+            if (playerHealth > playerMaxHealth)
+            {
+                playerHealth = playerMaxHealth;
+            }
+
+            if (audioSource != null && healSound != null)
+            {
+                audioSource.PlayOneShot(healSound, healVolume);
+            }
+            else
+            {
+                Debug.LogWarning("no heal sound assigned on PlayerCombat");
+            }
+
             UIController.Instance.UpdateHealthDisplay();
         }
 
@@ -62,6 +83,17 @@ namespace _1A_Scripts.Player
             if (!canTakeDamage) return;
 
             playerHealth -= damageAmount;
+
+            if (audioSource != null && hurtSound != null)
+            {
+                audioSource.PlayOneShot(hurtSound, hurtVolume);
+            }
+            else
+            {
+                Debug.LogWarning("no hurt sound assigned on PlayerCombat");
+            }
+
+            UIController.Instance.FlashHitPanel();
 
             if (playerHealth <= 0)
             {

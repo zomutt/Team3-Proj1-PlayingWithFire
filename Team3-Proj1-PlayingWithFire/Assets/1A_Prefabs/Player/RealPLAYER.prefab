@@ -238,7 +238,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a998b0f2b4e624148ae2ede68244cf80, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.065
+  m_Volume: 1
   m_Pitch: 1.32
   Loop: 0
   Mute: 0
@@ -356,6 +356,10 @@ MonoBehaviour:
   playerMaxHealth: 100
   playerHealth: 100
   playerIframe: 0.25
+  hurtSound: {fileID: 8300000, guid: 7dc0c287c741b4747a59187c13e086e1, type: 3}
+  hurtVolume: 1
+  healSound: {fileID: 8300000, guid: 75e5a19deebae444b995d47065d2347a, type: 3}
+  healVolume: 1
 --- !u!114 &4251558973064241395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +398,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c99d20f240d3896479e64d7b2d160b95, type: 3}
   - {fileID: 8300000, guid: f795b8b17d3a598409131012df04277a, type: 3}
   - {fileID: 8300000, guid: a998b0f2b4e624148ae2ede68244cf80, type: 3}
+  footstepVolume: 0.5
   stepInterval: 0.45
   referenceSpeed: 3
   minSpeedToStep: 0.1
@@ -12096,7 +12101,7 @@ MonoBehaviour:
     OrbitEnabled: 1
     MoveSpeed: 5
     SnapFactor: 0.75
-    MaxLagDistance: 1
+    MaxLagDistance: 2.05
     RotationSpeed: 250
     VerticalRotation:
       Min: -89
@@ -12132,8 +12137,8 @@ MonoBehaviour:
       m_Bits: 8
     EnableZoom: 1
     ZoomRange:
-      Min: -10
-      Max: -1
+      Min: -13.99
+      Max: -0.99
     EnableTargetLock: 1
     TargetLockIcon: {fileID: 0}
 --- !u!114 &2824569932215188434

@@ -33,14 +33,8 @@ namespace _1A_Scripts.Level_3_scripts
             int chosenSpawner = Random.Range(0, spawners.Length);
             if (!spawners[chosenSpawner]) return;    // If this specific spawner dies for any reason
 
-            Debug.LogError($"[ProjectileManager] Firing from spawner: {spawners[chosenSpawner].name} at {spawners[chosenSpawner].transform.position}"); // TEMP diagnostic
-
             WaterOrbSpawner spawnerScript = spawners[chosenSpawner].GetComponent<WaterOrbSpawner>();
-            if (!spawnerScript)
-            {
-                Debug.LogError($"[ProjectileManager] {spawners[chosenSpawner].name} has no WaterOrbSpawner component!"); // TEMP diagnostic
-                return;
-            }
+            if (!spawnerScript) return;
 
             spawnerScript.FireRing();
         }

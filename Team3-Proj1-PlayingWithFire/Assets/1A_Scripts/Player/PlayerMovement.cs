@@ -68,6 +68,10 @@ namespace _1A_Scripts.Player
 
             // locks + hides the cursor like every fps ever
             Cursor.lockState = CursorLockMode.Locked;
+
+            // PlayerInput only enables its Default Action Map ("Player") on its own -- without this, the UI
+            // action map stays disabled the whole game, so menus/pause/etc. never receive any input at all.
+            GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
         }
 
         private void Start()
