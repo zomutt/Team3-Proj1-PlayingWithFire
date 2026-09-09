@@ -7,6 +7,8 @@ public class HealthPickup : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        if (PlayerCombat.Instance.PlayerHealth >= PlayerCombat.Instance.PlayerMaxHealth) return;
+
         int healAmount = Mathf.RoundToInt(PlayerCombat.Instance.PlayerMaxHealth * 0.25f);
         PlayerCombat.Instance.HealPlayer(healAmount);
 

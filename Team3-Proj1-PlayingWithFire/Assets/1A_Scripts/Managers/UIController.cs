@@ -37,6 +37,15 @@ namespace _1A_Scripts.Managers
         [SerializeField] private GameObject fadePanel;
         [SerializeField] private float fadeDuration = 0.5f;
 
+        [Header("Brightness")]
+        [SerializeField] private Image brightnessOverlay;
+        [SerializeField] private Image darknessOverlay;
+
+        [Header("Hit Panel")]
+        [SerializeField] private Image hitPanel;
+        [SerializeField] private float hitPanelMaxAlpha = 0.4f;
+        [SerializeField] private float hitPanelFlashDuration = 0.15f;
+
         [Header("Bulk")]
         [SerializeField] private GameObject[] closeAllOnStart;   
         [SerializeField] private GameObject[] openAllOnStart;    
@@ -47,6 +56,7 @@ namespace _1A_Scripts.Managers
 
         private Image fadeImage;
         private bool isMenuOpen = false;
+        private float brightnessValue = 0f;
 
         [Header("Level 3")]
         public Image note;
@@ -156,9 +166,25 @@ namespace _1A_Scripts.Managers
 
         private void Update()
         {
+            // mouse is locked during gameplay, so this is the only way to get the pause menu open (and the mouse unlocked) without a button to click.
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                OnClickTogglePause();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                OnBrightnessChanged(brightnessValue + 0.1f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
+            {
+                OnBrightnessChanged(brightnessValue - 0.1f);
+            }
+
+            if (!pauseMenu.activeSelf)
+            {
+                return;
             }
 
             if (Input.GetKeyDown(KeyCode.S))
@@ -187,6 +213,11 @@ namespace _1A_Scripts.Managers
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 OnClickMainMenu();
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                OnClickRestartLevel();
             }
         }
 
@@ -241,6 +272,71 @@ namespace _1A_Scripts.Managers
                     keyGreen.SetActive(true);
                     break;
             }
+        }
+
+        // value range -1 (darkest) to 1 (brightest), 0 is normal.
+        public void OnBrightnessChanged(float value)
+        {
+            if (!brightnessOverlay || !darknessOverlay)
+            {
+                Debug.LogWarning("brightness/darkness overlay not assigned");
+                return;
+            }
+
+            if (value > 0.6f)
+            {
+                value = 0.6f;
+            }
+            else if (value < -0.6f)
+            {
+                value = -0.6f;
+            }
+
+            brightnessValue = value;
+
+            if (value > 0)
+            {
+                Color brightColor = brightnessOverlay.color;
+                brightColor.a = value;
+                brightnessOverlay.color = brightColor;
+
+                Color darkColor = darknessOverlay.color;
+                darkColor.a = 0f;
+                darknessOverlay.color = darkColor;
+            }
+            else
+            {
+                Color darkColor = darknessOverlay.color;
+                darkColor.a = -value;
+                darknessOverlay.color = darkColor;
+
+                Color brightColor = brightnessOverlay.color;
+                brightColor.a = 0f;
+                brightnessOverlay.color = brightColor;
+            }
+        }
+
+        public void FlashHitPanel()
+        {
+            if (!hitPanel)
+            {
+                Debug.LogWarning("no hit panel assigned");
+                return;
+            }
+
+            StartCoroutine(HitPanelFlash());
+        }
+
+        private IEnumerator HitPanelFlash()
+        {
+            Color color = hitPanel.color;
+            color.a = hitPanelMaxAlpha;
+            hitPanel.color = color;
+
+            yield return new WaitForSeconds(hitPanelFlashDuration);
+
+            color.a = 0f;
+            hitPanel.color = color;
         }
 
         public void UpdateHealthDisplay()

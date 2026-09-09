@@ -356,6 +356,13 @@ MonoBehaviour:
   playerMaxHealth: 100
   playerHealth: 100
   playerIframe: 0.25
+  hurtSound: {fileID: 8300000, guid: 7dc0c287c741b4747a59187c13e086e1, type: 3}
+  hurtVolume: 1
+  healSound: {fileID: 0}
+  healVolume: 1
+  playerRenderer: {fileID: 4489136747395305889}
+  hitMaterial: {fileID: 2100000, guid: 0ff23753f96783f4089683d34c31ff7a, type: 2}
+  hitFlashDuration: 0.1
 --- !u!114 &4251558973064241395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11966,8 +11973,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280277521763696304}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17232893, y: -0.5472364, z: 0.11631872, w: -0.8107436}
-  m_LocalPosition: {x: -4.6024427, y: 1.4132596, z: -1.8560331}
+  m_LocalRotation: {x: 0.20730338, y: -0.074771225, z: 0.015893117, w: 0.97528565}
+  m_LocalPosition: {x: 0.7564788, y: 1.4132599, z: -4.904601}
   m_LocalScale: {x: 1.5590893, y: 1.5590897, z: 1.55909}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12096,7 +12103,7 @@ MonoBehaviour:
     OrbitEnabled: 1
     MoveSpeed: 5
     SnapFactor: 0.75
-    MaxLagDistance: 1
+    MaxLagDistance: 2.05
     RotationSpeed: 250
     VerticalRotation:
       Min: -89
@@ -12132,8 +12139,8 @@ MonoBehaviour:
       m_Bits: 8
     EnableZoom: 1
     ZoomRange:
-      Min: -10
-      Max: -1
+      Min: -13.99
+      Max: -0.99
     EnableTargetLock: 1
     TargetLockIcon: {fileID: 0}
 --- !u!114 &2824569932215188434
