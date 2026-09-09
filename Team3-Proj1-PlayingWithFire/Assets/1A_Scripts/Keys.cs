@@ -1,5 +1,6 @@
 using _1A_Scripts.Level1Puzzle_Scripts;
 using _1A_Scripts.Level2Puzzles;
+using _1A_Scripts.Level_3_scripts;
 using _1A_Scripts.Managers;
 using UnityEngine;
 
@@ -26,6 +27,10 @@ namespace _1A_Scripts
             else if (LevelTwoPuzzleManager.Instance)
             {
                 collector = LevelTwoPuzzleManager.Instance;
+            }
+            else if (LevelThreePuzzleManager.Instance)
+            {
+                collector = LevelThreePuzzleManager.Instance;
             }
         }
 

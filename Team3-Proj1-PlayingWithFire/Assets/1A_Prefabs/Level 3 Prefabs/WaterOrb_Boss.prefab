@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2133912443725462821}
   - component: {fileID: -2879580749440437478}
   m_Layer: 0
-  m_Name: WaterOrb
+  m_Name: WaterOrb_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

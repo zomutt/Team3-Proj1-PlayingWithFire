@@ -30,20 +30,14 @@ namespace _1A_Scripts.Level_3_scripts
         private void OnTriggerEnter(Collider other)
         {
             if (hasReleased)  return;
-            if (other.gameObject.layer == LayerMask.NameToLayer("CameraStatic"))   // Deletes the orb if it hits a wall
-            {
-                // Intentionally empty.
-            }
-            else if (other.gameObject.CompareTag("Player"))
-            {
-                PlayerCombat.Instance.TakeDamage(damage);
-                if (splashClip) 
-                    AudioSource.PlayClipAtPoint(splashClip, transform.position);
-            }
-            else
-            {
-                return;
-            }
+
+            if (!other.gameObject.CompareTag("Player")) return;
+
+            PlayerCombat.Instance.TakeDamage(damage);
+
+            if (splashClip)
+                AudioSource.PlayClipAtPoint(splashClip, transform.position);
+
             hasReleased = true;     // Prevents double releasing -- this will literally mess everything up.
             ProjectilePool.Instance.ReleaseProjectile(gameObject);
         }

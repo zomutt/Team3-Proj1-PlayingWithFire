@@ -23,6 +23,9 @@ namespace _1A_Scripts.Level_3_scripts
         [SerializeField] private WaterWall blueOrbDoor;
         [SerializeField] private WaterWall purpleOrbDoor;
 
+
+        private int valveCount;
+
         private void Awake()
         {
             if (Instance)
@@ -32,6 +35,12 @@ namespace _1A_Scripts.Level_3_scripts
             }
 
             Instance = this;
+        }
+
+        public void Start()
+        {
+            valveCount = 0;
+            greenOrb.SetActive(false);
         }
 
         // Called by a puzzle once it's solved, to reveal that puzzle's orb.
@@ -77,6 +86,16 @@ namespace _1A_Scripts.Level_3_scripts
                 default:
                     Debug.LogWarning($"KeyColor {color} is missing or invalid. Proper format: red");
                     break;
+            }
+        }
+        
+        public void IncreaseValveCount()
+        {
+            valveCount++;
+
+            if (valveCount >= 3)
+            {
+                greenOrb.SetActive(true);
             }
         }
     }
