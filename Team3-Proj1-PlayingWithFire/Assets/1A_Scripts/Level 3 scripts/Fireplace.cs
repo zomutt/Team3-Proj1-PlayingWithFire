@@ -16,28 +16,26 @@ namespace _1A_Scripts.Level_3_scripts
         {
             orbRed.SetActive(false);
             fireVFX.SetActive(false);
-            
+
             poi.SetActive(true);
             isBurning = false;
             currentTime = 0f;
         }
 
-        private void Update()
-        {
-            if (isBurning) return;
-            
-            currentTime += Time.deltaTime;
-            if (currentTime >= burnTime)
-                Ignite();
-        }
-
         public override void ReceiveFire()
         {
-            isBurning = true;
+            if (isBurning) return;
+
+            currentTime += Time.deltaTime;
+            if (currentTime >= burnTime)
+            {
+                Ignite();
+            }
         }
 
         private void Ignite()
         {
+            isBurning = true;
             orbRed.SetActive(true);
             fireVFX.SetActive(true);
             poi.SetActive(false);
