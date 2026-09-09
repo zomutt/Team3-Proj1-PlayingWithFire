@@ -50,6 +50,7 @@ namespace _1A_Scripts.Level2Puzzles
         {
             ActivateAll();
             DeactivateAll();
+            keyBlue.SetActive(false);
         }
 
         private void ActivateAll()
@@ -111,6 +112,7 @@ namespace _1A_Scripts.Level2Puzzles
                     break;
                 case "blue":
                     hasBlueKey = true;
+                    brazierWaterfall.StartCoroutine(brazierWaterfall.Fall()); // wall drops when the orb is picked up, not when braziers are solved
                     break;
                 default:
                     Debug.LogWarning($"KeyColor {keyColor} is missing or invalid. Proper format: red");
@@ -134,9 +136,8 @@ namespace _1A_Scripts.Level2Puzzles
                 }
             }
 
-            Debug.Log("[LevelTwoPuzzleManager] All braziers correct, dropping waterfall");
-            brazierWaterfall.StartCoroutine(brazierWaterfall.Fall()); // drops waterfall once it checks all braziers are correct
-            ActivateBlue(); // activates blue key once waterfall is dropped
+            Debug.Log("[LevelTwoPuzzleManager] All braziers correct, spawning blue orb");
+            ActivateBlue(); // wall now drops on pickup instead, see CollectKey("blue")
         }
 
         public void CheckValves()

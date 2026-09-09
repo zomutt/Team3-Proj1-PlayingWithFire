@@ -1,7 +1,9 @@
 using System.Collections;
+using _1A_Scripts.Enemy;
 using _1A_Scripts.Managers;
 using EazyCamera;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _1A_Scripts.Player
 {
@@ -30,7 +32,7 @@ namespace _1A_Scripts.Player
                 Destroy(gameObject);
                 return;
             }
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             Instance = this;
             audioSource = GetComponent<AudioSource>();
         }
@@ -40,6 +42,7 @@ namespace _1A_Scripts.Player
             keysCollected = 0; // Initialize keys collected to 0 at the start of the game
             hasHitCP2 = false;
             hasHitCP3 = false;
+            PlayerStart.Instance.StartPlayerHere(gameObject);
         }
 
         public void HitRespawn()
@@ -62,23 +65,51 @@ namespace _1A_Scripts.Player
         {
             keysCollected++;
         }
-        public void Respawn()
+        public void Respawn(bool healPlayer = false)
         {
             if (audioSource && respawnClip)
             {
                 audioSource.PlayOneShot(respawnClip);
             }
-            StartCoroutine(RespawnRoutine());
+            StartCoroutine(RespawnRoutine(healPlayer));
         }
 
-        private IEnumerator RespawnRoutine()
+        private void RespawnPickupsAndEnemies()
+        {
+            // "true" here means "include inactive ones too" -- without it, Unity skips anything currently turned off
+            HealthPickup[] pickups = FindObjectsOfType<HealthPickup>(true);
+            foreach (HealthPickup pickup in pickups)
+            {
+                if (pickup.transform.parent)
+                {
+                    pickup.transform.parent.gameObject.SetActive(true);
+                }
+                else
+                {
+                    pickup.gameObject.SetActive(true);
+                }
+            }
+
+            MonsterAI[] enemies = FindObjectsOfType<MonsterAI>(true);
+            foreach (MonsterAI enemy in enemies)
+            {
+                enemy.gameObject.SetActive(true);
+            }
+        }
+
+        private IEnumerator RespawnRoutine(bool healPlayer)
         {
             PlayerMovement.Instance.ToggleMove();
 
             yield return UIController.Instance.FadeOut();
 
-            // screen's fully black now -- heal here so the player never sees the bar jump, only empty then full
-            PlayerCombat.Instance.RespawnHeal();
+            // screen's fully black now -- heal here (combat deaths only) so the player never sees the bar jump
+            if (healPlayer)
+            {
+                PlayerCombat.Instance.RespawnHeal();
+            }
+
+            RespawnPickupsAndEnemies();
 
             // safe to teleport -- respawn at the furthest checkpoint reached
             if (hasHitCP3)

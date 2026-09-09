@@ -7097,7 +7097,7 @@ MonoBehaviour:
   openAllOnStart:
   - {fileID: 8785880951097169020}
   - {fileID: 7065681458788822390}
-  - {fileID: 0}
+  - {fileID: 2957973960275111197}
   mmHelpPanel: {fileID: 0}
   healthBar: {fileID: 6192945931558954503}
   note: {fileID: 5523762296202563451}

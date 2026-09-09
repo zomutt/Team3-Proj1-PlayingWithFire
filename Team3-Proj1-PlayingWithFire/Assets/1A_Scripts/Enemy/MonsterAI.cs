@@ -58,6 +58,7 @@ namespace _1A_Scripts.Enemy
         private NavMeshAgent agent;
         private float lastAttackTime;
         private bool isDead;
+        private Vector3 spawnPosition; // for respawning in place when the player respawns
 
         private const float AnimatedWalkSpeed = 1.832f; // The walk clips speed in m/s. God hates us. :^))
 
@@ -71,6 +72,7 @@ namespace _1A_Scripts.Enemy
             audioSource = GetComponent<AudioSource>();
             currentHealth = maxHealth;
             canBeAttacked = true;
+            spawnPosition = transform.position;
 
             agent.speed = moveSpeed;
             agent.stoppingDistance = attackRange;
@@ -239,23 +241,23 @@ namespace _1A_Scripts.Enemy
             animator.SetTrigger(Die1);
             StartCoroutine(FreezeAfterDeathAnim()); // safety net, see below
 
-            RemoveColliders();
+            SetCollidersEnabled(false);
 
-            Destroy(gameObject, deathAnimDuration + deathFloorTime);
+            StartCoroutine(DeactivateAfterDeathAnim());
 
-            PlayRandomClip(deathClip); // after the trigger/Destroy -- a missing AudioSource shouldn't be able to skip those
+            PlayRandomClip(deathClip); // after the trigger/deactivate -- a missing AudioSource shouldn't be able to skip those
         }
 
-        private void RemoveColliders()
+        private void SetCollidersEnabled(bool isEnabled)
         {
             foreach (Collider col in GetComponentsInChildren<Collider>())
             {
-                Destroy(col);
+                col.enabled = isEnabled;
             }
 
             foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
             {
-                Destroy(col);
+                col.enabled = isEnabled;
             }
         }
 
@@ -263,6 +265,29 @@ namespace _1A_Scripts.Enemy
         {
             yield return new WaitForSeconds(deathAnimDuration);
             animator.enabled = false;
+        }
+
+        private IEnumerator DeactivateAfterDeathAnim()
+        {
+            yield return new WaitForSeconds(deathAnimDuration + deathFloorTime);
+            gameObject.SetActive(false); // deactivated, not destroyed, so it can come back when the player respawns
+        }
+
+        // Runs every time this enemy is reactivated (including on respawn) -- puts him back exactly how he started.
+        private void OnEnable()
+        {
+            isDead = false;
+            canBeAttacked = true;
+            currentHealth = maxHealth;
+            isInAttackRange = false;
+
+            SetCollidersEnabled(true);
+
+            animator.enabled = true;
+            animator.Play("Idle"); // snaps the animator back to Idle instead of staying stuck on the death pose
+
+            agent.Warp(spawnPosition); // NavMeshAgent overrides plain transform.position every frame, so it needs its own teleport method
+            agent.isStopped = false;
         }
 
         private IEnumerator Iframe()

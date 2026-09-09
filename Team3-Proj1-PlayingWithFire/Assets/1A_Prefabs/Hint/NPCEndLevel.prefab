@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 2321544982665448213}
   - component: {fileID: 7332590649624551958}
   - component: {fileID: 6996980469968672070}
+  - component: {fileID: 8676522349126463773}
   m_Layer: 0
   m_Name: NPCEndLevel
   m_TagString: Untagged
@@ -156,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240744703765432980}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.94438815, z: -0, w: -0.328833}
+  m_LocalRotation: {x: 0, y: 0.9443879, z: -0, w: -0.3288336}
   m_LocalPosition: {x: 24.696, y: -2.12, z: 8.16}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
@@ -233,11 +234,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 737893713b94f464e94a171e89b89e9f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -353,6 +354,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_1A_Scripts.HelpHintsTrigger
   hintType: 4
+--- !u!114 &8676522349126463773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240744703765432980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6535440e0ddfd534d9ca5f48e3a56d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndNPC
+  clip: {fileID: 8300000, guid: 737893713b94f464e94a171e89b89e9f, type: 3}
 --- !u!1001 &58254861896751828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,15 +766,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401414203969231569, guid: 1e2193ab3a7eb184499ab33466e8f6f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06983417
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2401414203969231569, guid: 1e2193ab3a7eb184499ab33466e8f6f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.451
+      value: -0.434
       objectReference: {fileID: 0}
     - target: {fileID: 2401414203969231569, guid: 1e2193ab3a7eb184499ab33466e8f6f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.033218384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2401414203969231569, guid: 1e2193ab3a7eb184499ab33466e8f6f9, type: 3}
       propertyPath: m_LocalRotation.w

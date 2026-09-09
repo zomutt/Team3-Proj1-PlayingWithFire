@@ -67,7 +67,7 @@ namespace _1A_Scripts.Player
             {
                 playerHealth = 0;
                 UIController.Instance.UpdateHealthDisplay();
-                PlayerController.Instance.Respawn();
+                PlayerController.Instance.Respawn(true);
                 return;
             }
 

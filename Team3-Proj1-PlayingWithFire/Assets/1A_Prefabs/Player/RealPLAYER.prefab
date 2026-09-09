@@ -165,6 +165,9 @@ MonoBehaviour:
   rotationSmoothTime: 0.12
   jumpForce: 5
   groundCheckDistance: 4
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!54 &1330358143993189619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -349,10 +352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab1a7cf76a2d0440849314943bce424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_1A_Scripts.Player.PlayerCombat
-  playerDamage: 10
-  playerMaxHealth: 40
-  playerHealth: 40
-  playerIframe: 0.2
+  playerDamage: 5
+  playerMaxHealth: 100
+  playerHealth: 100
+  playerIframe: 0.25
 --- !u!114 &4251558973064241395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,6 +1168,9 @@ MonoBehaviour:
   rotationSmoothTime: 0.12
   jumpForce: 8
   groundCheckDistance: 1.1
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!1 &3783786775605740547
 GameObject:
   m_ObjectHideFlags: 0
@@ -11960,8 +11966,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280277521763696304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14443882, y: 0.7035696, z: -0.14954832, w: 0.6795312}
-  m_LocalPosition: {x: -4.9595995, y: 1.4132596, z: 0.17244844}
+  m_LocalRotation: {x: -0.17232893, y: -0.5472364, z: 0.11631872, w: -0.8107436}
+  m_LocalPosition: {x: -4.6024427, y: 1.4132596, z: -1.8560331}
   m_LocalScale: {x: 1.5590893, y: 1.5590897, z: 1.55909}
   m_ConstrainProportionsScale: 0
   m_Children:
