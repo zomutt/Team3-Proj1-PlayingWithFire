@@ -43,16 +43,8 @@ namespace _1A_Scripts.Level_3_scripts
             float angle = gameObject.transform.rotation.eulerAngles.y;    // Gets the rotation of the spawner itself
             Vector3 direction = Quaternion.Euler(0f, angle, 0f) * transform.forward; // adjusts ring to fit the amount of orbs,, now chooses which direction to shoot the orb in -- it's own angle.
 
-            Debug.LogError($"[WaterOrbSpawner] FireRing reached. ProjectilePool.Instance null? {ProjectilePool.Instance == null}. direction={direction}"); // TEMP diagnostic
-
             GameObject orb = ProjectilePool.Instance.GetProjectile(gameObject.transform.position, gameObject.transform.rotation);
-
-            Debug.LogError($"[WaterOrbSpawner] orb null? {orb == null}, active? {(orb ? orb.activeInHierarchy.ToString() : "N/A")}"); // TEMP diagnostic
-
             Rigidbody rb = orb.GetComponent<Rigidbody>();
-
-            Debug.LogError($"[WaterOrbSpawner] rb null? {rb == null}"); // TEMP diagnostic
-
             rb.linearVelocity = direction * orbSpeed;
         }
     }

@@ -25,9 +25,10 @@ public class Note : MonoBehaviour
         if (audioSource && audioClip)
         {
             audioSource.PlayOneShot(audioClip);
-            UIController.Instance.note.gameObject.SetActive(true);
         }
-        
+
+        UIController.Instance.note.gameObject.SetActive(true);
+
         if(poi)
             poi.SetActive(false);
     }
