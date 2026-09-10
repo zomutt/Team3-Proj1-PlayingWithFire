@@ -11,6 +11,7 @@ namespace _1A_Scripts.Level_3_scripts
 
         [SerializeField] private GameObject objectToActivate;
         [SerializeField] private BossCameraSwitch cameraSwitch;
+        [SerializeField] private BossDeathSequence bossDeathSequence;
         [SerializeField] private GameObject[] hearts;    // Hearts appear over the player and the princess when the game is winnable. Mom's spaghetti.
 
         // Every FlyToBoss checks this itself -- no array of vents to wire up, nothing to forget.
@@ -43,7 +44,16 @@ namespace _1A_Scripts.Level_3_scripts
             {
                 Debug.LogError("[LeverPuzzle] cameraSwitch not assigned, camera will never switch");
             }
-            
+
+            if (bossDeathSequence)
+            {
+                bossDeathSequence.TriggerDeath();
+            }
+            else
+            {
+                Debug.LogError("[LeverPuzzle] bossDeathSequence not assigned, boss will never die");
+            }
+
             foreach (GameObject heart in hearts)
             {
                 heart.SetActive(true);

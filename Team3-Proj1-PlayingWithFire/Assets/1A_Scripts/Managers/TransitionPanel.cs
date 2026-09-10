@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _1A_Scripts.Managers
 {
-    // Goes on Yania's TransitionAnimCanvas -- one fresh copy per scene, never DontDestroyOnLoad.
+    // Goes on TransitionAnimCanvas -- one fresh copy per scene, never DontDestroyOnLoad.
     public class TransitionPanel : MonoBehaviour
     {
         [SerializeField] private float animationLength = 1f; 
