@@ -94,6 +94,11 @@ namespace _1A_Scripts.Managers
             {
                 HelpHints.Instance.DisableAll();
             }
+
+            if (UIController.Instance)
+            {
+                UIController.Instance.ResetKeys();
+            }
         }
 
         public void WinLevel()

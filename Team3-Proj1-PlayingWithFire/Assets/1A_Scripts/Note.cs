@@ -1,38 +1,48 @@
 using _1A_Scripts.Managers;
 using UnityEngine;
 
-public class Note : MonoBehaviour
+namespace _1A_Scripts
 {
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private GameObject poi;
-
-
-    private void Awake()
+    public class Note : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip audioClip;
+        [SerializeField] private GameObject poi;
+        [SerializeField] private GameObject blueOrb;
 
-    private void Start()
-    {
-        if (poi)
-            poi.SetActive(true);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
 
-        if (audioSource && audioClip)
+        private void Awake()
         {
-            audioSource.PlayOneShot(audioClip);
+            audioSource = GetComponent<AudioSource>();
         }
 
-        if (UIController.Instance)
+        private void Start()
         {
-            UIController.Instance.note.gameObject.SetActive(true);
+            if (poi)
+                poi.SetActive(true);
+        
+            if (blueOrb)
+                blueOrb.SetActive(false);
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
 
-        if(poi)
-            poi.SetActive(false);
+            if (audioSource && audioClip)
+            {
+                audioSource.PlayOneShot(audioClip);
+            }
+
+            if (UIController.Instance)
+            {
+                UIController.Instance.note.gameObject.SetActive(true);
+            }
+
+            if(poi)
+                poi.SetActive(false);
+
+            if (blueOrb)
+                blueOrb.SetActive(true);
+        }
     }
 }

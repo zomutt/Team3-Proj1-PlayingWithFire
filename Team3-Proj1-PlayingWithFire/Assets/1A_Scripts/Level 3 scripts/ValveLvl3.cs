@@ -39,6 +39,7 @@ public class ValveLvl3 : MonoBehaviour
             Turn();
         }
 
+        if (!IsTurned) return;
         if (Mathf.Approximately(currentAngle, targetAngle)) return;
         currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
         gameObject.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);

@@ -121,12 +121,18 @@ namespace _1A_Scripts.Managers
 
             if (scene.name == WinScene)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
                 if (fadePanel)
                 {
                     StartCoroutine(FadeIn()); // smooth fade from black instead of an instant cut
                 }
+
+                return; // WIN just has two buttons -- none of the panel/HUD setup below applies to it
             }
-            else if (fadePanel)
+
+            if (fadePanel)
             {
                 fadePanel.SetActive(false); // off by default so it's not blocking the screen during normal gameplay
             }
@@ -287,6 +293,15 @@ namespace _1A_Scripts.Managers
                     keyGreen.SetActive(true);
                     break;
             }
+        }
+
+        // UpdateKeys only ever turns these on -- this is the only way to clear them for a fresh playthrough.
+        public void ResetKeys()
+        {
+            if (keyRed) keyRed.SetActive(false);
+            if (keyBlue) keyBlue.SetActive(false);
+            if (keyGreen) keyGreen.SetActive(false);
+            if (keyPurple) keyPurple.SetActive(false);
         }
 
         // value range -1 (darkest) to 1 (brightest), 0 is normal.

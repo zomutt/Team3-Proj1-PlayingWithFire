@@ -11,6 +11,7 @@ namespace _1A_Scripts.Level_3_scripts
 
         [SerializeField] private GameObject objectToActivate;
         [SerializeField] private BossCameraSwitch cameraSwitch;
+        [SerializeField] private GameObject[] hearts;    // Hearts appear over the player and the princess when the game is winnable. Mom's spaghetti.
 
         // Every FlyToBoss checks this itself -- no array of vents to wire up, nothing to forget.
         public static bool LeversSolved { get; private set; }
@@ -18,6 +19,14 @@ namespace _1A_Scripts.Level_3_scripts
         private void Awake()
         {
             LeversSolved = false; // reset on scene load/restart, static fields don't reset on their own
+        }
+
+        private void Start()
+        {
+            foreach (GameObject heart in hearts)
+            {
+                heart.SetActive(false);
+            }
         }
 
         public void CheckLevers()
@@ -33,6 +42,11 @@ namespace _1A_Scripts.Level_3_scripts
             else
             {
                 Debug.LogError("[LeverPuzzle] cameraSwitch not assigned, camera will never switch");
+            }
+            
+            foreach (GameObject heart in hearts)
+            {
+                heart.SetActive(true);
             }
         }
     }
