@@ -23,6 +23,10 @@ namespace _1A_Scripts.Level_3_scripts
         [SerializeField] private WaterWall blueOrbDoor;
         [SerializeField] private WaterWall purpleOrbDoor;
 
+        [Header("Misc")] 
+        [SerializeField] private GameObject[] enableAll;
+        [SerializeField] private GameObject[] disableAll;
+
 
         private int valveCount;
 
@@ -41,8 +45,26 @@ namespace _1A_Scripts.Level_3_scripts
         {
             valveCount = 0;
             greenOrb.SetActive(false);
+
+            EnableAll();
+            DisableAll();
         }
 
+        private void EnableAll()
+        {
+            foreach (var enable in enableAll)
+            {
+                enable.SetActive(true);
+            }
+        }
+
+        private void DisableAll()
+        {
+            foreach (var disable in disableAll)
+            {
+                disable.SetActive(false);
+            }
+        }
         // Called by a puzzle once it's solved, to reveal that puzzle's orb.
         public void ActivateOrb(string color)
         {

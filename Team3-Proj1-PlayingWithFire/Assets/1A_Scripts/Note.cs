@@ -18,16 +18,19 @@ public class Note : MonoBehaviour
         if (poi)
             poi.SetActive(true);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!collision.gameObject.CompareTag("Player")) return;
-        
+        if (!other.CompareTag("Player")) return;
+
         if (audioSource && audioClip)
         {
             audioSource.PlayOneShot(audioClip);
         }
 
-        UIController.Instance.note.gameObject.SetActive(true);
+        if (UIController.Instance)
+        {
+            UIController.Instance.note.gameObject.SetActive(true);
+        }
 
         if(poi)
             poi.SetActive(false);

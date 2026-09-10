@@ -11,6 +11,11 @@ namespace _1A_Scripts.Level_3_scripts
         private float fireTimer;
 
 
+        public void StopFiring()
+        {
+            enabled = false;
+        }
+
         private void Update()
         {
             if (spawners == null || spawners.Length == 0) return;

@@ -46,7 +46,10 @@ namespace _1A_Scripts.Player
         private void Start()
         {
             playerHealth = playerMaxHealth;
-            UIController.Instance.UpdateHealthDisplay();
+            if (UIController.Instance)
+            {
+                UIController.Instance.UpdateHealthDisplay();
+            }
         }
         
         public void HealPlayer(int healAmount)
@@ -66,7 +69,10 @@ namespace _1A_Scripts.Player
                 Debug.LogWarning("no heal sound assigned on PlayerCombat");
             }
 
-            UIController.Instance.UpdateHealthDisplay();
+            if (UIController.Instance)
+            {
+                UIController.Instance.UpdateHealthDisplay();
+            }
         }
 
         // Player survives scene loads (DontDestroyOnLoad'd along with the rest of the Player object),
@@ -111,7 +117,7 @@ namespace _1A_Scripts.Player
         // so the heal happens off-screen instead of overwriting the 0-health display instantly.
         public void RespawnHeal()
         {
-            playerHealth = playerMaxHealth * 0.25f;
+            playerHealth = playerMaxHealth;
             UIController.Instance.UpdateHealthDisplay();
         }
 

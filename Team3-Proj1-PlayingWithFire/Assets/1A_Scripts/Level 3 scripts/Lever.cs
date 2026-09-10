@@ -1,4 +1,5 @@
 using System.Collections;
+using _1A_Scripts.Level_3_scripts;
 using UnityEngine;
 
 public class Lever : MonoBehaviour
@@ -41,6 +42,7 @@ public class Lever : MonoBehaviour
 
         float startX = isUp ? 30f : -30f;
         float endX = isUp ? -30f : 30f; // probably need to change these as we put actual levers in
+                                                // it's fiiiiiiiiiiiiiiine
         isUp = !isUp;
 
         Vector3 current = transform.localEulerAngles;

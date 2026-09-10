@@ -16,6 +16,7 @@ namespace _1A_Scripts.Managers
         private const string Level2Scene = "LevelTwo";
         private const string Level3Scene = "LevelThree";
         private const string MainMenuScene = "MainMenu";
+        private const string WinScene = "WIN";
 
         private static string previousScene;         // Also persists between scenes, so we can go back to the previous scene when we open the credits or help menu, except is shared between other objects
 
@@ -118,9 +119,23 @@ namespace _1A_Scripts.Managers
         {
             isMenuOpen = false; // Reset menu state on start.
 
-            if (fadePanel)
+            if (scene.name == WinScene)
+            {
+                if (fadePanel)
+                {
+                    StartCoroutine(FadeIn()); // smooth fade from black instead of an instant cut
+                }
+            }
+            else if (fadePanel)
             {
                 fadePanel.SetActive(false); // off by default so it's not blocking the screen during normal gameplay
+            }
+
+            if (hitPanel)
+            {
+                Color color = hitPanel.color;
+                color.a = 0f;
+                hitPanel.color = color;
             }
 
             if (helpPanel)

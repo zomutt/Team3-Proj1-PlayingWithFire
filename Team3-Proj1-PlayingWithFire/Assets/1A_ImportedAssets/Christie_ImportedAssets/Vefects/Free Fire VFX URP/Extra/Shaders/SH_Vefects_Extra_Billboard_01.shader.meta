@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 10ef5cd39caf1de4797ba36968324ee7
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 242574
+  packageName: Trails VFX - URP
+  packageVersion: 1.0.20251
+  assetPath: Assets/1A_ImportedAssets/Christie_ImportedAssets/Vefects/Free Fire VFX
+    URP/Extra/Shaders/SH_Vefects_Extra_Billboard_01.shader
+  uploadId: 770211
