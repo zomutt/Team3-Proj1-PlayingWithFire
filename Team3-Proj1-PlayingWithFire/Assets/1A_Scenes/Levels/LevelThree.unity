@@ -48425,23 +48425,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1837299480123020414, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1837299480123020414, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1837299480123020414, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7692828500319056484, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7692828500319056484, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7790900698767011559, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: HintCanvas
@@ -48450,6 +48450,10 @@ PrefabInstance:
     - target: {fileID: 9118295302577403924, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_Name
       value: UIController
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118295302577403924, guid: 59a4b3ec9023c454984057c861746250, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -81932,23 +81936,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5078057308411176782, guid: 43a7a3f366dfa8b44b9bffecbf6133c3, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 161.9655
-      objectReference: {fileID: 0}
-    - target: {fileID: 5078057308411176782, guid: 43a7a3f366dfa8b44b9bffecbf6133c3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.2571
-      objectReference: {fileID: 0}
     - target: {fileID: 8370129467277625174, guid: 43a7a3f366dfa8b44b9bffecbf6133c3, type: 3}
       propertyPath: m_Name
       value: HintCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421925363528216442, guid: 43a7a3f366dfa8b44b9bffecbf6133c3, type: 3}
-      propertyPath: m_text
-      value: We're almost to the princess! We must find a way to get her out, but
-        we need to find a way to get rid of the king. He ignores your attacks, but
-        his orbs and minions do not.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,4 +1,3 @@
-using System.Collections;
 using _1A_Scripts.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,21 +12,15 @@ namespace _1A_Scripts.Level_3_scripts
         {
             if (!other.CompareTag("Player")) return;
 
-            StartCoroutine(EndGameSequence());
-        }
-
-        private IEnumerator EndGameSequence()
-        {
-            if (!UIController.Instance)
+            if (UIController.Instance)
             {
-                Debug.LogError("[EndGameTrigger] UIController.Instance is null, skipping fade and loading WIN scene directly");
-                SceneManager.LoadScene(winSceneName);
-                yield break;
+                UIController.Instance.TransitionToScene(winSceneName);
             }
-
-            yield return UIController.Instance.StartCoroutine(UIController.Instance.FadeOut());
-
-            SceneManager.LoadScene(winSceneName);
+            else
+            {
+                Debug.LogError("[EndGameTrigger] no UIController.Instance, loading WIN scene with no transition");
+                SceneManager.LoadScene(winSceneName);
+            }
         }
     }
 }

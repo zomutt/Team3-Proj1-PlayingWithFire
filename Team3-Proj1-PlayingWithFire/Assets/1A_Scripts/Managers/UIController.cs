@@ -276,6 +276,29 @@ namespace _1A_Scripts.Managers
             fadePanel.SetActive(false);
         }
 
+        // The one place every scene change should go through: fade to black, load, fade back in.
+        // Yania's panel isn't wired into this yet -- simple fade only for now.
+        public void TransitionToScene(string sceneName)
+        {
+            StartCoroutine(TransitionRoutine(sceneName));
+        }
+
+        public void TransitionToScene(int buildIndex)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(buildIndex);
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
+            TransitionToScene(sceneName);
+        }
+
+        private IEnumerator TransitionRoutine(string sceneName)
+        {
+            yield return StartCoroutine(FadeOut());
+
+            SceneManager.LoadScene(sceneName);
+
+            yield return StartCoroutine(FadeIn());
+        }
+
         public void UpdateKeys(string color)
         {
             switch (color)
@@ -425,7 +448,7 @@ namespace _1A_Scripts.Managers
             }
 
             previousScene = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(Level1Scene);
+            TransitionToScene(Level1Scene);
         }
 
         public void OnClickToggleHelp()
@@ -472,14 +495,14 @@ namespace _1A_Scripts.Managers
             previousScene = SceneManager.GetActiveScene().name;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene(CreditsScene);
+            TransitionToScene(CreditsScene);
         }
 
         public void OnClickReturnToPreviousScene()
         {
             if (previousScene != null)
             {
-                SceneManager.LoadScene(previousScene);
+                TransitionToScene(previousScene);
             }
             else
             {
@@ -496,7 +519,7 @@ namespace _1A_Scripts.Managers
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene(MainMenuScene);
+            TransitionToScene(MainMenuScene);
         }
 
         public void OnClickRestartLevel()      // Start the current level over from scratch
@@ -506,7 +529,7 @@ namespace _1A_Scripts.Managers
                 GameManager.Instance.ResetForNewGame();
             }
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            TransitionToScene(SceneManager.GetActiveScene().name);
         }
 
         public void OnClickQuitGame()      // Are you sure you want to quit?

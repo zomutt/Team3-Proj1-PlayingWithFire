@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4762193897054533920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4697141161870251830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4930153227411875447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -433,8 +433,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This area is CRAWLING with even more monsters than before! Avoid their
-    attacks and act defensively.
+  m_text: 'This area is swarmed with the king''s minions. Avoid their attacks and
+    act defensively.
 
 '
   m_isRightToLeft: 0
@@ -1092,7 +1092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2251969297993453831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1307,7 +1307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8917156788546726498
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1459,7 +1459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106173761067974437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1611,7 +1611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &164984866725129335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1687,7 +1687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1253346871793699313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1780,8 +1780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.7415, y: -5.3463}
-  m_SizeDelta: {x: 1098.6406, y: 135.8167}
+  m_AnchoredPosition: {x: 3.7415, y: 0.2571}
+  m_SizeDelta: {x: 1098.6406, y: 161.9655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2840505335029468595
 CanvasRenderer:
@@ -1812,7 +1812,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: We're almost to the princess! We must find a way to get her out, but we
-    need to find a way to get rid of the king.
+    need to find a way to get rid of the king. He ignores your attacks, but his orbs
+    and minions do not.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fba971320922af44aae69f83fa8611f, type: 2}
   m_sharedMaterial: {fileID: -3186426585023077816, guid: 6fba971320922af44aae69f83fa8611f, type: 2}
@@ -1949,7 +1950,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soldier! You must find all four of these orbs in the area. For the princess!
+  m_text: Ready to lead the extraction of your princess? Fire's your best tool here.
+    Find all four orbs to proceed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fba971320922af44aae69f83fa8611f, type: 2}
   m_sharedMaterial: {fileID: -3186426585023077816, guid: 6fba971320922af44aae69f83fa8611f, type: 2}
@@ -2698,7 +2700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1064716644354232976
 RectTransform:
   m_ObjectHideFlags: 0

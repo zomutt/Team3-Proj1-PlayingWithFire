@@ -1,3 +1,4 @@
+using _1A_Scripts.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +15,15 @@ namespace _1A_Scripts
 
             if (nextIndex < SceneManager.sceneCountInBuildSettings)
             {
-                SceneManager.LoadScene(nextIndex);
+                if (UIController.Instance)
+                {
+                    UIController.Instance.TransitionToScene(nextIndex);
+                }
+                else
+                {
+                    Debug.LogError("[AdvanceLevel] no UIController.Instance, loading scene with no transition");
+                    SceneManager.LoadScene(nextIndex);
+                }
             }
         }
     }
