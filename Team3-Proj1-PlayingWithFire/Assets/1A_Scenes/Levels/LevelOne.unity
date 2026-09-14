@@ -144030,6 +144030,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4083222923168575314, guid: 59a4b3ec9023c454984057c861746250, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: be73a905f0e1b2b4c8b88fd905678c98, type: 2}
+    - target: {fileID: 4083222923168575314, guid: 59a4b3ec9023c454984057c861746250, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 57268555047159034, guid: be73a905f0e1b2b4c8b88fd905678c98, type: 2}
+    - target: {fileID: 4083222923168575314, guid: 59a4b3ec9023c454984057c861746250, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4178624110287383568, guid: 59a4b3ec9023c454984057c861746250, type: 3}
       propertyPath: m_fontAsset
       value: 
