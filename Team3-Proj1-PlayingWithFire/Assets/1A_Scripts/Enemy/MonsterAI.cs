@@ -215,7 +215,6 @@ namespace _1A_Scripts.Enemy
             if (!canBeAttacked) return;
 
             currentHealth -= amount;
-            animator.SetTrigger(GetHit);
 
             if (currentHealth <= 0)
             {
@@ -223,6 +222,7 @@ namespace _1A_Scripts.Enemy
             }
             else
             {
+                animator.SetTrigger(GetHit);
                 StartCoroutine(Iframe());
             }
 
@@ -233,6 +233,7 @@ namespace _1A_Scripts.Enemy
         {
             isDead = true;
             agent.isStopped = true;
+            agent.enabled = false; // isStopped alone still lets the agent snap position back every frame, fighting the death anim's root motion
 
             // Death can land mid-chase soooo... We gotta make it chill.
             animator.speed = 1f;
@@ -286,6 +287,7 @@ namespace _1A_Scripts.Enemy
             animator.enabled = true;
             animator.Play("Idle"); // snaps the animator back to Idle instead of staying stuck on the death pose
 
+            agent.enabled = true;
             agent.Warp(spawnPosition); // NavMeshAgent overrides plain transform.position every frame, so it needs its own teleport method
             agent.isStopped = false;
         }

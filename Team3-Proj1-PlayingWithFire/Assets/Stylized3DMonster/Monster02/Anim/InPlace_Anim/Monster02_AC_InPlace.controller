@@ -364,10 +364,10 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 2777929780391269724}
+  m_DstState: {fileID: -8216338808206536250}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0

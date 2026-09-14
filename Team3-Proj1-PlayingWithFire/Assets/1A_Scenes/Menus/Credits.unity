@@ -544,7 +544,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1929523928}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3497750482813369557, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
       propertyPath: m_Name
@@ -592,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384139958091620437, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -102.38475
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6384139958091620437, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
       propertyPath: m_LocalRotation.w
@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384139958091620437, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -31.060547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6384139958091620437, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -635,11 +635,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
---- !u!224 &500498706 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6384139958091620437, guid: 5437c6bda97f3d34db393fff624c5886, type: 3}
-  m_PrefabInstance: {fileID: 500498705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583030122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1447,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CREDITS\nUnlit wall torch - Wissam El Hajj - Unity  Assets Store  https://assetstore.unity.com/packages/3d/props/3d-game-props-61815\n\nColumns
+  m_text: "CREDITS\n\nChristie Comer - Artist/Lead Programmer, Level 1 Design\nYania
+    Solivan - Artist, Level 3 Design\nPedro Martinez-Rodriguez - Programmer, Level
+    2 Design\n\n\nUnlit wall torch - Wissam El Hajj - Unity  Assets Store  https://assetstore.unity.com/packages/3d/props/3d-game-props-61815\n\nColumns
     - lowpoly86 - Unity Asset Store https://assetstore.unity.com/publishers/99642\n\r\nBroken
     column (must be two parts; it is meant to break for a puzzle) - lowpoly86 - Unity
     Asset Store https://assetstore.unity.com/publishers/99642\n\r\nLarge fountain
@@ -1530,9 +1527,7 @@ MonoBehaviour:
     - \"\r\n\nStone UI - Yuliya Pauliukevich https://www.vecteezy.com/vector-art/12991432-stone-game-menu-boards-with-vines-rope-or-leaves?autodl_token=c5c9382be55dc47f1f3f6e05fb73aea5007b100bc1a34da0d35bf05d0534a1349bb0e289de64e359ca590f3603382e87040b10ec129fb0e0a99c484f5b9be2d6\r\n\nOrbs
     - Matthew Guz - https://assetstore.unity.com/packages/vfx/particles/spells/orbs-effects-free-292126\r\nMonsters
     - PixeliusVita\r\n\nFootsteps SFX\t - Sound Works 12\r\n\nFire Heart - m lukmanul
-    hakim\r\n\nFantasy SFX - SF Audio Guild\r\n\nFemale Fighting Game Grunts\t\t\nAderuMoro\r\n\t\tLucasPresoto\r\n\t\tIlumisoft\r\n\t\tBamsparkyu\r\n\r\n\r\n\n\n\nChristie
-    Comer - Artist/Programmer\nYania Solivan - Artist\nPedro Martinez-Rodriguez -
-    Programmer\n\n\n"
+    hakim\r\n\nFantasy SFX - SF Audio Guild\r\n\nFemale Fighting Game Grunts\t\t\nAderuMoro\r\n\t\tLucasPresoto\r\n\t\tIlumisoft\r\n\t\tBamsparkyu\r\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 204d4ea466bf449489160f04d6e27adf, type: 2}
   m_sharedMaterial: {fileID: 2318532797221115454, guid: 204d4ea466bf449489160f04d6e27adf, type: 2}
@@ -1807,7 +1802,6 @@ RectTransform:
   m_Children:
   - {fileID: 1879283330}
   - {fileID: 106858419}
-  - {fileID: 500498706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1958,6 +1952,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1067937715}
   - {fileID: 1067891316}
+  - {fileID: 500498705}
   - {fileID: 1929523928}
   - {fileID: 56617938}
   - {fileID: 1645871068}
