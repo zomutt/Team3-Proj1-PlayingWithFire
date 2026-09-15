@@ -113,9 +113,9 @@ namespace _1A_Scripts.Player
             rb.interpolation = RigidbodyInterpolation.Interpolate;
         }
 
-        public void ToggleMove()
+        public void SetCanMove(bool value)
         {
-            canMove = !canMove;
+            canMove = value;
         }
 
         private void Move()
@@ -262,6 +262,9 @@ namespace _1A_Scripts.Player
             Debug.Log("JUMP: " + value.isPressed);
 
             if (!value.isPressed)
+                return;
+
+            if (!canMove)
                 return;
 
             if (isGrounded)

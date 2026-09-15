@@ -99,7 +99,7 @@ namespace _1A_Scripts.Player
 
         private IEnumerator RespawnRoutine(bool healPlayer)
         {
-            PlayerMovement.Instance.ToggleMove();
+            PlayerMovement.Instance.SetCanMove(false);
 
             yield return UIController.Instance.FadeOut();
 
@@ -133,7 +133,7 @@ namespace _1A_Scripts.Player
 
             yield return UIController.Instance.FadeIn();
 
-            PlayerMovement.Instance.ToggleMove();
+            PlayerMovement.Instance.SetCanMove(true);
         }
     }
 }

@@ -104,6 +104,7 @@ namespace _1A_Scripts.Player
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
+                canTakeDamage = false; // otherwise a second hit mid-respawn calls Respawn() again
                 UIController.Instance.UpdateHealthDisplay();
                 PlayerController.Instance.Respawn(true);
                 return;
@@ -118,6 +119,7 @@ namespace _1A_Scripts.Player
         public void RespawnHeal()
         {
             playerHealth = playerMaxHealth;
+            canTakeDamage = true;
             UIController.Instance.UpdateHealthDisplay();
         }
 
