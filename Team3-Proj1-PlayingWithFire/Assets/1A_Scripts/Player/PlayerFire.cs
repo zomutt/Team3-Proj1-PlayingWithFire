@@ -1,4 +1,5 @@
 using System.Collections;
+using EazyCamera;
 using UnityEngine;
 
 /// <summary>
@@ -68,7 +69,10 @@ public class PlayerFire : MonoBehaviour
             }
             else
             {
-                bool didHit = Physics.Raycast(fireOrigin.position, fireOrigin.forward, out RaycastHit hit, fireRange);
+                // fireOrigin.forward is the character's body facing, which only turns while actually moving --
+                // stand still to aim at range and it stays stale. Aim along the camera instead so it always matches the crosshair.
+                Vector3 aimDirection = EazyCam.Instance ? EazyCam.Instance.CameraTransform.forward : fireOrigin.forward;
+                bool didHit = Physics.Raycast(fireOrigin.position, aimDirection, out RaycastHit hit, fireRange);
 
                 if (didHit)
                 {

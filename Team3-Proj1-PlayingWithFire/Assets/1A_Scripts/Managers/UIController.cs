@@ -12,7 +12,6 @@ namespace _1A_Scripts.Managers
         public static UIController Instance { get; private set; }
 
         private const string CreditsScene = "Credits";        // Const string for the name of the credits scene, so we don't have to hardcode it in multiple places -- it basically lives forever
-        private const string Level1Scene = "LevelOne";
         private const string Level2Scene = "LevelTwo";
         private const string Level3Scene = "LevelThree";
         private const string MainMenuScene = "MainMenu";
@@ -86,19 +85,19 @@ namespace _1A_Scripts.Managers
         {
             foreach (var obj in closeAllOnStart)
             {
-                obj.SetActive(false);
+                if (obj) obj.SetActive(false);
             }
-            note.gameObject.SetActive(false);
+            if (note) note.gameObject.SetActive(false);
         }
 
         private void EnableAll()
         {
             foreach (var obj in openAllOnStart)
             {
-                obj.SetActive(true);
+                if (obj) obj.SetActive(true);
             }
 
-            healthBar.gameObject.SetActive(true);
+            if (healthBar) healthBar.gameObject.SetActive(true);
         }
 
         private void FindHintCanvas()
@@ -276,8 +275,7 @@ namespace _1A_Scripts.Managers
             fadePanel.SetActive(false);
         }
 
-        // The one place every scene change should go through: fade to black, load, fade back in.
-        // Yania's panel isn't wired into this yet -- simple fade only for now.
+
         public void TransitionToScene(string sceneName)
         {
             StartCoroutine(TransitionRoutine(sceneName));
@@ -437,18 +435,6 @@ namespace _1A_Scripts.Managers
                 }
                 isMenuOpen = true;
             }
-        }
-
-        public void OnClickStartGame()      // ONLY for start menu.
-        {
-            // player, UI state, etc. all survive scene loads -- gotta wipe them or a fresh run starts
-            if (GameManager.Instance)
-            {
-                GameManager.Instance.ResetForNewGame();
-            }
-
-            previousScene = SceneManager.GetActiveScene().name;
-            TransitionToScene(Level1Scene);
         }
 
         public void OnClickToggleHelp()

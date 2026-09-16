@@ -144,8 +144,9 @@ namespace _1A_Scripts.Enemy
             agent.SetDestination(player.position);
             RotateTowardsMovement();
 
-            // Keeps the walk clip's pace matched to how fast he's actually moving
-            animator.speed = agent.velocity.magnitude / AnimatedWalkSpeed;
+            // Keeps the walk clip's pace matched to how fast he's actually moving -- floored so obstacle
+            // avoidance / crowding (velocity ~0 while still pathing) can't freeze the animator entirely.
+            animator.speed = Mathf.Max(agent.velocity.magnitude / AnimatedWalkSpeed, 0.5f);
 
             animator.SetBool(IsWalking, true);
             animator.SetBool(IsAttacking, false);
@@ -264,6 +265,10 @@ namespace _1A_Scripts.Enemy
 
         private IEnumerator FreezeAfterDeathAnim() // fixed the graph bug that caused this, keeping it as a backstop
         {
+            // Die can be queued behind an in-progress GetHit/Attack transition (Any State interruption is off),
+            // so wait for the Die state to actually become current before counting deathAnimDuration --
+            // otherwise this can freeze him mid-lurch, hips still raised off the ground.
+            yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Monster02_Die"));
             yield return new WaitForSeconds(deathAnimDuration);
             animator.enabled = false;
         }

@@ -21,6 +21,13 @@ namespace _1A_Scripts.Managers
 
         public void OnClickStartGame()
         {
+            // Time.timeScale/IsPaused/HUD key icons all survive scene loads via GameManager/UIController --
+            // gotta wipe them here or a fresh run can start still paused from wherever the last playthrough left off.
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.ResetForNewGame();
+            }
+
             if (PlayerController.Instance)
             {
                 PlayerController.Instance.ResetCheckpoint();
