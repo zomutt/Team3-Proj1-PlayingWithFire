@@ -1,56 +1,68 @@
 using UnityEngine;
-using _1A_Scripts.Level_3_scripts;
 
-public class ValveLvl3 : MonoBehaviour
+namespace _1A_Scripts.Level_3_scripts
 {
-    [SerializeField] private float targetAngle = 180f;
-    [SerializeField] private float rotationSpeed = 2f;
-    //[SerializeField] private GameObject valve;
-    [SerializeField] private GameObject poi;
-
-    public bool IsTurned { get; private set; }
-
-    private float currentAngle;
-    private bool playerInRange;
-
-    private void Start()
+    [RequireComponent(typeof(AudioSource))]
+    public class ValveLvl3 : MonoBehaviour
     {
-        if (poi) poi.SetActive(false);
-    }
+        [SerializeField] private float targetAngle = 180f;
+        [SerializeField] private float rotationSpeed = 2f;
+        //[SerializeField] private GameObject valve;
+        [SerializeField] private GameObject poi;
+    
+    
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip audioClip;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
+        public bool IsTurned { get; private set; }
 
-        playerInRange = true;
-    }
+        private float currentAngle;
+        private bool playerInRange;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        playerInRange = false;
-    }
-
-    private void Update()
-    {
-        if (playerInRange && !IsTurned && Input.GetKeyDown(KeyCode.E))
+        private void Awake()
         {
-            Turn();
+            audioSource = GetComponent<AudioSource>();
+        }
+        private void Start()
+        {
+            if (poi) poi.SetActive(false);
         }
 
-        if (!IsTurned) return;
-        if (Mathf.Approximately(currentAngle, targetAngle)) return;
-        currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
-        gameObject.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
 
-    private void Turn()
-    {
-        IsTurned = true;
+            playerInRange = true;
+        }
 
-        if (poi) poi.SetActive(true);
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
 
-        LevelThreePuzzleManager.Instance.IncreaseValveCount();
+            playerInRange = false;
+        }
+
+        private void Update()
+        {
+            if (playerInRange && !IsTurned && Input.GetKeyDown(KeyCode.E))
+            {
+                Turn();
+            }
+
+            if (!IsTurned) return;
+            if (Mathf.Approximately(currentAngle, targetAngle)) return;
+            currentAngle = Mathf.MoveTowards(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+            gameObject.transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
+        }
+
+        private void Turn()
+        {
+            audioSource.PlayOneShot(audioClip);     // Crrrreak.
+            IsTurned = true;
+
+            if (poi) poi.SetActive(true);
+
+            LevelThreePuzzleManager.Instance.IncreaseValveCount();
+        }
     }
 }

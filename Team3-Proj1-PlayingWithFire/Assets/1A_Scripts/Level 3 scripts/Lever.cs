@@ -7,11 +7,18 @@ public class Lever : MonoBehaviour
     [SerializeField] private float pullDuration = 1f;
     [SerializeField] private float cooldown = 1f; // adjusts these how you like
     [SerializeField] private LeverPuzzle puzzleManager;
+    
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip switchClip;
 
     private bool playerInRange;
     private bool isUp = true;
     private bool isBusy;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -32,6 +39,7 @@ public class Lever : MonoBehaviour
     {
         if (playerInRange && !isBusy && Input.GetKeyDown(KeyCode.E))
         {
+            AudioSource.PlayClipAtPoint(switchClip, transform.position);
             StartCoroutine(PullLever());
         }
     }
@@ -41,8 +49,8 @@ public class Lever : MonoBehaviour
         isBusy = true;
 
         float startX = isUp ? 30f : -30f;
-        float endX = isUp ? -30f : 30f; // probably need to change these as we put actual levers in
-                                                // it's fiiiiiiiiiiiiiiine
+        float endX = isUp ? -30f : 30f; 
+                                             
         isUp = !isUp;
 
         Vector3 current = transform.localEulerAngles;

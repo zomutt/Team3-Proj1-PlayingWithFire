@@ -104,6 +104,7 @@ namespace _1A_Scripts.Level_3_scripts
                 case "purple":
                     HasPurpleOrb = true;
                     if (purpleOrbDoor) purpleOrbDoor.StartCoroutine(purpleOrbDoor.Fall());
+                    if (LeverPuzzle.Instance) LeverPuzzle.Instance.ShowHearts();
                     break;
                 default:
                     Debug.LogWarning($"KeyColor {color} is missing or invalid. Proper format: red");

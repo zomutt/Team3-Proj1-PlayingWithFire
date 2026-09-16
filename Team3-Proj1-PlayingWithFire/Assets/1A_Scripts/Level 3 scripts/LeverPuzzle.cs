@@ -17,8 +17,11 @@ namespace _1A_Scripts.Level_3_scripts
         // Every FlyToBoss checks this itself -- no array of vents to wire up, nothing to forget.
         public static bool LeversSolved { get; private set; }
 
+        public static LeverPuzzle Instance;
+
         private void Awake()
         {
+            Instance = this;
             LeversSolved = false; // reset on scene load/restart, static fields don't reset on their own
         }
 
@@ -27,6 +30,16 @@ namespace _1A_Scripts.Level_3_scripts
             foreach (GameObject heart in hearts)
             {
                 heart.SetActive(false);
+            }
+        }
+
+        // Called whenever something should tell the player "this is winnable now" -- the purple orb pickup,
+        // as well as the levers themselves once they're all solved.
+        public void ShowHearts()
+        {
+            foreach (GameObject heart in hearts)
+            {
+                heart.SetActive(true);
             }
         }
 
@@ -52,11 +65,6 @@ namespace _1A_Scripts.Level_3_scripts
             else
             {
                 Debug.LogError("[LeverPuzzle] bossDeathSequence not assigned, boss will never die");
-            }
-
-            foreach (GameObject heart in hearts)
-            {
-                heart.SetActive(true);
             }
         }
     }
