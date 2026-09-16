@@ -32,6 +32,13 @@ namespace _1A_Scripts
             {
                 collector = LevelThreePuzzleManager.Instance;
             }
+
+            // TEMP DIAGNOSTIC -- remove once we know why keys stop working after a full playthrough.
+            Debug.Log($"[Keys diag] {gameObject.name} in scene '{gameObject.scene.name}': " +
+                      $"collector={(collector == null ? "NULL" : collector.GetType().Name)}, " +
+                      $"L1.Instance={(LevelOnePuzzleManager.Instance ? LevelOnePuzzleManager.Instance.GetInstanceID().ToString() : "null")}, " +
+                      $"L2.Instance={(LevelTwoPuzzleManager.Instance ? LevelTwoPuzzleManager.Instance.GetInstanceID().ToString() : "null")}, " +
+                      $"L3.Instance={(LevelThreePuzzleManager.Instance ? LevelThreePuzzleManager.Instance.GetInstanceID().ToString() : "null")}");
         }
 
         private void OnTriggerEnter(Collider other)
@@ -41,6 +48,11 @@ namespace _1A_Scripts
             POIRing.SetActive(false);
 
             string color = keyColor.ToString().ToLower();
+
+            // TEMP DIAGNOSTIC -- remove once we know why keys stop working after a full playthrough.
+            Debug.Log($"[Keys diag] OnTriggerEnter {color}: collector={(collector == null ? "NULL" : collector.GetType().Name)}, " +
+                      $"UIController.Instance={(UIController.Instance ? "valid" : "NULL")}");
+
             collector?.CollectKey(color);
 
             if (UIController.Instance)
