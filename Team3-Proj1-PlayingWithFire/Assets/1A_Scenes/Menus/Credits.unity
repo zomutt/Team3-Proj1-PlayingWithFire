@@ -934,8 +934,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.4498, y: 107.64838}
-  m_SizeDelta: {x: 176.0577, y: 131.7836}
+  m_AnchoredPosition: {x: 25.6775, y: 34.86902}
+  m_SizeDelta: {x: 101.2497, y: 101.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006217796
 MonoBehaviour:
@@ -1527,7 +1527,9 @@ MonoBehaviour:
     - \"\r\n\nStone UI - Yuliya Pauliukevich https://www.vecteezy.com/vector-art/12991432-stone-game-menu-boards-with-vines-rope-or-leaves?autodl_token=c5c9382be55dc47f1f3f6e05fb73aea5007b100bc1a34da0d35bf05d0534a1349bb0e289de64e359ca590f3603382e87040b10ec129fb0e0a99c484f5b9be2d6\r\n\nOrbs
     - Matthew Guz - https://assetstore.unity.com/packages/vfx/particles/spells/orbs-effects-free-292126\r\nMonsters
     - PixeliusVita\r\n\nFootsteps SFX\t - Sound Works 12\r\n\nFire Heart - m lukmanul
-    hakim\r\n\nFantasy SFX - SF Audio Guild\r\n\nFemale Fighting Game Grunts\t\t\nAderuMoro\r\n\t\tLucasPresoto\r\n\t\tIlumisoft\r\n\t\tBamsparkyu\r\n\n\n\n"
+    hakim\r\n\nFantasy SFX - SF Audio Guild\r\n\nFemale Fighting Game Grunts\t\t\nAderuMoro\r\n\t\tLucasPresoto\r\n\t\tIlumisoft\r\n\t\tBamsparkyu\n\nChristie
+    Comer - Artist/Lead Programmer, Level 1 Design\nYania Solivan - Artist, Level
+    3 Design\nPedro Martinez-Rodriguez - Programmer, Level 2 Design\r\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 204d4ea466bf449489160f04d6e27adf, type: 2}
   m_sharedMaterial: {fileID: 2318532797221115454, guid: 204d4ea466bf449489160f04d6e27adf, type: 2}
